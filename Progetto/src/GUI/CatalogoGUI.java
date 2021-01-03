@@ -1,23 +1,18 @@
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
+
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 import java.awt.Font;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
+import javax.swing.JLabel;
 
 public class CatalogoGUI extends JFrame {
 
-	private JPanel CatalogoGUIPane;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -41,29 +36,29 @@ public class CatalogoGUI extends JFrame {
 	public CatalogoGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(350, 120, 858, 602);
-		CatalogoGUIPane = new JPanel();
-		CatalogoGUIPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(CatalogoGUIPane);
-		CatalogoGUIPane.setLayout(null);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(163, 37, 671, 517);
-		CatalogoGUIPane.add(panel);
+		panel.setBounds(171, 37, 663, 517);
+		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(10, 37, 151, 517);
-		CatalogoGUIPane.add(panel_1);
+		panel_1.setBounds(10, 37, 157, 517);
+		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
 		JButton PaniniButton = new JButton("Panini");
 		PaniniButton.setFont(new Font("Bell MT", Font.PLAIN, 18));
-		PaniniButton.setBounds(0, 10, 153, 103);
+		PaniniButton.setBounds(0, 20, 153, 103);
 		panel_1.add(PaniniButton);
 		
 		JButton PatatineButton = new JButton("Patatine");
 		PatatineButton.setFont(new Font("Bell MT", Font.PLAIN, 18));
-		PatatineButton.setBounds(0, 113, 153, 103);
+		PatatineButton.setBounds(0, 123, 153, 103);
 		panel_1.add(PatatineButton);
 		
 		JButton BevandeButton = new JButton("Bevande");
@@ -84,6 +79,11 @@ public class CatalogoGUI extends JFrame {
 		JButton VisualizzaProfiloButton = new JButton("VisualizzaProfilo");
 		VisualizzaProfiloButton.setFont(new Font("Bell MT", Font.PLAIN, 14));
 		VisualizzaProfiloButton.setBounds(695, 10, 139, 27);
-		CatalogoGUIPane.add(VisualizzaProfiloButton);
+		contentPane.add(VisualizzaProfiloButton);
+		
+		JLabel ProdottiLabel = new JLabel("I nostri prodotti:");
+		ProdottiLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		ProdottiLabel.setBounds(28, 10, 265, 24);
+		contentPane.add(ProdottiLabel);
 	}
 }

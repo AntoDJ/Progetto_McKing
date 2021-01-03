@@ -17,7 +17,7 @@ import com.jgoodies.forms.layout.RowSpec;
 
 public class CatalogoGUI extends JFrame {
 
-	private JPanel contentPane;
+	private JPanel CatalogoGUIPane;
 
 	/**
 	 * Launch the application.
@@ -41,44 +41,49 @@ public class CatalogoGUI extends JFrame {
 	public CatalogoGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(350, 120, 858, 602);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		CatalogoGUIPane = new JPanel();
+		CatalogoGUIPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(CatalogoGUIPane);
+		CatalogoGUIPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(163, 10, 671, 544);
-		contentPane.add(panel);
+		panel.setBounds(163, 37, 671, 517);
+		CatalogoGUIPane.add(panel);
 		panel.setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(10, 10, 151, 544);
-		contentPane.add(panel_1);
+		panel_1.setBounds(10, 37, 151, 517);
+		CatalogoGUIPane.add(panel_1);
 		panel_1.setLayout(null);
 		
 		JButton PaniniButton = new JButton("Panini");
-		PaniniButton.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		PaniniButton.setBounds(0, 0, 153, 110);
+		PaniniButton.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		PaniniButton.setBounds(0, 10, 153, 103);
 		panel_1.add(PaniniButton);
 		
 		JButton PatatineButton = new JButton("Patatine");
-		PatatineButton.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		PatatineButton.setBounds(0, 107, 153, 110);
+		PatatineButton.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		PatatineButton.setBounds(0, 113, 153, 103);
 		panel_1.add(PatatineButton);
 		
 		JButton BevandeButton = new JButton("Bevande");
-		BevandeButton.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		BevandeButton.setBounds(0, 214, 153, 110);
+		BevandeButton.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		BevandeButton.setBounds(0, 218, 153, 103);
 		panel_1.add(BevandeButton);
 		
 		JButton DessertsButton = new JButton("Desserts");
-		DessertsButton.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		DessertsButton.setBounds(0, 323, 153, 110);
+		DessertsButton.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		DessertsButton.setBounds(0, 315, 153, 103);
 		panel_1.add(DessertsButton);
 		
 		JButton AltroButton = new JButton("Altro");
-		AltroButton.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		AltroButton.setBounds(0, 434, 153, 110);
+		AltroButton.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		AltroButton.setBounds(0, 414, 153, 103);
 		panel_1.add(AltroButton);
+		
+		JButton VisualizzaProfiloButton = new JButton("VisualizzaProfilo");
+		VisualizzaProfiloButton.setFont(new Font("Bell MT", Font.PLAIN, 14));
+		VisualizzaProfiloButton.setBounds(695, 10, 139, 27);
+		CatalogoGUIPane.add(VisualizzaProfiloButton);
 	}
 }

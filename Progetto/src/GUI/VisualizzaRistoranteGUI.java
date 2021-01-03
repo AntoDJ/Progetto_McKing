@@ -54,6 +54,7 @@ public class VisualizzaRistoranteGUI extends JFrame {
 		
 		String [] citta= {"","Napoli","Pisa","Verona"};
 		CittaComboBox = new JComboBox(citta);
+		CittaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 14));
 		CittaComboBox.setBounds(120, 81, 168, 21);
 		VisualizzaRistoranteGuiPane.add(CittaComboBox);
 				

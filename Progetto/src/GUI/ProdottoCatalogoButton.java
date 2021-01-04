@@ -9,9 +9,8 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ProdottoCatalogo extends JButton {
-	private final JLabel label = new JLabel("New label");
-	public ProdottoCatalogo() {
+public class ProdottoCatalogoButton extends JButton {
+	public ProdottoCatalogoButton() {
 		super();
 		addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -23,11 +22,12 @@ public class ProdottoCatalogo extends JButton {
 		setPreferredSize(new Dimension(200,200));
 		setFocusable(false);
 		setBorderPainted(false);
-		setBackground(Color.yellow);
+		setBackground(Color.decode("#00C600"));
+		setForeground(Color.white);
 
 		setText("Text");
 	}
-	public ProdottoCatalogo(String text) {
+	public ProdottoCatalogoButton(String text) {
 		super();
 		setVerticalAlignment(SwingConstants.BOTTOM);
 		setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -35,9 +35,9 @@ public class ProdottoCatalogo extends JButton {
 		setPreferredSize(new Dimension(200,200));
 		setFocusable(false);
 		setBorderPainted(false);
-		setBackground(Color.yellow);
-		label.setText(text);
-		label.setVisible(true);
+		setBackground(Color.decode("#00C600"));
+		setText(text);
+		setForeground(Color.white);
 	}
 	
 }

@@ -11,11 +11,13 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.JButton;
 
 public class MyFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel BodyPanel;
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -59,6 +61,12 @@ public class MyFrame extends JFrame {
 		TitoloLabel.setFont(new Font("Papyrus", Font.BOLD, 26));
 		TitoloLabel.setBounds(0, 0, 450, 46);
 		panel.add(TitoloLabel);
+		
+		btnNewButton = new JButton("X");
+		btnNewButton.setBackground(new Color(255, 255, 255));
+		btnNewButton.setFont(new Font("Bell MT", Font.PLAIN, 14));
+		btnNewButton.setBounds(397, 10, 43, 26);
+		panel.add(btnNewButton);
 		
 		BodyPanel = new JPanel();
 		BodyPanel.setBackground(new Color(255, 255, 153));

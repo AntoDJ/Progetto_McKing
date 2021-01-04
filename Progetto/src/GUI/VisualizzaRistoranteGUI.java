@@ -21,8 +21,7 @@ public class VisualizzaRistoranteGUI extends JFrame {
 			public void run() {
 				try {
 					VisualizzaRistoranteGUI frame = new VisualizzaRistoranteGUI();
-					frame.setVisible(true);
-					frame.setResizable(false);				
+					frame.setVisible(true);				
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,6 +38,8 @@ public class VisualizzaRistoranteGUI extends JFrame {
 	
 	
 	public VisualizzaRistoranteGUI() {
+		setResizable(false);
+		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(550, 280, 450, 300);
 		VisualizzaRistoranteGuiPane = new JPanel();

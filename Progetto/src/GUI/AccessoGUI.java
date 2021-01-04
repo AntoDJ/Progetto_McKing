@@ -9,7 +9,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 
 
-public class AccessoGUI extends JFrame {
+public class AccessoGUI extends MyFrame {
 
 	private JPanel AccessoGUIPane;
 	
@@ -30,15 +30,17 @@ public class AccessoGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AccessoGUI() {
+	public AccessoGUI() {		
 		setResizable(false);
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(550, 280, 450, 300);
 		AccessoGUIPane = new JPanel();
 		AccessoGUIPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(AccessoGUIPane);
+		setContentPane(getFrames());
 		AccessoGUIPane.setLayout(null);
+		
+		
 		
 		
 		JLabel DomandaLable = new JLabel("Come desideri accedere?");

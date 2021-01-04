@@ -12,12 +12,14 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MyFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel BodyPanel;
-	private JButton btnNewButton;
+	private JButton ExitButton;
 
 	/**
 	 * Launch the application.
@@ -59,14 +61,24 @@ public class MyFrame extends JFrame {
 		TitoloLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		TitoloLabel.setForeground(new Color(255, 255, 50));
 		TitoloLabel.setFont(new Font("Papyrus", Font.BOLD, 26));
-		TitoloLabel.setBounds(0, 0, 450, 46);
+		TitoloLabel.setBounds(85, 0, 282, 46);
 		panel.add(TitoloLabel);
 		
-		btnNewButton = new JButton("X");
-		btnNewButton.setBackground(new Color(255, 255, 255));
-		btnNewButton.setFont(new Font("Bell MT", Font.PLAIN, 14));
-		btnNewButton.setBounds(397, 10, 43, 26);
-		panel.add(btnNewButton);
+		ExitButton = new JButton("");
+		ExitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		ExitButton.setFocusTraversalKeysEnabled(false);
+		ExitButton.setFocusPainted(false);
+		ExitButton.setFocusable(false);
+		ExitButton.setIcon(new ImageIcon(MyFrame.class.getResource("/GUI/exit.png")));
+		ExitButton.setBackground(null);		
+		ExitButton.setFont(ExitButton.getFont().deriveFont(0f));
+		ExitButton.setBounds(420, 13, 20, 20);
+		ExitButton.setBorder(null);
+		panel.add(ExitButton);
 		
 		BodyPanel = new JPanel();
 		BodyPanel.setBackground(new Color(255, 255, 153));

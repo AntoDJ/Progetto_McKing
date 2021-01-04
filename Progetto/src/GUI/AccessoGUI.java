@@ -18,8 +18,8 @@ public class AccessoGUI extends JFrame {
 			public void run() {
 				try {
 					AccessoGUI frame = new AccessoGUI();
-					frame.setVisible(true);
-					frame.setResizable(false);
+					frame.setVisible(true);	
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -31,12 +31,15 @@ public class AccessoGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public AccessoGUI() {
+		setResizable(false);
+		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(550, 280, 450, 300);
 		AccessoGUIPane = new JPanel();
 		AccessoGUIPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(AccessoGUIPane);
 		AccessoGUIPane.setLayout(null);
+		
 		
 		JLabel DomandaLable = new JLabel("Come desideri accedere?");
 		DomandaLable.setBounds(115, 10, 213, 84);

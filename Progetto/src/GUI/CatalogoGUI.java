@@ -9,6 +9,8 @@ import javax.swing.JButton;
 
 import java.awt.Font;
 import javax.swing.JLabel;
+import java.awt.CardLayout;
+import javax.swing.ImageIcon;
 
 public class CatalogoGUI extends JFrame {
 
@@ -44,7 +46,7 @@ public class CatalogoGUI extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBounds(171, 37, 663, 517);
 		contentPane.add(panel);
-		panel.setLayout(null);
+		panel.setLayout(new CardLayout(0, 0));
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(10, 37, 157, 517);
@@ -80,10 +82,5 @@ public class CatalogoGUI extends JFrame {
 		VisualizzaProfiloButton.setFont(new Font("Bell MT", Font.PLAIN, 14));
 		VisualizzaProfiloButton.setBounds(695, 10, 139, 27);
 		contentPane.add(VisualizzaProfiloButton);
-		
-		JLabel ProdottiLabel = new JLabel("I nostri prodotti:");
-		ProdottiLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
-		ProdottiLabel.setBounds(28, 10, 265, 24);
-		contentPane.add(ProdottiLabel);
 	}
 }

@@ -38,9 +38,7 @@ public class VisualizzaRistoranteGUI extends MyFrame {
 	
 	
 	public VisualizzaRistoranteGUI() {
-		setResizable(false);
-		setUndecorated(true);
-		setBounds(550, 280, 450, 300);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
 		

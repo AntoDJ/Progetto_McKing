@@ -5,8 +5,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import javax.swing.JButton;
-
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -29,7 +27,9 @@ public class CatalogoGUI extends JFrame {
 			public void run() {
 				try {
 					CatalogoGUI frame = new CatalogoGUI();
+					frame.setUndecorated(true);
 					frame.setVisible(true);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -59,10 +59,10 @@ public class CatalogoGUI extends JFrame {
 		card_panini.setAutoscrolls(true);
 		cards.add(card_panini, "PANINI");
 		card_panini.setLayout(new FlowLayout(FlowLayout.LEADING, 10, 10));
-		ArrayList<ProdottoCatalogo> lista = new ArrayList<ProdottoCatalogo>();
+		ArrayList<ProdottoCatalogoButton> lista = new ArrayList<ProdottoCatalogoButton>();
 		//Da modificare con le query dal database che mostranoo i prodotti della categoria corrispondente
 		for(int i = 0; i<32;i++) {
-			lista.add(new ProdottoCatalogo("Botdad" ));
+			lista.add(new ProdottoCatalogoButton("Botdad" ));
 			lista.get(i).setPreferredSize(lista.get(i).getPreferredSize());
 			card_panini.add(lista.get(i));
 		}
@@ -72,32 +72,27 @@ public class CatalogoGUI extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JButton PaniniButton = new JButton("Panini");
-		PaniniButton.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		CategoriaProdottoButton PaniniButton = new CategoriaProdottoButton("Panini");
 		PaniniButton.setBounds(0, 10, 153, 103);
 		panel_1.add(PaniniButton);
 		
-		JButton PatatineButton = new JButton("Patatine");
-		PatatineButton.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		CategoriaProdottoButton PatatineButton = new CategoriaProdottoButton("Patatine");
 		PatatineButton.setBounds(0, 110, 153, 103);
 		panel_1.add(PatatineButton);
 		
-		JButton BevandeButton = new JButton("Bevande");
-		BevandeButton.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		CategoriaProdottoButton BevandeButton = new CategoriaProdottoButton("Bevande");
 		BevandeButton.setBounds(0, 210, 153, 103);
 		panel_1.add(BevandeButton);
 		
-		JButton DessertsButton = new JButton("Desserts");
-		DessertsButton.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		CategoriaProdottoButton DessertsButton = new CategoriaProdottoButton("Desserts");
 		DessertsButton.setBounds(0, 310, 153, 103);
 		panel_1.add(DessertsButton);
 		
-		JButton AltroButton = new JButton("Altro");
-		AltroButton.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		CategoriaProdottoButton AltroButton = new CategoriaProdottoButton("Altro");
 		AltroButton.setBounds(0, 410, 153, 103);
 		panel_1.add(AltroButton);
 		
-		JButton VisualizzaProfiloButton = new JButton("VisualizzaProfilo");
+		CategoriaProdottoButton VisualizzaProfiloButton = new CategoriaProdottoButton("VisualizzaProfilo");
 		VisualizzaProfiloButton.setFont(new Font("Bell MT", Font.PLAIN, 14));
 		VisualizzaProfiloButton.setBounds(695, 10, 139, 27);
 		contentPane.add(VisualizzaProfiloButton);

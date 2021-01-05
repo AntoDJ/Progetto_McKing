@@ -11,15 +11,14 @@ public class CategoriaProdottoButton extends JButton {
 		setFocusable(false);
 		setBackground(Color.decode("#66FF00"));
 		setForeground(Color.decode("#FFE7FA"));
-		this.setFont(new Font("Bell MT", Font.BOLD, 24));
+		setFont(new Font("Bell MT", Font.BOLD, 24));
 		setText("Text");
 	}
 	public CategoriaProdottoButton(String text){
 		setFocusable(false);
-		
 		setBackground(Color.decode("#66FF00"));
 		setForeground(Color.decode("#FFE7FA"));
-		this.setFont(new Font("Bell MT", Font.BOLD, 24));
+		setFont(new Font("Bell MT", Font.BOLD, 24));
 		setText(text);
 	}
 	

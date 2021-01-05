@@ -16,19 +16,16 @@ public class ProdottoCatalogoButton extends JButton {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		setVerticalAlignment(SwingConstants.BOTTOM);
-		setVerticalTextPosition(SwingConstants.BOTTOM);
-		setBounds(100,100,145,145);
-		setPreferredSize(new Dimension(200,200));
-		setFocusable(false);
-		setBorderPainted(false);
-		setBackground(Color.decode("#00C600"));
-		setForeground(Color.white);
-
+		initialize();
 		setText("Text");
 	}
 	public ProdottoCatalogoButton(String text) {
 		super();
+		initialize();
+		setText("Text");
+	}
+	
+	private void initialize() {
 		setVerticalAlignment(SwingConstants.BOTTOM);
 		setVerticalTextPosition(SwingConstants.BOTTOM);
 		setBounds(100,100,145,145);
@@ -36,8 +33,6 @@ public class ProdottoCatalogoButton extends JButton {
 		setFocusable(false);
 		setBorderPainted(false);
 		setBackground(Color.decode("#00C600"));
-		setText(text);
 		setForeground(Color.white);
 	}
-	
 }

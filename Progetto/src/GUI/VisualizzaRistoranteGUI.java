@@ -39,7 +39,7 @@ public class VisualizzaRistoranteGUI extends MyFrame {
 	
 	public VisualizzaRistoranteGUI() {
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		getBodyPanel().setLayout(null);
 		
 		JLabel SceltaRistoranteLabel = new JLabel("Di quale ristorante vuoi avere informazioni?");

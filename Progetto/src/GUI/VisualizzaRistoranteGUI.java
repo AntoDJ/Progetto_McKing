@@ -10,6 +10,12 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class VisualizzaRistoranteGUI extends MyFrame {
@@ -45,7 +51,7 @@ public class VisualizzaRistoranteGUI extends MyFrame {
 		JLabel SceltaRistoranteLabel = new JLabel("Di quale ristorante vuoi avere informazioni?");
 		SceltaRistoranteLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
 		SceltaRistoranteLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		SceltaRistoranteLabel.setBounds(62, 50, 364, 34);
+		SceltaRistoranteLabel.setBounds(62, 50, 364, 34);		
 		getBodyPanel().add(SceltaRistoranteLabel);
 		
 		String [] citta= {"    - - - Seleziona - - -","Napoli","Pisa","Verona"};
@@ -59,10 +65,21 @@ public class VisualizzaRistoranteGUI extends MyFrame {
 		InformazioniRistoranteLabel.setBounds(43, 130, 245, 123);
 		getBodyPanel().add(InformazioniRistoranteLabel);
 		
-		JButton CercaSullaMappaButton = new JButton("Cerca sulla mappa");
+		JButton CercaSullaMappaButton = new JButton("");
+		CercaSullaMappaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Ciao");
+			}
+		});
+		CercaSullaMappaButton.setContentAreaFilled(false);		
+		CercaSullaMappaButton.setIcon(new ImageIcon("C:\\Users\\anton\\OneDrive\\Desktop\\mappa.png"));
+		CercaSullaMappaButton.setRequestFocusEnabled(false);
 		CercaSullaMappaButton.setFont(new Font("Bodoni MT", Font.PLAIN, 12));
-		CercaSullaMappaButton.setBounds(298, 212, 128, 29);
+		CercaSullaMappaButton.setBounds(349, 212, 77, 29);
+		CercaSullaMappaButton.setBorder(null);
+		CercaSullaMappaButton.setBackground(null);
 		getBodyPanel().add(CercaSullaMappaButton);
+		
 		
 //		Mettere questo come azione nel Controller:
 //		Desktop desktop = Desktop.getDesktop();

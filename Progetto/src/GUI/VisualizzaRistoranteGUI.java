@@ -12,9 +12,9 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 
 
-public class VisualizzaRistoranteGUI extends JFrame {
+public class VisualizzaRistoranteGUI extends MyFrame {
 
-	private JPanel VisualizzaRistoranteGuiPane;
+
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -40,34 +40,31 @@ public class VisualizzaRistoranteGUI extends JFrame {
 	public VisualizzaRistoranteGUI() {
 		setResizable(false);
 		setUndecorated(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(550, 280, 450, 300);
-		VisualizzaRistoranteGuiPane = new JPanel();
-		VisualizzaRistoranteGuiPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(VisualizzaRistoranteGuiPane);
-		VisualizzaRistoranteGuiPane.setLayout(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getBodyPanel().setLayout(null);
 		
 		JLabel SceltaRistoranteLabel = new JLabel("Di quale ristorante vuoi avere informazioni?");
 		SceltaRistoranteLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
 		SceltaRistoranteLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		SceltaRistoranteLabel.setBounds(43, 37, 364, 34);
-		VisualizzaRistoranteGuiPane.add(SceltaRistoranteLabel);
+		SceltaRistoranteLabel.setBounds(62, 50, 364, 34);
+		getBodyPanel().add(SceltaRistoranteLabel);
 		
 		String [] citta= {"","Napoli","Pisa","Verona"};
 		CittaComboBox = new JComboBox(citta);
 		CittaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 14));
-		CittaComboBox.setBounds(120, 81, 168, 21);
-		VisualizzaRistoranteGuiPane.add(CittaComboBox);
+		CittaComboBox.setBounds(149, 99, 168, 21);
+		getBodyPanel().add(CittaComboBox);
 				
 		JLabel InformazioniRistoranteLabel = new JLabel("//Far comparire le informazioni //");
 		InformazioniRistoranteLabel.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		InformazioniRistoranteLabel.setBounds(43, 130, 245, 123);
-		VisualizzaRistoranteGuiPane.add(InformazioniRistoranteLabel);
+		getBodyPanel().add(InformazioniRistoranteLabel);
 		
 		JButton CercaSullaMappaButton = new JButton("Cerca sulla mappa");
 		CercaSullaMappaButton.setFont(new Font("Bodoni MT", Font.PLAIN, 12));
 		CercaSullaMappaButton.setBounds(298, 212, 128, 29);
-		VisualizzaRistoranteGuiPane.add(CercaSullaMappaButton);
+		getBodyPanel().add(CercaSullaMappaButton);
 		
 //		Mettere questo come azione nel Controller:
 //		Desktop desktop = Desktop.getDesktop();

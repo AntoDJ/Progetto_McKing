@@ -42,16 +42,25 @@ public class AccessoGUI extends MyFrame {
 		getBodyPanel().add(DomandaLable);
 		
 		JButton UtenteButton = new JButton("Utente");
+		UtenteButton.setFocusPainted(false);
+		UtenteButton.setFocusTraversalKeysEnabled(false);
+		UtenteButton.setFocusable(false);
 		UtenteButton.setBounds(140, 95, 158, 34);
 		UtenteButton.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		getBodyPanel().add(UtenteButton);
 		
 		JButton AdminButton = new JButton("Admin");
+		AdminButton.setFocusPainted(false);
+		AdminButton.setFocusTraversalKeysEnabled(false);
+		AdminButton.setFocusable(false);
 		AdminButton.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		AdminButton.setBounds(140, 152, 158, 34);
 		getBodyPanel().add(AdminButton);
 		
 		JButton VisualizzaRistorantiButton = new JButton("Visualizza Ristoranti");
+		VisualizzaRistorantiButton.setFocusPainted(false);
+		VisualizzaRistorantiButton.setFocusTraversalKeysEnabled(false);
+		VisualizzaRistorantiButton.setFocusable(false);
 		VisualizzaRistorantiButton.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		VisualizzaRistorantiButton.setBounds(10, 232, 145, 21);
 		getBodyPanel().add(VisualizzaRistorantiButton);

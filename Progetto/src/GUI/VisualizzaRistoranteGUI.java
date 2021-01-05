@@ -18,11 +18,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
 
 
-public class VisualizzaRistoranteGUI extends MyFrame {
+
+public class VisualizzaRistoranteGUI extends SmallFrame {
 
 
 
@@ -45,6 +44,8 @@ public class VisualizzaRistoranteGUI extends MyFrame {
 	 */
 
 	JComboBox CittaComboBox;
+	String luogo;
+	
 	
 	
 	public VisualizzaRistoranteGUI() {
@@ -59,6 +60,15 @@ public class VisualizzaRistoranteGUI extends MyFrame {
 		
 		String [] citta= {"    - - - Seleziona - - -","Napoli","Pisa","Verona"};
 		CittaComboBox = new JComboBox(citta);
+		CittaComboBox.setFocusable(false);
+		CittaComboBox.setFocusTraversalKeysEnabled(false);
+		CittaComboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				luogo=(String)CittaComboBox.getSelectedItem();
+				
+			}
+		});
 		CittaComboBox.setBackground(Color.white);
 		CittaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 14));
 		CittaComboBox.setBounds(149, 99, 168, 21);
@@ -73,15 +83,32 @@ public class VisualizzaRistoranteGUI extends MyFrame {
 		CercaSullaMappaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				System.out.println("Par o cazz");
-				try {
-					Desktop desktop = Desktop.getDesktop();
-					desktop.browse(new URI("https://www.google.it/maps/@40.853586,14.1729668,12z"));
+				
+				try {	
+						switch(luogo) {
+						case "Napoli":{
+							Desktop desktop = Desktop.getDesktop();
+							desktop.browse(new URI("https://www.google.it/maps/@40.853586,14.1729668,12z"));
+							break;
+						}
+						case "Pisa":{							
+							Desktop desktop = Desktop.getDesktop();
+							desktop.browse(new URI("https://www.google.it/maps/@40.853586,14.1729668,12z"));
+							break;						
+						}
+						case "Verona":{							
+							Desktop desktop = Desktop.getDesktop();
+							desktop.browse(new URI("https://www.google.it/maps/@40.853586,14.1729668,12z"));
+							break;						
+						}
+						
+						}
+					
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+					
 					e1.printStackTrace();
 				} catch (URISyntaxException e1) {
-					// TODO Auto-generated catch block
+					
 					e1.printStackTrace();
 				}
 			}
@@ -99,4 +126,6 @@ public class VisualizzaRistoranteGUI extends MyFrame {
 //		import java.net.URI;
 		
 	}
+	
+	
 }

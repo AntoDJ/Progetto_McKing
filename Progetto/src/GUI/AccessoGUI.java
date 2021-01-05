@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-public class AccessoGUI extends MyFrame {
+public class AccessoGUI extends SmallFrame {
 
 	/**
 	 * Launch the application.

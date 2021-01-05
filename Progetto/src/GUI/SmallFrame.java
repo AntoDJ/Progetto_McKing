@@ -14,8 +14,9 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.UIManager;
 
-public class MyFrame extends JFrame {
+public class SmallFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel BodyPanel;
@@ -28,7 +29,7 @@ public class MyFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MyFrame frame = new MyFrame();
+					SmallFrame frame = new SmallFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +41,7 @@ public class MyFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MyFrame() {
+	public SmallFrame() {
 		super();
 		setResizable(false);
 		setUndecorated(true);
@@ -52,18 +53,18 @@ public class MyFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 0, 0));
-		panel.setBounds(0, 0, 450, 46);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		JPanel TitlePanel = new JPanel();
+		TitlePanel.setBackground(new Color(255, 0, 0));
+		TitlePanel.setBounds(0, 0, 450, 46);
+		contentPane.add(TitlePanel);
+		TitlePanel.setLayout(null);
 		
 		JLabel TitoloLabel = new JLabel("McKing");
 		TitoloLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		TitoloLabel.setForeground(new Color(255, 255, 50));
 		TitoloLabel.setFont(new Font("Papyrus", Font.BOLD, 26));
 		TitoloLabel.setBounds(85, 0, 282, 46);
-		panel.add(TitoloLabel);
+		TitlePanel.add(TitoloLabel);
 		
 		ExitButton = new JButton("");
 		ExitButton.addActionListener(new ActionListener() {
@@ -74,12 +75,12 @@ public class MyFrame extends JFrame {
 		ExitButton.setFocusTraversalKeysEnabled(false);
 		ExitButton.setFocusPainted(false);
 		ExitButton.setFocusable(false);
-		ExitButton.setIcon(new ImageIcon(MyFrame.class.getResource("/GUI/exit.png")));
+		ExitButton.setIcon(new ImageIcon(SmallFrame.class.getResource("/GUI/ExitIcon.png")));
 		ExitButton.setBackground(null);		
 		ExitButton.setFont(ExitButton.getFont().deriveFont(0f));
 		ExitButton.setBounds(420, 13, 20, 20);
 		ExitButton.setBorder(null);
-		panel.add(ExitButton);
+		TitlePanel.add(ExitButton);
 		
 		BodyPanel = new JPanel();
 		BodyPanel.setBackground(new Color(255, 255, 153));

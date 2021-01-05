@@ -15,7 +15,7 @@ import java.awt.FlowLayout;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
-public class CatalogoGUI extends JFrame {
+public class CatalogoGUI extends BigFrame {
 
 	private JPanel contentPane;
 

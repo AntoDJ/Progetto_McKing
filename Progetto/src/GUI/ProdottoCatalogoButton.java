@@ -36,3 +36,4 @@ public class ProdottoCatalogoButton extends JButton {
 		setForeground(Color.white);
 	}
 }
+

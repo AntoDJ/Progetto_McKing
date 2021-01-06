@@ -1,23 +1,21 @@
 package GUI;
 
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import java.awt.Font;
-import java.awt.GridLayout;
-
 import javax.swing.JLabel;
-import java.awt.CardLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Rectangle;
-import java.util.ArrayList;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JButton;
 
-public class CatalogoGUI extends BigFrame {
+public class CatalogoGUI extends MediumFrame {
 
-	private JPanel contentPane;
+
 
 	/**
 	 * Launch the application.
@@ -27,9 +25,7 @@ public class CatalogoGUI extends BigFrame {
 			public void run() {
 				try {
 					CatalogoGUI frame = new CatalogoGUI();
-					frame.setUndecorated(true);
 					frame.setVisible(true);
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -42,64 +38,76 @@ public class CatalogoGUI extends BigFrame {
 	 */
 	public CatalogoGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(350, 120, 858, 602);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		getBodyPanel().setLayout(null);
 		
-		JPanel cards = new JPanel();
-		cards.setBounds(171, 37, 663, 517);
-		contentPane.add(cards);
-		cards.setLayout(new CardLayout(0, 0));
+		JLabel PresentazioneLabel = new JLabel("Ecco i nostri prodotti:");
+		PresentazioneLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		PresentazioneLabel.setBounds(10, 0, 201, 37);
+		getBodyPanel().add(PresentazioneLabel);
 		
-		JPanel card_panini = new JPanel();
-		card_panini.setFocusable(false);
-		card_panini.setBounds(new Rectangle(0,0, 0, 0));
-		card_panini.setAutoscrolls(true);
-		cards.add(card_panini, "PANINI");
-		card_panini.setLayout(new FlowLayout(FlowLayout.LEADING, 10, 10));
-		ArrayList<ProdottoCatalogoButton> lista = new ArrayList<ProdottoCatalogoButton>();
-		//Da modificare con le query dal database che mostranoo i prodotti della categoria corrispondente
-		for(int i = 0; i<32;i++) {
-			lista.add(new ProdottoCatalogoButton("Botdad" ));
-			lista.get(i).setPreferredSize(lista.get(i).getPreferredSize());
-			card_panini.add(lista.get(i));
-		}
+		JPanel ProdottiPanel = new JPanel();
+		ProdottiPanel.setBounds(10, 38, 127, 362);
+		getBodyPanel().add(ProdottiPanel);
+		ProdottiPanel.setLayout(null);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(10, 37, 157, 517);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
+		JLabel PaniniImage = new JLabel("");
+		PaniniImage.setIcon(new ImageIcon(CatalogoGUI.class.getResource("/GUI/panini.jpg")));
+		PaniniImage.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		PaniniImage.setHorizontalAlignment(SwingConstants.CENTER);
+		PaniniImage.setBounds(0, 0, 127, 72);
+		PaniniImage.setVisible(false);
+		ProdottiPanel.add(PaniniImage);
 		
-		CategoriaProdottoButton PaniniButton = new CategoriaProdottoButton("Panini");
-		PaniniButton.setBounds(0, 10, 153, 103);
-		panel_1.add(PaniniButton);
+		JLabel PatatineLabel = new JLabel("Patatine");
+		PatatineLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		PatatineLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		PatatineLabel.setBounds(0, 70, 127, 72);
+		ProdottiPanel.add(PatatineLabel);
 		
-		CategoriaProdottoButton PatatineButton = new CategoriaProdottoButton("Patatine");
-		PatatineButton.setBounds(0, 110, 153, 103);
-		panel_1.add(PatatineButton);
+		JLabel BevandeLabel = new JLabel("Bevande");
+		BevandeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		BevandeLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		BevandeLabel.setBounds(0, 147, 127, 72);
+		ProdottiPanel.add(BevandeLabel);
 		
-		CategoriaProdottoButton BevandeButton = new CategoriaProdottoButton("Bevande");
-		BevandeButton.setBounds(0, 210, 153, 103);
-		panel_1.add(BevandeButton);
+		JLabel DessertsLabel = new JLabel("Desserts");
+		DessertsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		DessertsLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		DessertsLabel.setBounds(0, 219, 127, 72);
+		ProdottiPanel.add(DessertsLabel);
 		
-		CategoriaProdottoButton DessertsButton = new CategoriaProdottoButton("Desserts");
-		DessertsButton.setBounds(0, 310, 153, 103);
-		panel_1.add(DessertsButton);
+		JLabel AltroLabel = new JLabel("Altro");
+		AltroLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		AltroLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		AltroLabel.setBounds(0, 289, 127, 72);
+		ProdottiPanel.add(AltroLabel);
 		
-		CategoriaProdottoButton AltroButton = new CategoriaProdottoButton("Altro");
-		AltroButton.setBounds(0, 410, 153, 103);
-		panel_1.add(AltroButton);
+		JLabel Panini2 = new JLabel("Panini");
+		Panini2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Panini2.setVisible(true);
+				PaniniImage.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Panini2.setVisible(true);
+				PaniniImage.setVisible(false);
+			}
+		});
+		Panini2.setHorizontalAlignment(SwingConstants.CENTER);
+		Panini2.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		Panini2.setBounds(0, 0, 127, 72);
+		ProdottiPanel.add(Panini2);
 		
-		CategoriaProdottoButton VisualizzaProfiloButton = new CategoriaProdottoButton("VisualizzaProfilo");
-		VisualizzaProfiloButton.setFont(new Font("Bell MT", Font.PLAIN, 14));
-		VisualizzaProfiloButton.setBounds(695, 10, 139, 27);
-		contentPane.add(VisualizzaProfiloButton);
+		JPanel panel = new JPanel();
+		panel.setBounds(147, 38, 518, 362);
+		getBodyPanel().add(panel);
+		panel.setLayout(null);
 		
-		JLabel ProdottiLabel = new JLabel("I nostri prodotti:");
-		ProdottiLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
-		ProdottiLabel.setBounds(28, 10, 265, 24);
-		contentPane.add(ProdottiLabel);
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(10, 11, 89, 23);
+		getContentPane().add(btnNewButton);
+		
 	}
 }

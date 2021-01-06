@@ -27,7 +27,7 @@ public class BigFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MediumFrame frame = new MediumFrame();
+					BigFrame frame = new BigFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

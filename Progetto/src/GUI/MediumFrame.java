@@ -28,7 +28,7 @@ public class MediumFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BigFrame frame = new BigFrame();
+					MediumFrame frame = new MediumFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

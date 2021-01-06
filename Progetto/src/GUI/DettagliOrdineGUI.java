@@ -34,49 +34,49 @@ public class DettagliOrdineGUI extends SmallFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
 		
-		JPanel EtichettePanel = new JPanel();
-		EtichettePanel.setBounds(0, 0, 136, 256);
-		getBodyPanel().add(EtichettePanel);
-		EtichettePanel.setLayout(null);
+		JPanel etichettePanel = new JPanel();
+		etichettePanel.setBounds(0, 0, 136, 256);
+		getBodyPanel().add(etichettePanel);
+		etichettePanel.setLayout(null);
 		
-		JLabel DettagliOrdineLabel = new JLabel("Dettagli Ordine:");
-		DettagliOrdineLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		DettagliOrdineLabel.setBounds(10, 10, 119, 22);
-		EtichettePanel.add(DettagliOrdineLabel);
+		JLabel dettagliOrdineLabel = new JLabel("Dettagli Ordine:");
+		dettagliOrdineLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		dettagliOrdineLabel.setBounds(10, 10, 119, 22);
+		etichettePanel.add(dettagliOrdineLabel);
 		
-		JLabel ProdottoLabel = new JLabel("Prodotto:");
-		ProdottoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		ProdottoLabel.setBounds(10, 56, 119, 22);
-		EtichettePanel.add(ProdottoLabel);
+		JLabel prodottoLabel = new JLabel("Prodotto:");
+		prodottoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		prodottoLabel.setBounds(10, 56, 119, 22);
+		etichettePanel.add(prodottoLabel);
 		
-		JLabel QuantitaLabel = new JLabel("Quantit\u00E0");
-		QuantitaLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		QuantitaLabel.setBounds(10, 113, 119, 22);
-		EtichettePanel.add(QuantitaLabel);
+		JLabel quantitaLabel = new JLabel("Quantit\u00E0");
+		quantitaLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		quantitaLabel.setBounds(10, 113, 119, 22);
+		etichettePanel.add(quantitaLabel);
 		
-		JLabel lblDimensione = new JLabel("Dimensione");
-		lblDimensione.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		lblDimensione.setBounds(10, 174, 119, 22);
-		EtichettePanel.add(lblDimensione);
+		JLabel dimensioneLabel = new JLabel("Dimensione");
+		dimensioneLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		dimensioneLabel.setBounds(10, 174, 119, 22);
+		etichettePanel.add(dimensioneLabel);
 		
-		JLabel ContenitoreProdottoLabel = new JLabel("");
-		ContenitoreProdottoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		ContenitoreProdottoLabel.setBounds(146, 55, 294, 22);
-		getBodyPanel().add(ContenitoreProdottoLabel);
+		JLabel contenitoreProdottoLabel = new JLabel("");
+		contenitoreProdottoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		contenitoreProdottoLabel.setBounds(146, 55, 294, 22);
+		getBodyPanel().add(contenitoreProdottoLabel);
 		
-		JComboBox QuantitaComboBox = new JComboBox();
-		QuantitaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		QuantitaComboBox.setFocusTraversalKeysEnabled(false);
-		QuantitaComboBox.setFocusable(false);
-		QuantitaComboBox.setBounds(146, 111, 294, 22);
-		getBodyPanel().add(QuantitaComboBox);
+		JComboBox quantitaComboBox = new JComboBox();
+		quantitaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		quantitaComboBox.setFocusTraversalKeysEnabled(false);
+		quantitaComboBox.setFocusable(false);
+		quantitaComboBox.setBounds(146, 111, 294, 22);
+		getBodyPanel().add(quantitaComboBox);
 		
-		JComboBox DimensioneComboBox = new JComboBox();
-		DimensioneComboBox.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		DimensioneComboBox.setFocusTraversalKeysEnabled(false);
-		DimensioneComboBox.setFocusable(false);
-		DimensioneComboBox.setBounds(146, 176, 294, 22);
-		getBodyPanel().add(DimensioneComboBox);
+		JComboBox dimensioneComboBox = new JComboBox();
+		dimensioneComboBox.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		dimensioneComboBox.setFocusTraversalKeysEnabled(false);
+		dimensioneComboBox.setFocusable(false);
+		dimensioneComboBox.setBounds(146, 176, 294, 22);
+		getBodyPanel().add(dimensioneComboBox);
 
 	}
 }

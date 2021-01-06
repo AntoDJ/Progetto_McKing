@@ -40,65 +40,65 @@ public class CatalogoGUI extends MediumFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
 		
-		JLabel PresentazioneLabel = new JLabel("Ecco i nostri prodotti:");
-		PresentazioneLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
-		PresentazioneLabel.setBounds(10, 0, 201, 37);
-		getBodyPanel().add(PresentazioneLabel);
+		JLabel presentazioneLabel = new JLabel("Ecco i nostri prodotti:");
+		presentazioneLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		presentazioneLabel.setBounds(10, 0, 201, 37);
+		getBodyPanel().add(presentazioneLabel);
 		
-		JPanel ProdottiPanel = new JPanel();
-		ProdottiPanel.setBounds(10, 38, 127, 362);
-		getBodyPanel().add(ProdottiPanel);
-		ProdottiPanel.setLayout(null);
+		JPanel prodottiPanel = new JPanel();
+		prodottiPanel.setBounds(10, 38, 127, 362);
+		getBodyPanel().add(prodottiPanel);
+		prodottiPanel.setLayout(null);
 		
-		JLabel PaniniImage = new JLabel("");
-		PaniniImage.setIcon(new ImageIcon(CatalogoGUI.class.getResource("/GUI/panini.jpg")));
-		PaniniImage.setFont(new Font("Bell MT", Font.PLAIN, 18));
-		PaniniImage.setHorizontalAlignment(SwingConstants.CENTER);
-		PaniniImage.setBounds(0, 0, 127, 72);
-		PaniniImage.setVisible(false);
-		ProdottiPanel.add(PaniniImage);
+		JLabel paniniImage = new JLabel("");
+		paniniImage.setIcon(new ImageIcon(CatalogoGUI.class.getResource("/GUI/panini.jpg")));
+		paniniImage.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		paniniImage.setHorizontalAlignment(SwingConstants.CENTER);
+		paniniImage.setBounds(0, 0, 127, 72);
+		paniniImage.setVisible(false);
+		prodottiPanel.add(paniniImage);
 		
-		JLabel PatatineLabel = new JLabel("Patatine");
-		PatatineLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		PatatineLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
-		PatatineLabel.setBounds(0, 70, 127, 72);
-		ProdottiPanel.add(PatatineLabel);
+		JLabel patatineLabel = new JLabel("Patatine");
+		patatineLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		patatineLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		patatineLabel.setBounds(0, 70, 127, 72);
+		prodottiPanel.add(patatineLabel);
 		
-		JLabel BevandeLabel = new JLabel("Bevande");
-		BevandeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		BevandeLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
-		BevandeLabel.setBounds(0, 147, 127, 72);
-		ProdottiPanel.add(BevandeLabel);
+		JLabel bevandeLabel = new JLabel("Bevande");
+		bevandeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		bevandeLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		bevandeLabel.setBounds(0, 147, 127, 72);
+		prodottiPanel.add(bevandeLabel);
 		
-		JLabel DessertsLabel = new JLabel("Desserts");
-		DessertsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		DessertsLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
-		DessertsLabel.setBounds(0, 219, 127, 72);
-		ProdottiPanel.add(DessertsLabel);
+		JLabel dessertsLabel = new JLabel("Desserts");
+		dessertsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		dessertsLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		dessertsLabel.setBounds(0, 219, 127, 72);
+		prodottiPanel.add(dessertsLabel);
 		
-		JLabel AltroLabel = new JLabel("Altro");
-		AltroLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		AltroLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
-		AltroLabel.setBounds(0, 289, 127, 72);
-		ProdottiPanel.add(AltroLabel);
+		JLabel altroLabel = new JLabel("Altro");
+		altroLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		altroLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		altroLabel.setBounds(0, 289, 127, 72);
+		prodottiPanel.add(altroLabel);
 		
-		JLabel Panini2 = new JLabel("Panini");
-		Panini2.addMouseListener(new MouseAdapter() {
+		JLabel paniniLabel = new JLabel("Panini");
+		paniniLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				Panini2.setVisible(true);
-				PaniniImage.setVisible(true);
+				paniniLabel.setVisible(true);
+				paniniImage.setVisible(true);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Panini2.setVisible(true);
-				PaniniImage.setVisible(false);
+				paniniLabel.setVisible(true);
+				paniniImage.setVisible(false);
 			}
 		});
-		Panini2.setHorizontalAlignment(SwingConstants.CENTER);
-		Panini2.setFont(new Font("Bell MT", Font.PLAIN, 18));
-		Panini2.setBounds(0, 0, 127, 72);
-		ProdottiPanel.add(Panini2);
+		paniniLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		paniniLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		paniniLabel.setBounds(0, 0, 127, 72);
+		prodottiPanel.add(paniniLabel);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(147, 38, 518, 362);

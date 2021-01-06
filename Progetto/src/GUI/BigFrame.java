@@ -18,8 +18,8 @@ import javax.swing.ImageIcon;
 public class BigFrame extends JFrame {
 
 	private JPanel contentPane;
-	private JPanel BodyPanel;
-	private JButton ExitButton;
+	private JPanel bodyPanel;
+	private JButton exitButton;
 
 	/**
 	 * Launch the application.
@@ -53,49 +53,44 @@ public class BigFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		
-		JPanel TitlePanel = new JPanel();
-		TitlePanel.setBounds(0, 0, 900, 46);
-		TitlePanel.setBackground(new Color(255, 0, 0));
-		contentPane.add(TitlePanel);
-		TitlePanel.setLayout(null);
+		JPanel titoloPanel = new JPanel();
+		titoloPanel.setBounds(0, 0, 900, 46);
+		titoloPanel.setBackground(new Color(255, 0, 0));
+		contentPane.add(titoloPanel);
+		titoloPanel.setLayout(null);
 		
-		JLabel TitoloLabel = new JLabel("McKING");
-		TitoloLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		TitoloLabel.setForeground(new Color(255, 255, 50));
-		TitoloLabel.setFont(new Font("Papyrus", Font.BOLD, 26));
-		TitoloLabel.setBounds(311, 0, 282, 46);
-		TitlePanel.add(TitoloLabel);
+		JLabel titoloLabel = new JLabel("McKING");
+		titoloLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		titoloLabel.setForeground(new Color(255, 255, 50));
+		titoloLabel.setFont(new Font("Papyrus", Font.BOLD, 26));
+		titoloLabel.setBounds(311, 0, 282, 46);
+		titoloPanel.add(titoloLabel);
 		
-		ExitButton = new JButton("New button");
-		ExitButton.addActionListener(new ActionListener() {
+		exitButton = new JButton("New button");
+		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		ExitButton.setFocusTraversalKeysEnabled(false);
-		ExitButton.setFocusPainted(false);
-		ExitButton.setFocusable(false);
-		ExitButton.setIcon(new ImageIcon(SmallFrame.class.getResource("/GUI/ExitIcon.png")));
-		ExitButton.setBackground(null);		
-		ExitButton.setFont(ExitButton.getFont().deriveFont(0f));
-		ExitButton.setBounds(855, 13, 22, 20);
-		ExitButton.setBorder(null);
-		TitlePanel.add(ExitButton);
+		exitButton.setFocusTraversalKeysEnabled(false);
+		exitButton.setFocusPainted(false);
+		exitButton.setFocusable(false);
+		exitButton.setIcon(new ImageIcon(SmallFrame.class.getResource("/GUI/ExitIcon.png")));
+		exitButton.setBackground(null);		
+		exitButton.setFont(exitButton.getFont().deriveFont(0f));
+		exitButton.setBounds(855, 13, 22, 20);
+		exitButton.setBorder(null);
+		titoloPanel.add(exitButton);
 		
-		BodyPanel = new JPanel();
-		BodyPanel.setBackground(new Color(255, 255, 153));
-		BodyPanel.setBounds(0, 44, 900, 546);
-		contentPane.add(BodyPanel);	
+		bodyPanel = new JPanel();
+		bodyPanel.setBackground(new Color(255, 255, 153));
+		bodyPanel.setBounds(0, 44, 900, 546);
+		contentPane.add(bodyPanel);	
 		
 	}
 
 	public JPanel getBodyPanel() {
-		return BodyPanel;
+		return bodyPanel;
 	}
-
-	public void setBodyPanel(JPanel bodyPanel) {
-		BodyPanel = bodyPanel;
-	}
-	
 	
 }

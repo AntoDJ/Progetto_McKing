@@ -43,7 +43,7 @@ public class VisualizzaRistoranteGUI extends SmallFrame {
 	 * Create the frame.
 	 */
 
-	JComboBox CittaComboBox;
+	JComboBox cittaComboBox;
 	String luogo;
 	
 	
@@ -52,35 +52,35 @@ public class VisualizzaRistoranteGUI extends SmallFrame {
 
 		getBodyPanel().setLayout(null);
 		
-		JLabel SceltaRistoranteLabel = new JLabel("Di quale ristorante vuoi avere informazioni?");
-		SceltaRistoranteLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
-		SceltaRistoranteLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		SceltaRistoranteLabel.setBounds(62, 50, 364, 34);
-		getBodyPanel().add(SceltaRistoranteLabel);
+		JLabel sceltaRistoranteLabel = new JLabel("Di quale ristorante vuoi avere informazioni?");
+		sceltaRistoranteLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		sceltaRistoranteLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		sceltaRistoranteLabel.setBounds(62, 50, 364, 34);
+		getBodyPanel().add(sceltaRistoranteLabel);
 		
 		String [] citta= {"    - - - Seleziona - - -","Napoli","Pisa","Verona"};
-		CittaComboBox = new JComboBox(citta);
-		CittaComboBox.setFocusable(false);
-		CittaComboBox.setFocusTraversalKeysEnabled(false);
-		CittaComboBox.addActionListener(new ActionListener() {
+		cittaComboBox = new JComboBox(citta);
+		cittaComboBox.setFocusable(false);
+		cittaComboBox.setFocusTraversalKeysEnabled(false);
+		cittaComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				luogo=(String)CittaComboBox.getSelectedItem();
+				luogo=(String)cittaComboBox.getSelectedItem();
 				
 			}
 		});
-		CittaComboBox.setBackground(Color.white);
-		CittaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 14));
-		CittaComboBox.setBounds(149, 99, 168, 21);
-		getBodyPanel().add(CittaComboBox);
+		cittaComboBox.setBackground(Color.white);
+		cittaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 14));
+		cittaComboBox.setBounds(149, 99, 168, 21);
+		getBodyPanel().add(cittaComboBox);
 				
-		JLabel InformazioniRistoranteLabel = new JLabel("//Far comparire le informazioni //");
-		InformazioniRistoranteLabel.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		InformazioniRistoranteLabel.setBounds(43, 130, 245, 123);
-		getBodyPanel().add(InformazioniRistoranteLabel);
+		JLabel informazioniRistoranteLabel = new JLabel("//Far comparire le informazioni //");
+		informazioniRistoranteLabel.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		informazioniRistoranteLabel.setBounds(43, 130, 245, 123);
+		getBodyPanel().add(informazioniRistoranteLabel);
 		
-		JLabel CercaSullaMappaButton = new JLabel(new ImageIcon(VisualizzaRistoranteGUI.class.getResource("/GUI/mappa.png")));
-		CercaSullaMappaButton.addMouseListener(new MouseAdapter() {
+		JLabel cercaSullaMappaButton = new JLabel(new ImageIcon(VisualizzaRistoranteGUI.class.getResource("/GUI/mappa.png")));
+		cercaSullaMappaButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				
@@ -113,9 +113,9 @@ public class VisualizzaRistoranteGUI extends SmallFrame {
 				}
 			}
 		});
-		CercaSullaMappaButton.setBounds(387, 201, 40, 40);
-		CercaSullaMappaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		getBodyPanel().add(CercaSullaMappaButton);
+		cercaSullaMappaButton.setBounds(387, 201, 40, 40);
+		cercaSullaMappaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		getBodyPanel().add(cercaSullaMappaButton);
 		
 //		Mettere questo come azione nel Controller:
 //		Desktop desktop = Desktop.getDesktop();

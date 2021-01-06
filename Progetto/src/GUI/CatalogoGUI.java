@@ -1,17 +1,26 @@
 package GUI;
 
 
+import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.ScrollPane;
+
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JMenuBar;
+import java.awt.Color;
+import java.awt.FlowLayout;
 
 public class CatalogoGUI extends MediumFrame {
 
@@ -100,14 +109,39 @@ public class CatalogoGUI extends MediumFrame {
 		paniniLabel.setBounds(0, 0, 127, 72);
 		prodottiPanel.add(paniniLabel);
 		
+		//JScrollPane scrollPane = new JScrollPane();
+		//scrollPane.setBounds(147, 38, 518, 362);
 		JPanel panel = new JPanel();
-		panel.setBounds(147, 38, 518, 362);
-		getBodyPanel().add(panel);
-		panel.setLayout(null);
+		panel.setBackground(new Color(255, 255, 224));
+		//panel.setBounds(147, 38, 518, 362);
+		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 25, 25));
+		panel.setPreferredSize(new Dimension(100,2000));
+		for(int i = 0 ; i < 1000; i++) {
+			panel.add(new JButton());
+		}
+		ModernScrollPane scrollPane = new ModernScrollPane(panel);
+		scrollPane.setBounds(147, 38, 518, 362);
+		scrollPane.add(panel);
+		scrollPane.setViewportView(panel);
+		getBodyPanel().add(scrollPane);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(10, 11, 89, 23);
-		getContentPane().add(btnNewButton);
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(20, 5, 42, 38);
+		menuBar.setBackground(null);
+		menuBar.setBorder(null);
+		menuBar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		getTitoloPanel().add(menuBar);
+		
+		JMenu profiloMenu = new JMenu("");
+		profiloMenu.setIcon(new ImageIcon(CatalogoGUI.class.getResource("/GUI/profilo.png")));
+		menuBar.add(profiloMenu);
+		
+		JMenuItem profiloMenuItem = new JMenuItem("Profilo");
+		profiloMenu.add(profiloMenuItem);
+		
+		JMenuItem profiloMenuItem_1 = new JMenuItem("Esci");
+		profiloMenu.add(profiloMenuItem_1);
+		
 		
 	}
 }

@@ -79,8 +79,8 @@ public class VisualizzaRistoranteGUI extends SmallFrame {
 		informazioniRistoranteLabel.setBounds(43, 130, 245, 123);
 		getBodyPanel().add(informazioniRistoranteLabel);
 		
-		JLabel cercaSullaMappaButton = new JLabel(new ImageIcon(VisualizzaRistoranteGUI.class.getResource("/GUI/mappa.png")));
-		cercaSullaMappaButton.addMouseListener(new MouseAdapter() {
+		JLabel cercaSullaMappaIcon = new JLabel(new ImageIcon(VisualizzaRistoranteGUI.class.getResource("/GUI/mappa.png")));
+		cercaSullaMappaIcon.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				
@@ -113,9 +113,9 @@ public class VisualizzaRistoranteGUI extends SmallFrame {
 				}
 			}
 		});
-		cercaSullaMappaButton.setBounds(387, 201, 40, 40);
-		cercaSullaMappaButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		getBodyPanel().add(cercaSullaMappaButton);
+		cercaSullaMappaIcon.setBounds(387, 201, 40, 40);
+		cercaSullaMappaIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		getBodyPanel().add(cercaSullaMappaIcon);
 		
 //		Mettere questo come azione nel Controller:
 //		Desktop desktop = Desktop.getDesktop();

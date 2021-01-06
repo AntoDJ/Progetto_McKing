@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 public class BigFrame extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel titoloPanel;
 	private JPanel bodyPanel;
 	private JButton exitButton;
 
@@ -53,7 +54,7 @@ public class BigFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		
-		JPanel titoloPanel = new JPanel();
+		titoloPanel = new JPanel();
 		titoloPanel.setBounds(0, 0, 900, 46);
 		titoloPanel.setBackground(new Color(255, 0, 0));
 		contentPane.add(titoloPanel);
@@ -91,6 +92,9 @@ public class BigFrame extends JFrame {
 
 	public JPanel getBodyPanel() {
 		return bodyPanel;
+	}
+	public JPanel getTitoloPanel() {
+		return titoloPanel;
 	}
 	
 }

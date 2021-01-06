@@ -19,6 +19,7 @@ import javax.swing.UIManager;
 public class SmallFrame extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel titoloPanel;
 	private JPanel bodyPanel;
 	private JButton exitButton;
 
@@ -53,7 +54,7 @@ public class SmallFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel titoloPanel = new JPanel();
+		titoloPanel = new JPanel();
 		titoloPanel.setBackground(new Color(255, 0, 0));
 		titoloPanel.setBounds(0, 0, 450, 46);
 		contentPane.add(titoloPanel);
@@ -92,5 +93,8 @@ public class SmallFrame extends JFrame {
 
 	public JPanel getBodyPanel() {
 		return bodyPanel;
+	}
+	public JPanel getTitoloPanel() {
+		return titoloPanel;
 	}
 }

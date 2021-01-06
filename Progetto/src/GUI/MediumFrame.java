@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 public class MediumFrame extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel titoloPanel;
 	private JPanel bodyPanel;
 	private JButton exitButton;
 	/* Launch the application.
@@ -50,7 +51,7 @@ public class MediumFrame extends JFrame {
 		contentPane.setLayout(null);
 
 
-		JPanel titoloPanel = new JPanel();
+		titoloPanel = new JPanel();
 		titoloPanel.setBounds(0, 0, 675, 46);
 		titoloPanel.setBackground(new Color(255, 0, 0));
 		contentPane.add(titoloPanel);
@@ -88,5 +89,7 @@ public class MediumFrame extends JFrame {
 	public JPanel getBodyPanel() {
 		return bodyPanel;
 	}
-
+	public JPanel getTitoloPanel() {
+		return titoloPanel;
+	}
 }

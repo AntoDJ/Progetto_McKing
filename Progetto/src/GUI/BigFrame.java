@@ -20,6 +20,7 @@ public class BigFrame extends JFrame {
 	private JPanel contentPane;
 	private JPanel BodyPanel;
 	private JButton ExitButton;
+
 	/**
 	 * Launch the application.
 	 */
@@ -27,7 +28,7 @@ public class BigFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MediumFrame frame = new MediumFrame();
+					BigFrame frame = new BigFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +45,7 @@ public class BigFrame extends JFrame {
 		setResizable(false);
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(550, 280, 675, 450);
+		setBounds(550, 280, 900, 600);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -53,7 +54,7 @@ public class BigFrame extends JFrame {
 		
 		
 		JPanel TitlePanel = new JPanel();
-		TitlePanel.setBounds(0, 0, 675, 46);
+		TitlePanel.setBounds(0, 0, 900, 46);
 		TitlePanel.setBackground(new Color(255, 0, 0));
 		contentPane.add(TitlePanel);
 		TitlePanel.setLayout(null);
@@ -62,10 +63,10 @@ public class BigFrame extends JFrame {
 		TitoloLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		TitoloLabel.setForeground(new Color(255, 255, 50));
 		TitoloLabel.setFont(new Font("Papyrus", Font.BOLD, 26));
-		TitoloLabel.setBounds(190, 0, 300, 46);
+		TitoloLabel.setBounds(311, 0, 282, 46);
 		TitlePanel.add(TitoloLabel);
 		
-		ExitButton = new JButton("");
+		ExitButton = new JButton("New button");
 		ExitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -77,14 +78,15 @@ public class BigFrame extends JFrame {
 		ExitButton.setIcon(new ImageIcon(SmallFrame.class.getResource("/GUI/ExitIcon.png")));
 		ExitButton.setBackground(null);		
 		ExitButton.setFont(ExitButton.getFont().deriveFont(0f));
-		ExitButton.setBounds(645, 10, 20, 20);
+		ExitButton.setBounds(855, 13, 22, 20);
 		ExitButton.setBorder(null);
 		TitlePanel.add(ExitButton);
 		
 		BodyPanel = new JPanel();
 		BodyPanel.setBackground(new Color(255, 255, 153));
-		BodyPanel.setBounds(0, 44, 675, 410);
-		contentPane.add(BodyPanel);		
+		BodyPanel.setBounds(0, 44, 900, 546);
+		contentPane.add(BodyPanel);	
+		
 	}
 
 	public JPanel getBodyPanel() {
@@ -94,7 +96,6 @@ public class BigFrame extends JFrame {
 	public void setBodyPanel(JPanel bodyPanel) {
 		BodyPanel = bodyPanel;
 	}
-	
 	
 	
 }

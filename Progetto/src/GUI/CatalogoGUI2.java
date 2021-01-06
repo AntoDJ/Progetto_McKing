@@ -12,7 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JScrollPane;
 
-public class CatalogoGUI2 extends BigFrame {
+public class CatalogoGUI2 extends MediumFrame {
 
 
 
@@ -41,7 +41,6 @@ public class CatalogoGUI2 extends BigFrame {
 		
 		JLabel PresentazioneLabel = new JLabel("Ecco i nostri prodotti:");
 		PresentazioneLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
-		PresentazioneLabel.setBounds(10, 0, 201, 37);
 		getBodyPanel().add(PresentazioneLabel);
 		
 		JPanel ProdottiPanel = new JPanel();

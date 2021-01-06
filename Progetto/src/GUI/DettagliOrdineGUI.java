@@ -34,30 +34,30 @@ public class DettagliOrdineGUI extends SmallFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 136, 256);
-		getBodyPanel().add(panel);
-		panel.setLayout(null);
+		JPanel EtichettePanel = new JPanel();
+		EtichettePanel.setBounds(0, 0, 136, 256);
+		getBodyPanel().add(EtichettePanel);
+		EtichettePanel.setLayout(null);
 		
 		JLabel DettagliOrdineLabel = new JLabel("Dettagli Ordine:");
 		DettagliOrdineLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		DettagliOrdineLabel.setBounds(10, 10, 119, 22);
-		panel.add(DettagliOrdineLabel);
+		EtichettePanel.add(DettagliOrdineLabel);
 		
 		JLabel ProdottoLabel = new JLabel("Prodotto:");
 		ProdottoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		ProdottoLabel.setBounds(10, 56, 119, 22);
-		panel.add(ProdottoLabel);
+		EtichettePanel.add(ProdottoLabel);
 		
 		JLabel QuantitaLabel = new JLabel("Quantit\u00E0");
 		QuantitaLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		QuantitaLabel.setBounds(10, 113, 119, 22);
-		panel.add(QuantitaLabel);
+		EtichettePanel.add(QuantitaLabel);
 		
 		JLabel lblDimensione = new JLabel("Dimensione");
 		lblDimensione.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		lblDimensione.setBounds(10, 174, 119, 22);
-		panel.add(lblDimensione);
+		EtichettePanel.add(lblDimensione);
 		
 		JLabel ContenitoreProdottoLabel = new JLabel("");
 		ContenitoreProdottoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));

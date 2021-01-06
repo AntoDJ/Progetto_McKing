@@ -34,25 +34,25 @@ public class AccessoGUI extends SmallFrame {
 		getBodyPanel().setLayout(null);
 		
 
-		JLabel DomandaLable = new JLabel("Come desideri accedere?");
-		DomandaLable.setHorizontalAlignment(SwingConstants.CENTER);
-		DomandaLable.setBounds(71, 11, 293, 84);
-		DomandaLable.setFont(new Font("Bell MT", Font.PLAIN, 18));
-		getBodyPanel().add(DomandaLable);
+		JLabel domandaLabel = new JLabel("Come desideri accedere?");
+		domandaLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		domandaLabel.setBounds(71, 11, 293, 84);
+		domandaLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		getBodyPanel().add(domandaLabel);
 		
-		MenuButton UtenteButton = new MenuButton("Utente");
-		UtenteButton.setBounds(140, 95, 158, 34);
+		MenuButton utenteButton = new MenuButton("Utente");
+		utenteButton.setBounds(140, 95, 158, 34);
 
-		getBodyPanel().add(UtenteButton);
+		getBodyPanel().add(utenteButton);
 		
-		MenuButton AdminButton = new MenuButton("Admin");
-		AdminButton.setBounds(140, 152, 158, 34);
-		getBodyPanel().add(AdminButton);
+		MenuButton adminButton = new MenuButton("Admin");
+		adminButton.setBounds(140, 152, 158, 34);
+		getBodyPanel().add(adminButton);
 		
-		MenuButton VisualizzaRistorantiButton = new MenuButton("Visualizza Ristoranti");
-		VisualizzaRistorantiButton.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		VisualizzaRistorantiButton.setBounds(10, 232, 145, 21);
-		getBodyPanel().add(VisualizzaRistorantiButton);
+		MenuButton visualizzaRistorantiButton = new MenuButton("Visualizza Ristoranti");
+		visualizzaRistorantiButton.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		visualizzaRistorantiButton.setBounds(10, 232, 145, 21);
+		getBodyPanel().add(visualizzaRistorantiButton);
 
 		
 

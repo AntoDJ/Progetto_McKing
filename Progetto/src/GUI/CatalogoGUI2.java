@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JScrollPane;
 
 public class CatalogoGUI2 extends BigFrame {
 
@@ -49,7 +50,7 @@ public class CatalogoGUI2 extends BigFrame {
 		ProdottiPanel.setLayout(null);
 		
 		JLabel PaniniLabel = new JLabel("");
-		PaniniLabel.setIcon(new ImageIcon(CatalogoGUI2.class.getResource("/GUI/Panini.png")));
+		PaniniLabel.setIcon(new ImageIcon(CatalogoGUI2.class.getResource("/GUI/panini.jpg")));
 		PaniniLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
 		PaniniLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		PaniniLabel.setBounds(0, 0, 127, 72);
@@ -101,7 +102,7 @@ public class CatalogoGUI2 extends BigFrame {
 		JPanel panel = new JPanel();
 		panel.setBounds(147, 38, 518, 362);
 		getBodyPanel().add(panel);
+		panel.setLayout(null);
 		
 	}
-
 }

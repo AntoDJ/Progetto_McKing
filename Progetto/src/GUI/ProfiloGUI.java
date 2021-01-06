@@ -36,7 +36,7 @@ public class ProfiloGUI extends SmallFrame {
 		getBodyPanel().setLayout(null);
 		
 		JPanel EtichettePanel = new JPanel();
-		EtichettePanel.setBackground(new Color(255, 255, 153));
+		EtichettePanel.setBackground(new Color(244, 244, 244));
 		EtichettePanel.setBounds(0, 0, 146, 256);
 		getBodyPanel().add(EtichettePanel);
 		EtichettePanel.setLayout(null);
@@ -75,41 +75,6 @@ public class ProfiloGUI extends SmallFrame {
 		CartaDiCreditoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		CartaDiCreditoLabel.setBounds(10, 183, 129, 19);
 		EtichettePanel.add(CartaDiCreditoLabel);
-		
-		JPanel DettagliPanel = new JPanel();
-		DettagliPanel.setBounds(147, 0, 303, 256);
-		getBodyPanel().add(DettagliPanel);
-		DettagliPanel.setLayout(null);
-		
-		JLabel ContenitoreNomeLabel = new JLabel("");
-		ContenitoreNomeLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		ContenitoreNomeLabel.setBounds(0, 35, 293, 19);
-		DettagliPanel.add(ContenitoreNomeLabel);
-		
-		JLabel ContenitoreCognomeLabel = new JLabel("");
-		ContenitoreCognomeLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		ContenitoreCognomeLabel.setBounds(0, 60, 293, 19);
-		DettagliPanel.add(ContenitoreCognomeLabel);
-		
-		JLabel ContenitoreEmailLabel = new JLabel("");
-		ContenitoreEmailLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		ContenitoreEmailLabel.setBounds(0, 88, 293, 19);
-		DettagliPanel.add(ContenitoreEmailLabel);
-		
-		JLabel ContenitoreNumeroDiTelefonoLabel = new JLabel("");
-		ContenitoreNumeroDiTelefonoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		ContenitoreNumeroDiTelefonoLabel.setBounds(0, 117, 293, 19);
-		DettagliPanel.add(ContenitoreNumeroDiTelefonoLabel);
-		
-		JLabel ContenitoreIndirizzoLabel = new JLabel("");
-		ContenitoreIndirizzoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		ContenitoreIndirizzoLabel.setBounds(0, 156, 293, 19);
-		DettagliPanel.add(ContenitoreIndirizzoLabel);
-		
-		JLabel ContenitoreCartaDiCreditoLabel = new JLabel("");
-		ContenitoreCartaDiCreditoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		ContenitoreCartaDiCreditoLabel.setBounds(0, 185, 293, 19);
-		DettagliPanel.add(ContenitoreCartaDiCreditoLabel);
 
 	}
 }

@@ -7,8 +7,11 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 public class DettagliOrdineGUI extends SmallFrame {
+	private JTextField selezionaIndirizzoField;
+	private JTextField selezionaCartaField;
 
 	/**
 	 * Launch the application.
@@ -30,53 +33,64 @@ public class DettagliOrdineGUI extends SmallFrame {
 	 * Create the frame.
 	 */
 	public DettagliOrdineGUI() {
+		getBodyPanel().setBounds(0, 44, 450, 256);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
 		
-		JPanel etichettePanel = new JPanel();
-		etichettePanel.setBounds(0, 0, 136, 256);
-		getBodyPanel().add(etichettePanel);
-		etichettePanel.setLayout(null);
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 222, 256);
+		getBodyPanel().add(panel);
+		panel.setLayout(null);
 		
-		JLabel dettagliOrdineLabel = new JLabel("Dettagli Ordine:");
-		dettagliOrdineLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		dettagliOrdineLabel.setBounds(10, 10, 119, 22);
-		etichettePanel.add(dettagliOrdineLabel);
+		JLabel titoloLabel = new JLabel("DettagliOrdine:");
+		titoloLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		titoloLabel.setBounds(10, 10, 169, 31);
+		panel.add(titoloLabel);
 		
-		JLabel prodottoLabel = new JLabel("Prodotto:");
-		prodottoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		prodottoLabel.setBounds(10, 56, 119, 22);
-		etichettePanel.add(prodottoLabel);
+		JLabel selezionaRistoranteLabel = new JLabel("Seleziona ristorante:");
+		selezionaRistoranteLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		selezionaRistoranteLabel.setBounds(10, 60, 169, 31);
+		panel.add(selezionaRistoranteLabel);
 		
-		JLabel quantitaLabel = new JLabel("Quantit\u00E0");
-		quantitaLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		quantitaLabel.setBounds(10, 113, 119, 22);
-		etichettePanel.add(quantitaLabel);
+		JLabel selezionaIndirizzoLabel = new JLabel("Seleziona indirizzo:");
+		selezionaIndirizzoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		selezionaIndirizzoLabel.setBounds(10, 105, 169, 31);
+		panel.add(selezionaIndirizzoLabel);
 		
-		JLabel dimensioneLabel = new JLabel("Dimensione");
-		dimensioneLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		dimensioneLabel.setBounds(10, 174, 119, 22);
-		etichettePanel.add(dimensioneLabel);
+		JLabel selezionaCartaLabel = new JLabel("Seleziona carta:");
+		selezionaCartaLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		selezionaCartaLabel.setBounds(10, 150, 169, 31);
+		panel.add(selezionaCartaLabel);
 		
-		JLabel contenitoreProdottoLabel = new JLabel("");
-		contenitoreProdottoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		contenitoreProdottoLabel.setBounds(146, 55, 294, 22);
-		getBodyPanel().add(contenitoreProdottoLabel);
+		JLabel selezionaOrarioLabel_1 = new JLabel("Seleziona orario:");
+		selezionaOrarioLabel_1.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		selezionaOrarioLabel_1.setBounds(10, 195, 169, 31);
+		panel.add(selezionaOrarioLabel_1);
 		
-		JComboBox quantitaComboBox = new JComboBox();
-		quantitaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		quantitaComboBox.setFocusTraversalKeysEnabled(false);
-		quantitaComboBox.setFocusable(false);
-		quantitaComboBox.setBounds(146, 111, 294, 22);
-		getBodyPanel().add(quantitaComboBox);
+		JComboBox selezionaRistorantecomboBox = new JComboBox();
+		selezionaRistorantecomboBox.setFocusTraversalKeysEnabled(false);
+		selezionaRistorantecomboBox.setFocusable(false);
+		selezionaRistorantecomboBox.setBounds(232, 60, 212, 21);
+		getBodyPanel().add(selezionaRistorantecomboBox);
 		
-		JComboBox dimensioneComboBox = new JComboBox();
-		dimensioneComboBox.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		dimensioneComboBox.setFocusTraversalKeysEnabled(false);
-		dimensioneComboBox.setFocusable(false);
-		dimensioneComboBox.setBounds(146, 176, 294, 22);
-		getBodyPanel().add(dimensioneComboBox);
+		selezionaIndirizzoField = new JTextField();
+		selezionaIndirizzoField.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		selezionaIndirizzoField.setBounds(232, 105, 212, 21);
+		getBodyPanel().add(selezionaIndirizzoField);
+		selezionaIndirizzoField.setColumns(10);
+		
+		selezionaCartaField = new JTextField();
+		selezionaCartaField.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		selezionaCartaField.setColumns(10);
+		selezionaCartaField.setBounds(232, 154, 212, 21);
+		getBodyPanel().add(selezionaCartaField);
+		
+		JComboBox selezionaOrariocomboBox = new JComboBox();
+		selezionaOrariocomboBox.setFocusTraversalKeysEnabled(false);
+		selezionaOrariocomboBox.setFocusable(false);
+		selezionaOrariocomboBox.setBounds(232, 200, 212, 21);
+		getBodyPanel().add(selezionaOrariocomboBox);
 
 	}
 }

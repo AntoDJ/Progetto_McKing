@@ -112,12 +112,15 @@ public class CatalogoGUI extends MediumFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 224));
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 25, 25));
-		panel.setPreferredSize(new Dimension(100,2000));
+
 		
-		//TODO riempire catalogo
-		for(int i = 0 ; i < 1000; i++) {
+		//TODO riempire catalogo e aggiungere size variabile
+		int size = 0;
+		for(int i = 0 ; i < 200; i++) {
+			if(i%3 == 0) size += 142;
 			panel.add(new JButton());
 		}
+		panel.setPreferredSize(new Dimension(518,size));
 		ModernScrollPane scrollPane = new ModernScrollPane(panel);
 		scrollPane.setBounds(147, 38, 518, 362);
 		scrollPane.add(panel);

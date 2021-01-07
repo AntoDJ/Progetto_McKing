@@ -35,13 +35,14 @@ public class RiepilogoOrdineGUI extends BigFrame {
 	 * Create the frame.
 	 */
 	public RiepilogoOrdineGUI() {
+		getBodyPanel().setSize(900, 570);
 		getBodyPanel().setLocation(0, 30);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
 		
 		JPanel prezzoPanel = new JPanel();
-		prezzoPanel.setBounds(10, 444, 880, 48);
+		prezzoPanel.setBounds(10, 479, 880, 48);
 		getBodyPanel().add(prezzoPanel);
 		prezzoPanel.setLayout(null);
 		
@@ -62,7 +63,7 @@ public class RiepilogoOrdineGUI extends BigFrame {
 		annullaButton.setFocusPainted(false);
 		annullaButton.setFocusTraversalKeysEnabled(false);
 		annullaButton.setFocusable(false);
-		annullaButton.setBounds(10, 515, 113, 21);
+		annullaButton.setBounds(10, 538, 113, 21);
 		getBodyPanel().add(annullaButton);
 		
 		JButton confermaButton = new JButton("Conferma");
@@ -72,20 +73,23 @@ public class RiepilogoOrdineGUI extends BigFrame {
 		confermaButton.setFocusPainted(false);
 		confermaButton.setFocusTraversalKeysEnabled(false);
 		confermaButton.setFocusable(false);
-		confermaButton.setBounds(786, 515, 104, 21);
+		confermaButton.setBounds(786, 538, 104, 21);
 		getBodyPanel().add(confermaButton);
 		
 		JPanel riepilogoOrdinePanel = new JPanel();
 		
 		riepilogoOrdinePanel.setLayout(new BoxLayout(riepilogoOrdinePanel, BoxLayout.Y_AXIS));
-		riepilogoOrdinePanel.setPreferredSize(new Dimension(100,2000));
+
 		ModernScrollPane scrollPane = new ModernScrollPane(riepilogoOrdinePanel);
-		scrollPane.setBounds(10, 40, 880, 377);
+		scrollPane.setBounds(10, 40, 880, 428);
 		
 		//TODO riempire riepilogo ordine
+		int size = 0;
 		for (int i = 0; i< 4; i++) {
+			size += 203;
 			riepilogoOrdinePanel.add(new RiepilogoOrdinePanel());
 		}
+		riepilogoOrdinePanel.setPreferredSize(new Dimension(100,size));
 		getBodyPanel().add(scrollPane);
 
 	}

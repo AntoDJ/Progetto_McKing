@@ -86,7 +86,7 @@ public class BigFrame extends JFrame {
 		
 		bodyPanel = new JPanel();
 		bodyPanel.setBackground(new Color(255, 255, 153));
-		bodyPanel.setBounds(0, 44, 900, 546);
+		bodyPanel.setBounds(0, 44, 900, 556);
 		contentPane.add(bodyPanel);	
 		
 		backButton = new JButton();

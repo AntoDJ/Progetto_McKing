@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
@@ -18,6 +19,7 @@ public class ProdottoButton extends JPanel {
 		super();		
 				
 		setBounds( 0, 0, 206, 142);		
+		setPreferredSize(new Dimension(206,142));
 		setLayout(null);
 		
 		JLabel prodottoLabel = new JLabel(nomeProdotto);
@@ -26,9 +28,9 @@ public class ProdottoButton extends JPanel {
 		prodottoLabel.setBounds(0, 102, 206, 40);
 		add(prodottoLabel);
 		
-		JLabel lblNewLabel = new JLabel("");
-		//TODO
-		lblNewLabel.setIcon(new ImageIcon(ProdottoButton.class.getResource("/GUI/icons")));  
+		JLabel lblNewLabel = new JLabel("immagine panino");
+		//TODO seleziona percorso immagine
+		//lblNewLabel.setIcon(new ImageIcon(ProdottoButton.class.getResource("/GUI/icons")));  
 		lblNewLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		lblNewLabel.setBounds(0, 0, 206, 142);
 		add(lblNewLabel);

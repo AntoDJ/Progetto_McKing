@@ -25,10 +25,13 @@ public class MenuButton extends JButton {
 		initialize();
 	}
 	private void initialize() {
-		setFont(new Font("Bell MT", Font.BOLD, 14));
+		setBorderPainted(false);
+		setFocusPainted(false);
+		setFocusTraversalKeysEnabled(false);
+		setFocusable(false);
+		setFont(new Font("Bell MT", Font.PLAIN, 16));
 		setBackground(new Color(255,204,51));
 		setForeground(Color.decode("#111111"));
-		setFocusable(false);
 	}
 
 }

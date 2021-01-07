@@ -7,13 +7,13 @@ import Utility.MediumFrame;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 
-public class OrdineButton extends JPanel {
+public class OrdinePanel extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public OrdineButton() {
-		setBorder(new LineBorder(new Color(255, 204, 51), 4, true));
+	public OrdinePanel() {
+		setBorder(new LineBorder(new Color(255, 204, 51), 10, true));
 		setBackground(new Color(255, 255, 204));
 		
 		setBounds(10, 10, 655, 115);

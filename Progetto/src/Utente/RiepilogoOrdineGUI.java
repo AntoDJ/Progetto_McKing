@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JScrollPane;
+import javax.swing.border.LineBorder;
 
 import Utility.BigFrame;
 import Utility.ModernScrollPane;
@@ -47,13 +48,15 @@ public class RiepilogoOrdineGUI extends BigFrame {
 		getBodyPanel().setLayout(null);
 		
 		JPanel prezzoPanel = new JPanel();
+		prezzoPanel.setBackground(Color.WHITE);
+		prezzoPanel.setBorder(new LineBorder(new Color(255, 153, 0), 2, true));
 		prezzoPanel.setBounds(10, 479, 880, 48);
 		getBodyPanel().add(prezzoPanel);
 		prezzoPanel.setLayout(null);
 		
 		JLabel prezzoTotaleLabel = new JLabel("Prezzo totale:");
-		prezzoTotaleLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		prezzoTotaleLabel.setBounds(10, 10, 98, 31);
+		prezzoTotaleLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
+		prezzoTotaleLabel.setBounds(10, 10, 101, 31);
 		prezzoPanel.add(prezzoTotaleLabel);
 		
 		JLabel valorePrezzoTotaleLabel = new JLabel("");
@@ -62,6 +65,7 @@ public class RiepilogoOrdineGUI extends BigFrame {
 		prezzoPanel.add(valorePrezzoTotaleLabel);
 		
 		JButton annullaButton = new JButton("Annulla");
+		annullaButton.setFont(new Font("Bell MT", Font.PLAIN, 14));
 		annullaButton.setBackground(Color.WHITE);
 		annullaButton.setForeground(Color.BLACK);
 		annullaButton.setBorderPainted(false);
@@ -72,6 +76,7 @@ public class RiepilogoOrdineGUI extends BigFrame {
 		getBodyPanel().add(annullaButton);
 		
 		JButton confermaButton = new JButton("Conferma");
+		confermaButton.setFont(new Font("Bell MT", Font.PLAIN, 14));
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.setForeground(Color.BLACK);
 		confermaButton.setBorderPainted(false);
@@ -87,6 +92,7 @@ public class RiepilogoOrdineGUI extends BigFrame {
 
 		ModernScrollPane scrollPane = new ModernScrollPane(riepilogoOrdinePanel);
 		scrollPane.setBounds(10, 40, 880, 428);
+		scrollPane.setBorder(new LineBorder(new Color(255, 51, 0), 2, true));
 		
 		//TODO riempire riepilogo ordine
 		int size = 0;

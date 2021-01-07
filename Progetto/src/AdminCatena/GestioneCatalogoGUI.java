@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 import Utility.MediumFrame;
 import Utility.MenuButton;
@@ -114,6 +115,7 @@ public class GestioneCatalogoGUI extends MediumFrame {
 		scrollPane.setBounds(147, 38, 518, 362);
 		scrollPane.add(panel);
 		scrollPane.setViewportView(panel);
+		scrollPane.setBorder(new LineBorder(new Color(255, 51, 0), 2, true));
 		getBodyPanel().add(scrollPane);
 	}
 }

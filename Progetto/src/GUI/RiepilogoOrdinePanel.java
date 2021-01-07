@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.JButton;
@@ -19,6 +20,8 @@ public class RiepilogoOrdinePanel extends JPanel {
 		setBackground(new Color(255, 255, 204));
 		setBounds(10, 110, 880, 203);
 		setLayout(null);
+		setMaximumSize(new Dimension(880, 203));
+		setMinimumSize(new Dimension(880, 203));
 		
 		JButton piuButton = new JButton("+");
 		piuButton.setFocusPainted(false);
@@ -26,15 +29,16 @@ public class RiepilogoOrdinePanel extends JPanel {
 		piuButton.setFocusable(false);
 		piuButton.setForeground(new Color(0, 0, 0));
 		piuButton.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		piuButton.setBounds(798, 53, 42, 27);
+		piuButton.setBounds(811, 89, 42, 27);
 		piuButton.setBackground(new Color(255, 204, 0));
 		add(piuButton);
 		
-		JLabel quantit‡Label = new JLabel("10");
-		quantit‡Label.setHorizontalAlignment(SwingConstants.CENTER);
-		quantit‡Label.setFont(new Font("Bell MT", Font.PLAIN, 22));
-		quantit‡Label.setBounds(798, 90, 42, 25);
-		add(quantit‡Label);
+		JLabel quantitaLabel = new JLabel("x10");
+		quantitaLabel.setOpaque(true);
+		quantitaLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		quantitaLabel.setFont(new Font("Bell MT", Font.PLAIN, 22));
+		quantitaLabel.setBounds(694, 88, 42, 25);
+		add(quantitaLabel);
 		
 		JButton menoButton = new JButton("-");
 		menoButton.setFocusPainted(false);
@@ -42,7 +46,7 @@ public class RiepilogoOrdinePanel extends JPanel {
 		menoButton.setFocusable(false);
 		menoButton.setForeground(new Color(0, 0, 0));
 		menoButton.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		menoButton.setBounds(798, 125, 42, 27);
+		menoButton.setBounds(759, 89, 42, 27);
 		menoButton.setBackground(new Color(255, 204, 0));
 		add(menoButton);
 		

@@ -21,6 +21,7 @@ public class MediumFrame extends JFrame {
 	private JPanel titoloPanel;
 	private JPanel bodyPanel;
 	private JButton exitButton;
+	private JButton backButton;
 	/* Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -73,17 +74,30 @@ public class MediumFrame extends JFrame {
 		exitButton.setFocusTraversalKeysEnabled(false);
 		exitButton.setFocusPainted(false);
 		exitButton.setFocusable(false);
-		exitButton.setIcon(new ImageIcon(SmallFrame.class.getResource("/GUI/ExitIcon.png")));
+		exitButton.setIcon(new ImageIcon(SmallFrame.class.getResource("/GUI/icons/exit.png")));
 		exitButton.setBackground(null);    
 		exitButton.setFont(exitButton.getFont().deriveFont(0f));
-		exitButton.setBounds(645, 10, 20, 20);
+		exitButton.setBounds(645, 13, 20, 20);
 		exitButton.setBorder(null);
 		titoloPanel.add(exitButton);
 
 		bodyPanel = new JPanel();
 		bodyPanel.setBackground(new Color(255, 255, 153));
 		bodyPanel.setBounds(0, 44, 675, 410);
-		contentPane.add(bodyPanel);    
+		contentPane.add(bodyPanel); 
+		
+		backButton = new JButton();
+		backButton = new JButton("");
+		backButton.setFocusTraversalKeysEnabled(false);
+		backButton.setFocusPainted(false);
+		backButton.setFocusable(false);
+		backButton.setIcon(new ImageIcon(SmallFrame.class.getResource("/GUI/icons/indietro.png")));
+		backButton.setBackground(null);		
+		backButton.setFont(backButton.getFont().deriveFont(0f));
+		backButton.setBounds(20, 5, 42, 38);
+		backButton.setBorder(null);
+		titoloPanel.add(backButton);
+		getTitoloPanel().add(backButton);
 	}
 
 	public JPanel getBodyPanel() {
@@ -92,4 +106,9 @@ public class MediumFrame extends JFrame {
 	public JPanel getTitoloPanel() {
 		return titoloPanel;
 	}
+
+	public JButton getBackButton() {
+		return backButton;
+	}
+	
 }

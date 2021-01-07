@@ -21,6 +21,7 @@ public class BigFrame extends JFrame {
 	private JPanel titoloPanel;
 	private JPanel bodyPanel;
 	private JButton exitButton;
+	private JButton backButton;
 
 	/**
 	 * Launch the application.
@@ -76,10 +77,10 @@ public class BigFrame extends JFrame {
 		exitButton.setFocusTraversalKeysEnabled(false);
 		exitButton.setFocusPainted(false);
 		exitButton.setFocusable(false);
-		exitButton.setIcon(new ImageIcon(SmallFrame.class.getResource("/GUI/ExitIcon.png")));
+		exitButton.setIcon(new ImageIcon(SmallFrame.class.getResource("/GUI/icons/exit.png")));
 		exitButton.setBackground(null);		
 		exitButton.setFont(exitButton.getFont().deriveFont(0f));
-		exitButton.setBounds(855, 13, 22, 20);
+		exitButton.setBounds(870, 13, 22, 20);
 		exitButton.setBorder(null);
 		titoloPanel.add(exitButton);
 		
@@ -87,6 +88,19 @@ public class BigFrame extends JFrame {
 		bodyPanel.setBackground(new Color(255, 255, 153));
 		bodyPanel.setBounds(0, 44, 900, 546);
 		contentPane.add(bodyPanel);	
+		
+		backButton = new JButton();
+		backButton = new JButton("");
+		backButton.setFocusTraversalKeysEnabled(false);
+		backButton.setFocusPainted(false);
+		backButton.setFocusable(false);
+		backButton.setIcon(new ImageIcon(SmallFrame.class.getResource("/GUI/icons/indietro.png")));
+		backButton.setBackground(null);		
+		backButton.setFont(backButton.getFont().deriveFont(0f));
+		backButton.setBounds(20, 5, 42, 38);
+		backButton.setBorder(null);
+		titoloPanel.add(backButton);
+		getTitoloPanel().add(backButton);
 		
 	}
 
@@ -96,5 +110,7 @@ public class BigFrame extends JFrame {
 	public JPanel getTitoloPanel() {
 		return titoloPanel;
 	}
-	
+	public JButton getBackButton() {
+		return backButton;
+	}
 }

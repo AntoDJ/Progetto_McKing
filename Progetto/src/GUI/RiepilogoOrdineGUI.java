@@ -8,6 +8,10 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.JScrollPane;
+import javax.swing.BoxLayout;
 
 public class RiepilogoOrdineGUI extends BigFrame {
 
@@ -36,20 +40,20 @@ public class RiepilogoOrdineGUI extends BigFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(10, 444, 880, 48);
-		getBodyPanel().add(panel);
-		panel.setLayout(null);
+		JPanel prezzoPanel = new JPanel();
+		prezzoPanel.setBounds(10, 444, 880, 48);
+		getBodyPanel().add(prezzoPanel);
+		prezzoPanel.setLayout(null);
 		
 		JLabel prezzoTotaleLabel = new JLabel("Prezzo totale:");
 		prezzoTotaleLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		prezzoTotaleLabel.setBounds(10, 10, 98, 31);
-		panel.add(prezzoTotaleLabel);
+		prezzoPanel.add(prezzoTotaleLabel);
 		
 		JLabel valorePrezzoTotaleLabel = new JLabel("");
 		valorePrezzoTotaleLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		valorePrezzoTotaleLabel.setBounds(724, 10, 146, 31);
-		panel.add(valorePrezzoTotaleLabel);
+		prezzoPanel.add(valorePrezzoTotaleLabel);
 		
 		JButton annullaButton = new JButton("Annulla");
 		annullaButton.setBackground(Color.WHITE);
@@ -70,6 +74,19 @@ public class RiepilogoOrdineGUI extends BigFrame {
 		confermaButton.setFocusable(false);
 		confermaButton.setBounds(786, 515, 104, 21);
 		getBodyPanel().add(confermaButton);
+		
+		JPanel riepilogoOrdinePanel = new JPanel();
+		
+		riepilogoOrdinePanel.setLayout(new BoxLayout(riepilogoOrdinePanel, BoxLayout.Y_AXIS));
+		riepilogoOrdinePanel.setPreferredSize(new Dimension(100,2000));
+		ModernScrollPane scrollPane = new ModernScrollPane(riepilogoOrdinePanel);
+		scrollPane.setBounds(10, 40, 880, 377);
+		
+		//TODO riempire riepilogo ordine
+		for (int i = 0; i< 4; i++) {
+			riepilogoOrdinePanel.add(new RiepilogoOrdinePanel());
+		}
+		getBodyPanel().add(scrollPane);
 
 	}
 }

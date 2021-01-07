@@ -58,6 +58,8 @@ public class VisualizzaRistoranteGUI extends SmallFrame {
 		sceltaRistoranteLabel.setBounds(62, 50, 364, 34);
 		getBodyPanel().add(sceltaRistoranteLabel);
 		
+		//TODO riempire combobox
+		
 		String [] citta= {"    - - - Seleziona - - -","Napoli","Pisa","Verona"};
 		cittaComboBox = new JComboBox(citta);
 		cittaComboBox.setFocusable(false);
@@ -79,7 +81,7 @@ public class VisualizzaRistoranteGUI extends SmallFrame {
 		informazioniRistoranteLabel.setBounds(43, 130, 245, 123);
 		getBodyPanel().add(informazioniRistoranteLabel);
 		
-		JLabel cercaSullaMappaIcon = new JLabel(new ImageIcon(VisualizzaRistoranteGUI.class.getResource("/GUI/mappa.png")));
+		JLabel cercaSullaMappaIcon = new JLabel(new ImageIcon(VisualizzaRistoranteGUI.class.getResource("/GUI/icons/mappa.png")));
 		cercaSullaMappaIcon.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {

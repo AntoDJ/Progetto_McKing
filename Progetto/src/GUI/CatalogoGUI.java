@@ -60,7 +60,7 @@ public class CatalogoGUI extends MediumFrame {
 		prodottiPanel.setLayout(null);
 		
 		JLabel paniniImage = new JLabel("");
-		paniniImage.setIcon(new ImageIcon(CatalogoGUI.class.getResource("/GUI/panini.jpg")));
+		paniniImage.setIcon(new ImageIcon(CatalogoGUI.class.getResource("/GUI/icons/panini.jpg")));
 		paniniImage.setFont(new Font("Bell MT", Font.PLAIN, 18));
 		paniniImage.setHorizontalAlignment(SwingConstants.CENTER);
 		paniniImage.setBounds(0, 0, 127, 72);
@@ -109,13 +109,12 @@ public class CatalogoGUI extends MediumFrame {
 		paniniLabel.setBounds(0, 0, 127, 72);
 		prodottiPanel.add(paniniLabel);
 		
-		//JScrollPane scrollPane = new JScrollPane();
-		//scrollPane.setBounds(147, 38, 518, 362);
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 224));
-		//panel.setBounds(147, 38, 518, 362);
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 25, 25));
 		panel.setPreferredSize(new Dimension(100,2000));
+		
+		//TODO riempire catalogo
 		for(int i = 0 ; i < 1000; i++) {
 			panel.add(new JButton());
 		}
@@ -125,6 +124,7 @@ public class CatalogoGUI extends MediumFrame {
 		scrollPane.setViewportView(panel);
 		getBodyPanel().add(scrollPane);
 		
+		getBackButton().setVisible(false);
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(20, 5, 42, 38);
 		menuBar.setBackground(null);
@@ -133,7 +133,7 @@ public class CatalogoGUI extends MediumFrame {
 		getTitoloPanel().add(menuBar);
 		
 		JMenu profiloMenu = new JMenu("");
-		profiloMenu.setIcon(new ImageIcon(CatalogoGUI.class.getResource("/GUI/profilo.png")));
+		profiloMenu.setIcon(new ImageIcon(CatalogoGUI.class.getResource("/GUI/icons/profilo.png")));
 		menuBar.add(profiloMenu);
 		
 		JMenuItem profiloMenuItem = new JMenuItem("Profilo");

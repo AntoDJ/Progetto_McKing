@@ -34,6 +34,8 @@ public class DettagliOrdineProdottoGUI extends SmallFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
 		
+		//TODO inserire dati prodotto
+		
 		JPanel etichettePanel = new JPanel();
 		etichettePanel.setBounds(0, 0, 136, 256);
 		getBodyPanel().add(etichettePanel);
@@ -68,7 +70,7 @@ public class DettagliOrdineProdottoGUI extends SmallFrame {
 		quantitaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		quantitaComboBox.setFocusTraversalKeysEnabled(false);
 		quantitaComboBox.setFocusable(false);
-		quantitaComboBox.setBounds(146, 111, 294, 22);
+		quantitaComboBox.setBounds(146, 116, 294, 22);
 		getBodyPanel().add(quantitaComboBox);
 		
 		JComboBox dimensioneComboBox = new JComboBox();

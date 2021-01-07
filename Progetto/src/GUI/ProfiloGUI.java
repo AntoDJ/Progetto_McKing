@@ -35,6 +35,8 @@ public class ProfiloGUI extends SmallFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
 		
+		//TODO inserire dati profilo
+		
 		JPanel etichettePanel = new JPanel();
 		etichettePanel.setBackground(new Color(255, 255, 153));
 		etichettePanel.setBounds(0, 0, 146, 256);

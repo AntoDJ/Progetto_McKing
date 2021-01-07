@@ -29,7 +29,6 @@ public class ModernScrollPane extends JScrollPane {
     }
 
     public ModernScrollPane(Component view, int vsbPolicy, int hsbPolicy) {
-
         setBorder(null);
 
         // Set ScrollBar UI
@@ -37,6 +36,8 @@ public class ModernScrollPane extends JScrollPane {
         verticalScrollBar.setOpaque(false);
         verticalScrollBar.setUI(new ModernScrollBarUI(this));
 
+        verticalScrollBar.setUnitIncrement(6);
+        
         JScrollBar horizontalScrollBar = getHorizontalScrollBar();
         horizontalScrollBar.setOpaque(false);
         horizontalScrollBar.setUI(new ModernScrollBarUI(this));

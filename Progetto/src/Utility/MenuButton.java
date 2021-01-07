@@ -26,7 +26,7 @@ public class MenuButton extends JButton {
 	}
 	private void initialize() {
 		setFont(new Font("Bell MT", Font.BOLD, 14));
-		setBackground(Color.decode("#D3D3D3"));
+		setBackground(new Color(255,204,51));
 		setForeground(Color.decode("#111111"));
 		setFocusable(false);
 	}

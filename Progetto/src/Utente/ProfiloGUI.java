@@ -1,4 +1,4 @@
-package GUI;
+package Utente;
 
 import java.awt.EventQueue;
 
@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import Utility.SmallFrame;
+
 import javax.swing.JPanel;
 import java.awt.Color;
 

@@ -1,4 +1,4 @@
-package GUI;
+package General;
 
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+
+import Utility.MenuButton;
+import Utility.SmallFrame;
 
 public class AccessoGUI extends SmallFrame {
 

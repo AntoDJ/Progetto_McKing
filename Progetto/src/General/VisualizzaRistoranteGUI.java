@@ -1,4 +1,4 @@
-package GUI;
+package General;
 
 
 import java.awt.Color;
@@ -7,6 +7,9 @@ import java.awt.Desktop;
 import java.awt.EventQueue;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import Utility.SmallFrame;
+
 import java.awt.Font;
 
 import javax.swing.ImageIcon;

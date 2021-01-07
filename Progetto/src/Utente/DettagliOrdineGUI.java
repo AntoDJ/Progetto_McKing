@@ -1,4 +1,4 @@
-package GUI;
+package Utente;
 
 import java.awt.EventQueue;
 
@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+
+import Utility.SmallFrame;
 
 public class DettagliOrdineGUI extends SmallFrame {
 	private JTextField selezionaIndirizzoField;

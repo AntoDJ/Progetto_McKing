@@ -1,4 +1,4 @@
-package GUI;
+package Utente;
 
 import java.awt.EventQueue;
 
@@ -11,6 +11,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JScrollPane;
+
+import Utility.BigFrame;
+import Utility.ModernScrollPane;
+import Utility.RiepilogoOrdinePanel;
+
 import javax.swing.BoxLayout;
 
 public class RiepilogoOrdineGUI extends BigFrame {

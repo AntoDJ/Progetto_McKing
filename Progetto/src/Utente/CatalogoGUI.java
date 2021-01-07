@@ -1,4 +1,4 @@
-package GUI;
+package Utente;
 
 
 import java.awt.Cursor;
@@ -11,6 +11,11 @@ import java.awt.Font;
 import java.awt.ScrollPane;
 
 import javax.swing.SwingConstants;
+
+import Utility.MediumFrame;
+import Utility.ModernScrollPane;
+import Utility.ProdottoButton;
+
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

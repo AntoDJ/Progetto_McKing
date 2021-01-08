@@ -108,7 +108,7 @@ public class Modifica_GestioneCatalogoGUI extends SmallFrame {
 		attivoComboBox.setBounds(192, 144, 100, 22);
 		getBodyPanel().add(attivoComboBox);
 		
-		//TODO Modifica database
+		//TODO Modifica database in base alla caratteristiche nuove del prodotto
 		
 		MenuButton confermaModificheButton = new MenuButton("Conferma");
 		confermaModificheButton.setFont(new Font("Bell MT", Font.BOLD, 12));

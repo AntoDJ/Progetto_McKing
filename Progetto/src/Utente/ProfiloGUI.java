@@ -37,11 +37,11 @@ public class ProfiloGUI extends SmallFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
+		getBodyPanel().setBackground(new Color(255, 255, 153));
 		
 		//TODO inserire dati profilo
 		
 		JPanel etichettePanel = new JPanel();
-		etichettePanel.setBackground(new Color(255, 255, 153));
 		etichettePanel.setBounds(0, 0, 146, 256);
 		getBodyPanel().add(etichettePanel);
 		etichettePanel.setLayout(null);
@@ -82,6 +82,7 @@ public class ProfiloGUI extends SmallFrame {
 		etichettePanel.add(cartaDiCreditoLabel);
 		
 		JPanel dettagliPanel = new JPanel();
+		dettagliPanel.setBackground(new Color(255, 255, 153));
 		dettagliPanel.setBounds(147, 0, 303, 256);
 		getBodyPanel().add(dettagliPanel);
 		dettagliPanel.setLayout(null);

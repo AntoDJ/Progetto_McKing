@@ -10,6 +10,7 @@ import Utility.SmallFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
+import java.awt.Color;
 
 public class DettagliOrdineProdottoGUI extends SmallFrame {
 
@@ -36,10 +37,12 @@ public class DettagliOrdineProdottoGUI extends SmallFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
+		getBodyPanel().setBackground(new Color(255, 255, 153));
 		
 		//TODO inserire dati prodotto
 		
 		JPanel etichettePanel = new JPanel();
+		etichettePanel.setBackground(new Color(240, 240, 240));
 		etichettePanel.setBounds(0, 0, 136, 256);
 		getBodyPanel().add(etichettePanel);
 		etichettePanel.setLayout(null);

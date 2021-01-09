@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
@@ -109,11 +110,12 @@ public class GestioneCatalogoGUI extends MediumFrame {
 			if(i%2 == 0) size += 170;
 			panel.add(new ProdottoButton("Panino #" + i));
 		}
-		panel.setPreferredSize(new Dimension(518,size));
+		panel.setPreferredSize(new Dimension(500,size));
 		ModernScrollPane scrollPane = new ModernScrollPane(panel);
 		scrollPane.setBounds(147, 38, 518, 362);
 		scrollPane.add(panel);
 		scrollPane.setViewportView(panel);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setBorder(new LineBorder(new Color(255, 51, 0), 2, true));
 		getBodyPanel().add(scrollPane);
 	}

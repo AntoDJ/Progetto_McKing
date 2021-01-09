@@ -21,7 +21,7 @@ public class ModernScrollPane extends JScrollPane {
     private static final Color THUMB_COLOR = Color.BLACK;
 
     public ModernScrollPane(Component view) {
-        this(view, VERTICAL_SCROLLBAR_AS_NEEDED, HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        this(view, VERTICAL_SCROLLBAR_AS_NEEDED, HORIZONTAL_SCROLLBAR_NEVER);
     }
 
     public ModernScrollPane(int vsbPolicy, int hsbPolicy) {

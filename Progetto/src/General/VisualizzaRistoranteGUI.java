@@ -67,6 +67,8 @@ public class VisualizzaRistoranteGUI extends SmallFrame {
 		cittaComboBox = new JComboBox(citta);
 		cittaComboBox.setFocusable(false);
 		cittaComboBox.setFocusTraversalKeysEnabled(false);
+		cittaComboBox.setBackground(Color.white);
+		cittaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 14));
 		cittaComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

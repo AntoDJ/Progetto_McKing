@@ -73,14 +73,16 @@ public class DettagliOrdineProdottoGUI extends SmallFrame {
 		getBodyPanel().add(contenitoreProdottoLabel);
 		
 		JComboBox quantitaComboBox = new JComboBox();
-		quantitaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		quantitaComboBox.setBackground(Color.white);
+		quantitaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 14));
 		quantitaComboBox.setFocusTraversalKeysEnabled(false);
 		quantitaComboBox.setFocusable(false);
 		quantitaComboBox.setBounds(146, 116, 294, 22);
 		getBodyPanel().add(quantitaComboBox);
 		
 		JComboBox dimensioneComboBox = new JComboBox();
-		dimensioneComboBox.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		dimensioneComboBox.setBackground(Color.white);
+		dimensioneComboBox.setFont(new Font("Bell MT", Font.PLAIN, 14));
 		dimensioneComboBox.setFocusTraversalKeysEnabled(false);
 		dimensioneComboBox.setFocusable(false);
 		dimensioneComboBox.setBounds(146, 176, 294, 22);

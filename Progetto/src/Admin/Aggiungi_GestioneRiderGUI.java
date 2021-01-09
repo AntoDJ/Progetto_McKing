@@ -5,14 +5,19 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-import Utility.SmallFrame;
+import Utility.MediumFrame;
+import Utility.MenuButton;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
 
-public class Aggiungi_GestioneRiderGUI extends SmallFrame {
+public class Aggiungi_GestioneRiderGUI extends MediumFrame {
 	private JTextField cognomeTextField;
 	private JTextField nomeTextField;
 	private JTextField numeroDiTelefonoTextField;
@@ -70,19 +75,30 @@ public class Aggiungi_GestioneRiderGUI extends SmallFrame {
 		titoloLabel.setBounds(10, 10, 192, 29);
 		panel.add(titoloLabel);
 		
+		JLabel fotoLabel = new JLabel("Foto");
+		fotoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		fotoLabel.setBounds(10, 229, 192, 35);
+		panel.add(fotoLabel);
+		
 		cognomeTextField = new JTextField();
-		cognomeTextField.setBounds(222, 49, 206, 25);
+		cognomeTextField.setHorizontalAlignment(SwingConstants.RIGHT);
+		cognomeTextField.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		cognomeTextField.setBounds(287, 50, 260, 25);
 		getBodyPanel().add(cognomeTextField);
 		cognomeTextField.setColumns(10);
 		
 		nomeTextField = new JTextField();
+		nomeTextField.setHorizontalAlignment(SwingConstants.RIGHT);
+		nomeTextField.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		nomeTextField.setColumns(10);
-		nomeTextField.setBounds(222, 94, 206, 25);
+		nomeTextField.setBounds(287, 95, 260, 25);
 		getBodyPanel().add(nomeTextField);
 		
 		numeroDiTelefonoTextField = new JTextField();
+		numeroDiTelefonoTextField.setHorizontalAlignment(SwingConstants.RIGHT);
+		numeroDiTelefonoTextField.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		numeroDiTelefonoTextField.setColumns(10);
-		numeroDiTelefonoTextField.setBounds(222, 139, 206, 25);
+		numeroDiTelefonoTextField.setBounds(287, 140, 260, 25);
 		getBodyPanel().add(numeroDiTelefonoTextField);
 		
 		//Abbiamo supposto che non possano essere inseriti altri mezzi di trasporto		
@@ -90,10 +106,34 @@ public class Aggiungi_GestioneRiderGUI extends SmallFrame {
 		JComboBox tipoMezzoComboBox = new JComboBox(mezziDiTrasporto);
 		tipoMezzoComboBox.setFocusTraversalKeysEnabled(false);
 		tipoMezzoComboBox.setFocusable(false);
-		tipoMezzoComboBox.setBounds(222, 186, 206, 25);
+		tipoMezzoComboBox.setBounds(287, 187, 260, 25);
 		tipoMezzoComboBox.setBackground(Color.white);
 		tipoMezzoComboBox.setFont(new Font("Bell MT", Font.PLAIN, 14));
 		getBodyPanel().add(tipoMezzoComboBox);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(287, 245, 140, 140);
+		getBodyPanel().add(lblNewLabel);
+		
+		JButton button = new JButton("New button");
+		button.setBounds(580, 363, 8, -18);
+		getBodyPanel().add(button);
+		
+		MenuButton btnNewButton = new MenuButton("Avanti");
+		btnNewButton.setBounds(568, 370, 97, 21);
+		getBodyPanel().add(btnNewButton);
+		
+		JLabel sfogliaLabel = new JLabel("");
+		sfogliaLabel.setBackground(new Color(255, 255, 255));
+		sfogliaLabel.setOpaque(true);
+		sfogliaLabel.setIcon(new ImageIcon(Aggiungi_GestioneRiderGUI.class.getResource("/GUI/icons/cerca.png")));
+		sfogliaLabel.setBounds(437, 245, 24, 25);
+		getBodyPanel().add(sfogliaLabel);
+		
+		JLabel sfogliaLabel2 = new JLabel("Sfoglia");
+		sfogliaLabel2.setFont(new Font("Bell MT", Font.PLAIN, 14));
+		sfogliaLabel2.setBounds(471, 245, 68, 25);
+		getBodyPanel().add(sfogliaLabel2);
 
 	}
 }

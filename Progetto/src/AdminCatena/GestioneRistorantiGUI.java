@@ -1,6 +1,7 @@
 package AdminCatena;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.Font;
 
@@ -56,6 +57,7 @@ public class GestioneRistorantiGUI extends MediumFrame {
 		
 		JLabel visualizzaIcon = new JLabel("");
 		visualizzaIcon.setIcon(new ImageIcon(GestioneRistorantiGUI.class.getResource("/GUI/icons/visualizza.png")));
+		visualizzaIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		visualizzaIcon.setBounds(590, 43, 27, 26);
 		getBodyPanel().add(visualizzaIcon);
 		

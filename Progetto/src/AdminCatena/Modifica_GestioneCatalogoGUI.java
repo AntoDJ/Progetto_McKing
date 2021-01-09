@@ -100,7 +100,6 @@ public class Modifica_GestioneCatalogoGUI extends SmallFrame {
 		if(attivoComboBox.getSelectedItem() == "Attivo") attivoComboBox.setBackground(new Color(0, 204, 102));
 		else attivoComboBox.setBackground(new Color(255, 51, 0));
 		attivoComboBox.setFocusTraversalKeysEnabled(false);
-		attivoComboBox.setFocusable(false);
 		attivoComboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if(attivoComboBox.getSelectedItem() == "Attivo") attivoComboBox.setBackground(new Color(0, 204, 102));

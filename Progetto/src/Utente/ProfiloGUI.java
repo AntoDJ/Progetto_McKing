@@ -7,12 +7,22 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import Utility.MenuButton;
 import Utility.SmallFrame;
 
 import javax.swing.JPanel;
 import java.awt.Color;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class ProfiloGUI extends SmallFrame {
+	private JTextField numeroDiTelefonoTextField;
+	private JTextField indirizzoTextField;
+	private JTextField cartaDiCreditoTextField;
+	private JTextField countruCodeTextField;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -89,33 +99,95 @@ public class ProfiloGUI extends SmallFrame {
 		
 		JLabel contenitoreNomeLabel = new JLabel("");
 		contenitoreNomeLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		contenitoreNomeLabel.setBounds(0, 35, 293, 19);
+		contenitoreNomeLabel.setBounds(10, 35, 283, 19);
 		dettagliPanel.add(contenitoreNomeLabel);
 		
 		JLabel contenitoreCognomeLabel = new JLabel("");
 		contenitoreCognomeLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		contenitoreCognomeLabel.setBounds(0, 60, 293, 19);
+		contenitoreCognomeLabel.setBounds(10, 60, 283, 19);
 		dettagliPanel.add(contenitoreCognomeLabel);
 		
 		JLabel contenitoreEmailLabel = new JLabel("");
 		contenitoreEmailLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		contenitoreEmailLabel.setBounds(0, 88, 293, 19);
+		contenitoreEmailLabel.setBounds(10, 88, 283, 19);
 		dettagliPanel.add(contenitoreEmailLabel);
 		
-		JLabel contenitoreNumeroDiTelefonoLabel = new JLabel("");
-		contenitoreNumeroDiTelefonoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		contenitoreNumeroDiTelefonoLabel.setBounds(0, 117, 293, 19);
-		dettagliPanel.add(contenitoreNumeroDiTelefonoLabel);
+		numeroDiTelefonoTextField = new JTextField();
+		numeroDiTelefonoTextField.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		numeroDiTelefonoTextField.setToolTipText("Numero di telefono: es. 3658965845");
+		numeroDiTelefonoTextField.setBounds(93, 127, 200, 19);
+		dettagliPanel.add(numeroDiTelefonoTextField);
+		numeroDiTelefonoTextField.setColumns(10);
 		
-		JLabel contenitoreIndirizzoLabel = new JLabel("");
-		contenitoreIndirizzoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		contenitoreIndirizzoLabel.setBounds(0, 156, 293, 19);
-		dettagliPanel.add(contenitoreIndirizzoLabel);
+		indirizzoTextField = new JTextField();
+		indirizzoTextField.setToolTipText("Indirizzo: es. Via Roma, 7");
+		indirizzoTextField.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		indirizzoTextField.setColumns(10);
+		indirizzoTextField.setBounds(10, 156, 283, 19);
+		dettagliPanel.add(indirizzoTextField);
 		
-		JLabel contenitoreCartaDiCreditoLabel = new JLabel("");
-		contenitoreCartaDiCreditoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		contenitoreCartaDiCreditoLabel.setBounds(0, 185, 293, 19);
-		dettagliPanel.add(contenitoreCartaDiCreditoLabel);
+		cartaDiCreditoTextField = new JTextField();
+		cartaDiCreditoTextField.setHorizontalAlignment(SwingConstants.CENTER);
+		cartaDiCreditoTextField.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		cartaDiCreditoTextField.setColumns(10);
+		cartaDiCreditoTextField.setBounds(10, 185, 50, 19);
+		dettagliPanel.add(cartaDiCreditoTextField);
+		
+		MenuButton btnNewButton = new MenuButton("Modifica");
+		btnNewButton.setBounds(195, 225, 98, 21);
+		dettagliPanel.add(btnNewButton);
+		
+		countruCodeTextField = new JTextField();
+		countruCodeTextField.setHorizontalAlignment(SwingConstants.CENTER);
+		countruCodeTextField.setBounds(42, 127, 41, 19);
+		dettagliPanel.add(countruCodeTextField);
+		countruCodeTextField.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("+");
+		lblNewLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(4, 117, 41, 37);
+		dettagliPanel.add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setHorizontalAlignment(SwingConstants.CENTER);
+		textField.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		textField.setColumns(10);
+		textField.setBounds(87, 185, 50, 19);
+		dettagliPanel.add(textField);
+		
+		textField_1 = new JTextField();
+		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
+		textField_1.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		textField_1.setColumns(10);
+		textField_1.setBounds(164, 185, 50, 19);
+		dettagliPanel.add(textField_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
+		textField_2.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		textField_2.setColumns(10);
+		textField_2.setBounds(241, 185, 50, 19);
+		dettagliPanel.add(textField_2);
+		
+		JLabel trattinoNewLabel = new JLabel("-");
+		trattinoNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		trattinoNewLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		trattinoNewLabel.setBounds(52, 185, 45, 12);
+		dettagliPanel.add(trattinoNewLabel);
+		
+		JLabel trattinoNewLabel_1 = new JLabel("-");
+		trattinoNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		trattinoNewLabel_1.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		trattinoNewLabel_1.setBounds(130, 185, 45, 12);
+		dettagliPanel.add(trattinoNewLabel_1);
+		
+		JLabel trattinoNewLabel_2 = new JLabel("-");
+		trattinoNewLabel_2.setVerticalAlignment(SwingConstants.BOTTOM);
+		trattinoNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		trattinoNewLabel_2.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		trattinoNewLabel_2.setBounds(204, 185, 45, 15);
+		dettagliPanel.add(trattinoNewLabel_2);
 
 	}
 }

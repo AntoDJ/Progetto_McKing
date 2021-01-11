@@ -1,11 +1,4 @@
-/AdminCatena/
-<<<<<<< HEAD
-/GUI/
-=======
-/Admin/
-/GUI/
-/General/
-/Utente/
->>>>>>> branch 'master' of https://github.com/AntoDJ/Progetto_McKing
-/Utility/
+/DAO/
+/ExceptionsSQL/
 /Entità/
+/Utente/

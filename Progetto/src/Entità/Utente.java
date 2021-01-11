@@ -1,6 +1,6 @@
 package Entità;
 
-public class Profilo {
+public class Utente {
 	private String cognome;
 	private String nome;
 	private String email;
@@ -10,6 +10,18 @@ public class Profilo {
 	private String numeroDiTelefono;
 	private boolean attivo;
 	
+	
+	
+	public Utente(String cognome, String nome, String indirizzo, String cartaDiCtredito,
+			String numeroDiTelefono, boolean attivo) {
+		super();
+		this.cognome = cognome;
+		this.nome = nome;		
+		this.indirizzo = indirizzo;
+		this.cartaDiCtredito = cartaDiCtredito;
+		this.numeroDiTelefono = numeroDiTelefono;
+		this.attivo = attivo;
+	}
 	
 	
 	public String getCognome() {

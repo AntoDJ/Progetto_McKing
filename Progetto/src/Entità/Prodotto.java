@@ -7,6 +7,19 @@ public class Prodotto {
 	private String dimensione;
 	private String tipoProdotto;
 	private boolean attivo;
+	
+	
+	
+	public Prodotto(String nome, double prezzo, String dimensione, String tipoProdotto, boolean attivo) {
+		super();
+		this.nome = nome;
+		this.prezzo = prezzo;
+		this.dimensione = dimensione;
+		this.tipoProdotto = tipoProdotto;
+		this.attivo = attivo;
+	}
+	
+	
 	public String getNome() {
 		return nome;
 	}

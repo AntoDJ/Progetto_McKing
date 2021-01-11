@@ -13,6 +13,17 @@ public class Ristorante {
 	private boolean attivo;
 	
 	
+	public Ristorante(String citta, String indirizzo, String numeroDiTelefono, Time orarioApertura, Time orarioChiusura, double distanzaMassima) {
+		super();
+		this.citta = citta;
+		this.indirizzo = indirizzo;
+		this.numeroDiTelefono = numeroDiTelefono;
+		this.orarioApertura = orarioApertura;
+		this.orarioChiusura = orarioChiusura;
+		this.distanzaMassima = distanzaMassima;
+	}
+	
+	
 	public String getCitta() {
 		return citta;
 	}

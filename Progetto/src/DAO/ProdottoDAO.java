@@ -27,11 +27,10 @@ public class ProdottoDAO {
 				Prodotto prodotto = new Prodotto(rs.getString("Nome"), rs.getDouble("Prezzo"), rs.getString("Dimensione"), rs.getString("TipoProdotto"), rs.getBoolean("Attivo"));
 				prodotti.add(prodotto);
 			}
-			;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return prodotti;
-	};
+	}
 
 }

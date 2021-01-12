@@ -13,13 +13,14 @@ public class Utente {
 	
 	
 	public Utente(String cognome, String nome, String indirizzo, String cartaDiCtredito,
-			String numeroDiTelefono) {
+			String numeroDiTelefono, boolean attivo) {
 		super();
 		this.cognome = cognome;
 		this.nome = nome;		
 		this.indirizzo = indirizzo;
 		this.cartaDiCtredito = cartaDiCtredito;
 		this.numeroDiTelefono = numeroDiTelefono;
+		this.attivo = attivo;
 	}
 	
 	

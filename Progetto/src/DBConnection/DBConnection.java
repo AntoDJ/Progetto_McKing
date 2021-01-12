@@ -27,8 +27,9 @@ public class DBConnection {
 		
 	}
 	 
-	 public Connection getConnection() {
-		 return connection;
+	 public Connection getConnection() throws SQLException {
+		connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
+		return connection;
 	 }
 	 
 	 public static DBConnection getInstance() throws SQLException {
@@ -44,9 +45,6 @@ public class DBConnection {
 
 	        return instance;
 	  }
-	 public void avviaConnessione() throws SQLException{
-		 connection = DriverManager.getConnection(url, USERNAME, PASSWORD);		 
-	 }
-	  
+	 	  
 
 }

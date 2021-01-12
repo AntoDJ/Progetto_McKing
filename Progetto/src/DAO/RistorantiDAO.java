@@ -15,13 +15,13 @@ public class RistorantiDAO {
 	
 	
 	//prendo tutti i ristoranti attivi da mostrare sia in VisualizzaRistoranteGUI che in DettagliOrdine
-	public ArrayList<Ristorante> getRstoranti(){		
+	public ArrayList<Ristorante> getRistorantiAttivi(){		
 		ArrayList<Ristorante> ristoranti = new ArrayList<Ristorante>();
 		try {
 			dbconnection = DBConnection.getInstance();
 			connection = dbconnection.getConnection();
 			Statement st = connection.createStatement();			
-			ResultSet rs= st.executeQuery("SELECT * FROM \"Ristorante\" WHERE \"Attivo\"='False';");
+			ResultSet rs= st.executeQuery("SELECT * FROM \"Ristorante\" WHERE \"Attivo\"='TRUE';");
 			
 			
 			while(rs.next()) {

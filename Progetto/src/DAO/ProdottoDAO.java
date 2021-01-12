@@ -16,13 +16,32 @@ public class ProdottoDAO {
 	
 	
 	//funzione che prende tutti i prodotti da inserire del catalogo (in questo modo ho anche la dimensione dei prodotti per "Dettagli"<OrdineProdottoGUI)
-	public ArrayList<Prodotto> getProdotto() {
+	public ArrayList<Prodotto> getProdottiAttivi() {
 		 ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
 		try {
-			dbconnection= DBConnection.getInstance();
+			dbconnection = DBConnection.getInstance();
 			connection = dbconnection.getConnection();		
-			Statement st= connection.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM \"Prodotto\" WHERE \"Attivo\"='True' ;" );
+			Statement st = connection.createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM \"Prodotto\" WHERE \"Attivo\"='TRUE';" );
+			while(rs.next()) {
+				Prodotto prodotto = new Prodotto(rs.getString("Nome"), rs.getDouble("Prezzo"), rs.getString("Dimensione"), rs.getString("TipoProdotto"), rs.getBoolean("Attivo"));
+				prodotti.add(prodotto);
+			}
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return prodotti;
+	}
+	
+	//funzione che prende tutti i prodotti dal database (attivi e non) per poterli gestire in GestioneCatalogoGUI
+	public ArrayList<Prodotto> getAllProdotti(){
+		ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
+		try {
+			dbconnection = DBConnection.getInstance();
+			connection = dbconnection.getConnection();
+			Statement st = connection.createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM \"Prodotto\";");
 			while(rs.next()) {
 				Prodotto prodotto = new Prodotto(rs.getString("Nome"), rs.getDouble("Prezzo"), rs.getString("Dimensione"), rs.getString("TipoProdotto"), rs.getBoolean("Attivo"));
 				prodotti.add(prodotto);

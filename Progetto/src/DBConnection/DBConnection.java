@@ -20,8 +20,6 @@ public class DBConnection {
 		
 		try {
 			 Class.forName("org.postgresql.Driver");
-	         connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
-	       
 		}
 		catch (Exception e) {
 			System.out.println("Errore di connesione ad DB");
@@ -46,6 +44,9 @@ public class DBConnection {
 
 	        return instance;
 	  }
+	 public void avviaConnessione() throws SQLException{
+		 connection = DriverManager.getConnection(url, USERNAME, PASSWORD);		 
+	 }
 	  
 
 }

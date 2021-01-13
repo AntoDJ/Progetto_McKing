@@ -8,31 +8,35 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
+import Controller.Controller;
 import Utility.MenuButton;
 import Utility.SmallFrame;
 
 public class AccessoGUI extends SmallFrame {
 
+	private Controller controller;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AccessoGUI frame = new AccessoGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					AccessoGUI frame = new AccessoGUI();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public AccessoGUI() {
+	public AccessoGUI(Controller controller) {
+		
+		this.controller = controller;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
 		
@@ -61,5 +65,4 @@ public class AccessoGUI extends SmallFrame {
 
 
 	}
-
 }

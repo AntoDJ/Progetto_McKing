@@ -13,19 +13,13 @@ import Entità.Utente;
 import ExceptionsSQL.AccountNonDisponibileException;
 
 public class Controller {
+	private UtenteDAO utenteDao;
 	
-	public static void main(String[] args) throws SQLException {
-		UtenteDAO u1;
-		DBConnection dbconnection= null;
-		Connection connection= null;
-				try {
-					dbconnection = DBConnection.getInstance();
-		            connection = dbconnection.getConnection();
-		            System.out.println(connection);
-		            u1 = new UtenteDAO(connection);
-		            u1.verificaAccesso("pinco.pallo@gmail.com", "Pincolo02");
-		            System.out.println(u1);
-			
+	public Controller(){
+		try {
+		    utenteDao = new UtenteDAO();
+		    utenteDao.verificaAccesso("pinco.pallo@gmail.com", "Pincolo02");
+		    System.out.println(utenteDao);
 		} catch (AccountNonDisponibileException e) {
 				e.printStackTrace();
 		}

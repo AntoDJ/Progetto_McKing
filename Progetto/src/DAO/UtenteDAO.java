@@ -11,17 +11,23 @@ import Entità.Utente;
 import ExceptionsSQL.AccountNonDisponibileException;
 
 public class UtenteDAO {
-	Connection connection;
+	private Connection connection = null;
+	private DBConnection dbconnection = null;
 	
-	public UtenteDAO(Connection connection2) {
-		this.connection= connection2;
+	public UtenteDAO() {
+		try {
+			dbconnection = DBConnection.getInstance();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	
 	public Utente verificaAccesso(String email, String password) throws AccountNonDisponibileException  {		
 		
 		try { 
-			
+		    connection = dbconnection.getConnection();
 			PreparedStatement ps= connection.prepareStatement("SELECT * FROM \"Profilo\" WHERE \"Email\"=? AND \"Password\"=?");
 			ps.setString(1, email);
 			ps.setString(2, password);
@@ -45,7 +51,7 @@ public class UtenteDAO {
 	
 	public void modificaDati(Utente utente, String nuovoNumeroDiTelefono, String nuovaCartaDiCredito, String nuovoIndirizzo) {
 		try { 
-			
+			connection = dbconnection.getConnection();
 			PreparedStatement ps= connection.prepareStatement("UPDATE \"Profilo\" SET \"Indirizzo\" =?, \"CartaDiCredito\" =? \"NumeroDiTelefono\" =? WHERE \"Email\" =?;");
 			ps.setString(1, nuovoIndirizzo);
 			ps.setString(2, nuovaCartaDiCredito);

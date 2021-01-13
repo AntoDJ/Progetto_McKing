@@ -9,26 +9,31 @@ import Utility.MenuButton;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import Controller.Controller;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class OperazioniCatenaGUI extends MediumFrame {
+	private Controller controller;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					OperazioniCatenaGUI frame = new OperazioniCatenaGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					OperazioniCatenaGUI frame = new OperazioniCatenaGUI();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
-	public OperazioniCatenaGUI() {
+	public OperazioniCatenaGUI(Controller controller) {
+		this.controller = controller;
 		getBodyPanel().setLayout(null);
 		
 		getBackButton().setVisible(false);

@@ -21,29 +21,35 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 
+import Controller.Controller;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 
 public class OperazioneRistoranteGUI extends MediumFrame {
-
+	private Controller controller;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					OperazioneRistoranteGUI frame = new OperazioneRistoranteGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					OperazioneRistoranteGUI frame = new OperazioneRistoranteGUI();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public OperazioneRistoranteGUI() {
+	public OperazioneRistoranteGUI(Controller controller) {
+		getBackButton().setVisible(false);
+		this.controller = controller;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
 		

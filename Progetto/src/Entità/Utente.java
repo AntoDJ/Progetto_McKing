@@ -1,24 +1,26 @@
 package Entità;
 
 public class Utente {
+
 	private String cognome;
 	private String nome;
 	private String email;
 	private String password;
 	private String indirizzo;
-	private String cartaDiCtredito;
+	private String cartaDiCredito;
 	private String numeroDiTelefono;
 	private boolean attivo;
 	
 	
 	
-	public Utente(String cognome, String nome, String indirizzo, String cartaDiCtredito,
+	public Utente(String cognome, String nome, String indirizzo, String email,String cartaDiCtredito,
 			String numeroDiTelefono, boolean attivo) {
 		super();
 		this.cognome = cognome;
 		this.nome = nome;		
 		this.indirizzo = indirizzo;
-		this.cartaDiCtredito = cartaDiCtredito;
+		this.email = email;
+		this.cartaDiCredito = cartaDiCtredito;
 		this.numeroDiTelefono = numeroDiTelefono;
 		this.attivo = attivo;
 	}
@@ -54,11 +56,11 @@ public class Utente {
 	public void setIndirizzo(String indirizzo) {
 		this.indirizzo = indirizzo;
 	}
-	public String getCartaDiCtredito() {
-		return cartaDiCtredito;
+	public String getCartaDiCredito() {
+		return cartaDiCredito;
 	}
-	public void setCartaDiCtredito(String cartaDiCtredito) {
-		this.cartaDiCtredito = cartaDiCtredito;
+	public void setCartaDiCredito(String cartaDiCtredito) {
+		this.cartaDiCredito = cartaDiCtredito;
 	}
 	public String getNumeroDiTelefono() {
 		return numeroDiTelefono;
@@ -72,7 +74,12 @@ public class Utente {
 	public void setAttivo(boolean attivo) {
 		this.attivo = attivo;
 	}
-	
+	@Override
+	public String toString() {
+		return "Utente [cognome=" + cognome + ", nome=" + nome + ", email=" + email + ", password=" + password
+				+ ", indirizzo=" + indirizzo + ", cartaDiCredito=" + cartaDiCredito + ", numeroDiTelefono="
+				+ numeroDiTelefono + ", attivo=" + attivo + "]";
+	}
 	
 	
 	

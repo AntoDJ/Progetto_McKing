@@ -7,16 +7,18 @@ public class Prodotto {
 	private String dimensione;
 	private String tipoProdotto;
 	private boolean attivo;
+	private String url;
 	
 	
 	
-	public Prodotto(String nome, double prezzo, String dimensione, String tipoProdotto, boolean attivo) {
+	public Prodotto(String nome, double prezzo, String dimensione, String tipoProdotto, boolean attivo, String url) {
 		super();
 		this.nome = nome;
 		this.prezzo = prezzo;
 		this.dimensione = dimensione;
 		this.tipoProdotto = tipoProdotto;
 		this.attivo = attivo;
+		this.url = url;
 	}
 	
 	
@@ -50,6 +52,13 @@ public class Prodotto {
 	public void setAttivo(boolean attivo) {
 		this.attivo = attivo;
 	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
 	
 	
 

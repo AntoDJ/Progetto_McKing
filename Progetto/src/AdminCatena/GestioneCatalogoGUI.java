@@ -18,7 +18,7 @@ import javax.swing.border.LineBorder;
 import Utility.MediumFrame;
 import Utility.MenuButton;
 import Utility.ModernScrollPane;
-import Utility.ProdottoButton;
+import Utility.ProdottoPanel;
 
 public class GestioneCatalogoGUI extends MediumFrame {
 
@@ -108,7 +108,7 @@ public class GestioneCatalogoGUI extends MediumFrame {
 		int size = 0;
 		for(int i = 0 ; i < 10; i++) {
 			if(i%2 == 0) size += 170;
-			panel.add(new ProdottoButton("Panino #" + i));
+			panel.add(new ProdottoPanel("Panino #" + i));
 		}
 		panel.setPreferredSize(new Dimension(500,size));
 		ModernScrollPane scrollPane = new ModernScrollPane(panel);

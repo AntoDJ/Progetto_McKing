@@ -2,18 +2,26 @@ package Entità;
 
 public class Admin {
 	
-	private double adminCatena;
+	private boolean adminCatena;
 	private String cognome;
 	private String nome;
 	private String email;
 	private String password;
-	private boolean attivo;
+	private boolean attivo;	
 	
+	public Admin(boolean adminCatena, String cognome, String nome, String email, boolean attivo) {
+		super();
+		this.adminCatena = adminCatena;
+		this.cognome = cognome;
+		this.nome = nome;
+		this.email = email;
+		this.attivo = attivo;
+	}
 	
-	public double getAdminCatena() {
+	public boolean isAdminCatena() {
 		return adminCatena;
 	}
-	public void setAdminCatena(double adminCatena) {
+	public void setAdminCatena(boolean adminCatena) {
 		this.adminCatena = adminCatena;
 	}
 	public String getCognome() {
@@ -46,6 +54,13 @@ public class Admin {
 	public void setAttivo(boolean attivo) {
 		this.attivo = attivo;
 	}
+
+	@Override
+	public String toString() {
+		return "Admin [adminCatena=" + adminCatena + ", cognome=" + cognome + ", nome=" + nome + ", email=" + email
+				+ ", password=" + password + ", attivo=" + attivo + "]";
+	}
+	
 	
 	
 

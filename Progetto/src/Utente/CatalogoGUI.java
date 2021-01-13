@@ -12,13 +12,16 @@ import java.awt.ScrollPane;
 
 import javax.swing.SwingConstants;
 
+import Controller.Controller;
 import Utility.MediumFrame;
 import Utility.ModernScrollPane;
-import Utility.ProdottoButton;
+import Utility.ProdottoPanel;
 
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JMenu;
@@ -27,30 +30,32 @@ import javax.swing.JMenuBar;
 import java.awt.Color;
 import java.awt.FlowLayout;
 
-public class CatalogoGUI extends MediumFrame {
-
+public class CatalogoGUI extends MediumFrame {	
+	private Controller controller;
 
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CatalogoGUI frame = new CatalogoGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					CatalogoGUI frame = new CatalogoGUI();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
+	 * @throws IOException 
 	 */
-	public CatalogoGUI() {
+	public CatalogoGUI(Controller controller) throws IOException {
+		this.controller = controller;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
 		
@@ -121,9 +126,9 @@ public class CatalogoGUI extends MediumFrame {
 		
 		//TODO riempire catalogo e aggiungere size variabile
 		int size = 0;
-		for(int i = 0 ; i < 10; i++) {
+		for(int i = 0 ; i < controller.getProdotti().size(); i++) {
 			if(i%2 == 0) size += 170;
-			panel.add(new ProdottoButton("Panino #" + i));
+			panel.add(new ProdottoPanel(controller.getProdotti().get(i).getNome(), controller.getProdotti().get(i).getUrl()));
 		}
 		panel.setPreferredSize(new Dimension(518,size));
 		ModernScrollPane scrollPane = new ModernScrollPane(panel);

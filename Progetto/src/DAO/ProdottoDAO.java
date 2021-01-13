@@ -22,9 +22,9 @@ public class ProdottoDAO {
 			dbconnection = DBConnection.getInstance();
 			connection = dbconnection.getConnection();		
 			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM \"Prodotto\" WHERE \"Attivo\"='TRUE';" );
+			ResultSet rs = st.executeQuery("SELECT * FROM \"Prodotto\" AS \"P\" NATURAL JOIN \"ImmaginiProdotti\" WHERE \"P\".\"Attivo\" = 'true' ORDER BY \"TipoProdotto\" ;" );
 			while(rs.next()) {
-				Prodotto prodotto = new Prodotto(rs.getString("Nome"), rs.getDouble("Prezzo"), rs.getString("Dimensione"), rs.getString("TipoProdotto"), rs.getBoolean("Attivo"));
+				Prodotto prodotto = new Prodotto(rs.getString("Nome"), rs.getDouble("Prezzo"), rs.getString("Dimensione"), rs.getString("TipoProdotto"), rs.getBoolean("Attivo"), rs.getString("URLImmagine"));
 				prodotti.add(prodotto);
 			}
 			connection.close();
@@ -43,7 +43,7 @@ public class ProdottoDAO {
 			Statement st = connection.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM \"Prodotto\";");
 			while(rs.next()) {
-				Prodotto prodotto = new Prodotto(rs.getString("Nome"), rs.getDouble("Prezzo"), rs.getString("Dimensione"), rs.getString("TipoProdotto"), rs.getBoolean("Attivo"));
+				Prodotto prodotto = new Prodotto(rs.getString("Nome"), rs.getDouble("Prezzo"), rs.getString("Dimensione"), rs.getString("TipoProdotto"), rs.getBoolean("Attivo"), rs.getString("URLImmagine"));
 				prodotti.add(prodotto);
 			}
 			connection.close();

@@ -8,16 +8,24 @@ public class Admin {
 	private String email;
 	private String password;
 	private boolean attivo;	
-	
-	public Admin(boolean adminCatena, String cognome, String nome, String email, boolean attivo) {
+	private int idRistorante;
+
+	public Admin(boolean adminCatena, String cognome, String nome, String email, boolean attivo, int idRistorante) {
 		super();
 		this.adminCatena = adminCatena;
 		this.cognome = cognome;
 		this.nome = nome;
 		this.email = email;
 		this.attivo = attivo;
+		this.idRistorante = idRistorante;
 	}
 	
+	public int getIdRistorante() {
+		return idRistorante;
+	}
+	public void setIdRistorante(int idRistorante) {
+		this.idRistorante = idRistorante;
+	}	
 	public boolean isAdminCatena() {
 		return adminCatena;
 	}

@@ -32,7 +32,7 @@ public class AdminDAO {
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();			
 			if (rs.next()== true) {				 
-				Admin profilo= new Admin(rs.getBoolean("AdminCatena"), rs.getString("Cognome"), rs.getString("Nome"), rs.getString("Email"), rs.getBoolean("Attivo"));
+				Admin profilo= new Admin(rs.getBoolean("AdminCatena"), rs.getString("Cognome"), rs.getString("Nome"), rs.getString("Email"), rs.getBoolean("Attivo"), rs.getInt("IdRistorante"));
 				if(profilo.isAttivo()==true) {
 					connection.close();
 					return profilo;

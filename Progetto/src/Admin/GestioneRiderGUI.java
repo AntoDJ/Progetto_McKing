@@ -3,6 +3,7 @@ package Admin;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.sql.SQLException;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -12,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import Controller.Controller;
 import Utility.MediumFrame;
 import Utility.MenuButton;
 import Utility.ModernScrollPane;
@@ -19,28 +21,31 @@ import Utility.OrdinePanel;
 import Utility.RiderPanel;
 import java.awt.Color;
 
-public class GestioneRider extends MediumFrame {
-
+public class GestioneRiderGUI extends MediumFrame {
+	private Controller controller;
+	public JPanel ordinePanel;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GestioneRider frame = new GestioneRider();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					GestioneRider frame = new GestioneRider();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
 	 */
-	public GestioneRider() {
+	public GestioneRiderGUI(Controller controller) throws SQLException {
+		this.controller = controller;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
 		
@@ -56,8 +61,7 @@ public class GestioneRider extends MediumFrame {
 		getBodyPanel().add(domandaLabel);
 		
 		
-		
-		JPanel ordinePanel = new JPanel();
+		ordinePanel = new JPanel();
 		ordinePanel.setBackground(new Color(255, 255, 153));
 		
 		ordinePanel.setLayout(new BoxLayout(ordinePanel, BoxLayout.Y_AXIS));
@@ -67,13 +71,8 @@ public class GestioneRider extends MediumFrame {
 		scrollPane.setBorder(new LineBorder(new Color(255, 51, 0), 2, true));
 		
 		//TODO Bisogna riempire gli ordini
-		int size = 0;
-		for (int i = 0; i< 4; i++) {
-			size += 115;
-			ordinePanel.add(new RiderPanel());
-			ordinePanel.add(Box.createVerticalStrut(10));
-		}
-		ordinePanel.setPreferredSize(new Dimension(100,size));
+		
+		
 		getBodyPanel().add(scrollPane);
 		
 		MenuButton aggiungiButton = new MenuButton("Aggiungi rider");

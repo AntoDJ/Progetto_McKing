@@ -90,9 +90,14 @@ public class OperazioneRistoranteGUI extends MediumFrame {
 		storicoButton.setBounds(120, 338, 167, 28);
 		getBodyPanel().add(storicoButton);
 		
-		MenuButton storicoButton_1 = new MenuButton("Gestisci rider");
-		storicoButton_1.setBounds(387, 338, 167, 28);
-		getBodyPanel().add(storicoButton_1);
+		MenuButton gestisciRiderButton_1 = new MenuButton("Gestisci rider");
+		gestisciRiderButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.gestisciRider();
+			}
+		});
+		gestisciRiderButton_1.setBounds(387, 338, 167, 28);
+		getBodyPanel().add(gestisciRiderButton_1);
 		
 	}
 }

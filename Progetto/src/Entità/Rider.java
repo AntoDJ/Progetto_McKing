@@ -7,7 +7,18 @@ public class Rider {
 	private String numeroDiTelefono;
 	private String tipoMezzo;
 	private boolean attivo;
+	private int idRistorante;
 	
+	public Rider(String cognome, String nome, String numeroDiTelefono, String tipoMezzo, boolean attivo,
+			int idRistorante) {
+		super();
+		this.cognome = cognome;
+		this.nome = nome;
+		this.numeroDiTelefono = numeroDiTelefono;
+		this.tipoMezzo = tipoMezzo;
+		this.attivo = attivo;
+		this.idRistorante = idRistorante;
+	}
 	
 	public String getCognome() {
 		return cognome;
@@ -39,6 +50,20 @@ public class Rider {
 	public void setAttivo(boolean attivo) {
 		this.attivo = attivo;
 	}
+	public int getIdRistorante() {
+		return idRistorante;
+	}
+	public void setIdRistorante(int idRistorante) {
+		this.idRistorante = idRistorante;
+	}
+
+	@Override
+	public String toString() {
+		return "Rider [cognome=" + cognome + ", nome=" + nome + ", numeroDiTelefono=" + numeroDiTelefono
+				+ ", tipoMezzo=" + tipoMezzo + ", attivo=" + attivo + ", idRistorante=" + idRistorante + "]";
+	}
+	
+	
 	
 	
 

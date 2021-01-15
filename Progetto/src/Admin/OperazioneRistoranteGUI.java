@@ -28,6 +28,8 @@ import java.awt.event.ActionEvent;
 
 public class OperazioneRistoranteGUI extends MediumFrame {
 	private Controller controller;
+	public JPanel ordiniAssegnatiPanel;
+	public JPanel ordiniDaAssegnarePanel;
 	/**
 	 * Launch the application.
 	 */
@@ -59,35 +61,38 @@ public class OperazioneRistoranteGUI extends MediumFrame {
 		lblNewLabel.setFont(new Font("Bell MT", Font.PLAIN, 20));
 		getBodyPanel().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Ordini in corso:");
-		lblNewLabel_1.setBounds(10, 37, 158, 33);
-		lblNewLabel_1.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		getBodyPanel().add(lblNewLabel_1);
+		JLabel ordiniAssegnati = new JLabel("Ordini assegnati:");
+		ordiniAssegnati.setBounds(10, 37, 158, 33);
+		ordiniAssegnati.setFont(new Font("Bell MT", Font.BOLD, 16));
+		getBodyPanel().add(ordiniAssegnati);
 		
 		
 		
-		JPanel ordinePanel = new JPanel();
-		ordinePanel.setForeground(Color.BLACK);
-		ordinePanel.setBackground(new Color(255, 255, 153));
-		
-		ordinePanel.setLayout(new BoxLayout(ordinePanel, BoxLayout.Y_AXIS));
+		ordiniAssegnatiPanel = new JPanel();
+		ordiniAssegnatiPanel.setForeground(Color.BLACK);
+		ordiniAssegnatiPanel.setBackground(new Color(255, 255, 153));		
+		ordiniAssegnatiPanel.setLayout(new BoxLayout(ordiniAssegnatiPanel, BoxLayout.Y_AXIS));
 
-		ModernScrollPane scrollPane = new ModernScrollPane(ordinePanel);
-		scrollPane.setBounds(10, 80, 655, 230);
+		ModernScrollPane scrollPane = new ModernScrollPane(ordiniAssegnatiPanel);
+		scrollPane.setBounds(10, 80, 300, 230);
+		scrollPane.setViewportView(ordiniAssegnatiPanel);
 		scrollPane.setBorder(new LineBorder(new Color(255, 51, 0), 2, true));
-		
-		//TODO Bisogna riempire gli ordini
-		int size = 0;
-		for (int i = 0; i< 4; i++) {
-			size += 115;
-			ordinePanel.add(new OrdinePanel());
-			ordinePanel.add(Box.createVerticalStrut(10));
-		}
-		ordinePanel.setPreferredSize(new Dimension(100,size));
 		getBodyPanel().add(scrollPane);
 		
+		
+		ordiniDaAssegnarePanel = new JPanel();
+		ordiniDaAssegnarePanel.setForeground(Color.BLACK);
+		ordiniDaAssegnarePanel.setBackground(new Color(255, 255, 153));		
+		ordiniDaAssegnarePanel.setLayout(new BoxLayout(ordiniDaAssegnarePanel, BoxLayout.Y_AXIS));
+
+		ModernScrollPane scrollPane2 = new ModernScrollPane(ordiniDaAssegnarePanel);
+		scrollPane2.setBounds(350, 80, 300, 230);
+		scrollPane2.setViewportView(ordiniDaAssegnarePanel);
+		scrollPane2.setBorder(new LineBorder(new Color(255, 51, 0), 2, true));
+		getBodyPanel().add(scrollPane2);
+		
 		MenuButton storicoButton = new MenuButton("Storico");
-		storicoButton.setBounds(120, 338, 167, 28);
+		storicoButton.setBounds(73, 338, 167, 28);
 		getBodyPanel().add(storicoButton);
 		
 		MenuButton gestisciRiderButton_1 = new MenuButton("Gestisci rider");
@@ -96,8 +101,13 @@ public class OperazioneRistoranteGUI extends MediumFrame {
 				controller.gestisciRider();
 			}
 		});
-		gestisciRiderButton_1.setBounds(387, 338, 167, 28);
+		gestisciRiderButton_1.setBounds(422, 338, 167, 28);
 		getBodyPanel().add(gestisciRiderButton_1);
+		
+		JLabel ordiniDaAssegnareLabel = new JLabel("Ordini da assegnare:");
+		ordiniDaAssegnareLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
+		ordiniDaAssegnareLabel.setBounds(350, 37, 158, 33);
+		getBodyPanel().add(ordiniDaAssegnareLabel);
 		
 	}
 }

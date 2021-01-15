@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import DAO.AdminDAO;
+import DAO.OrdineDAO;
 import DAO.ProdottoDAO;
 import DAO.RiderDAO;
 import DAO.UtenteDAO;
@@ -28,6 +29,7 @@ import javax.swing.JPanel;
 import Admin.OperazioneRistoranteGUI;
 import AdminCatena.OperazioniCatenaGUI;
 import Entità.Admin;
+import Entità.Ordine;
 import Entità.Prodotto;
 import Entità.Rider;
 import Entità.Utente;
@@ -39,6 +41,7 @@ import Utente.CatalogoGUI;
 import Utility.RiderPanel;
 
 import Utility.ModernScrollPane;
+import Utility.OrdinePanel;
 import Utility.ProdottoPanel;
 
 
@@ -50,6 +53,7 @@ public class Controller {
 	private String tipoAccesso;
 	private ProdottoDAO prodottoDao;
 	private RiderDAO riderDao;
+	private OrdineDAO ordineDao;
 	private ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
 // GUI
 	private AccessoGUI accessoGui;
@@ -70,6 +74,7 @@ public class Controller {
 		    adminDao = new AdminDAO();
 		    prodottoDao = new ProdottoDAO();
 		    riderDao = new RiderDAO();
+		    ordineDao = new OrdineDAO();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}	
@@ -101,6 +106,8 @@ public class Controller {
 			}
 			else { 
 				operazioneRistoranteGui = new OperazioneRistoranteGUI(this);
+				riempiOrdiniAssegnati(adminAttivo.getIdRistorante());
+				riempiOrdiniDaAssegnare(adminAttivo.getIdRistorante());
 				operazioneRistoranteGui.setVisible(true);
 			}							
 		}
@@ -150,7 +157,31 @@ public class Controller {
 			gestioneRiderGui.ordinePanel.add(Box.createVerticalStrut(10));			
 		}
 		gestioneRiderGui.ordinePanel.setPreferredSize(new Dimension(100,size));
+	}
+	
+	public void riempiOrdiniAssegnati(int IdRistorante) {
+		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
+		int size = 0;
+		ordini = ordineDao.getOrdiniAssegnati(IdRistorante);
+		for (int i = 0; i< ordini.size(); i++) {
+			size += 115;
+			operazioneRistoranteGui.ordiniAssegnatiPanel.add(new OrdinePanel(ordini.get(i)));
+			operazioneRistoranteGui.add(Box.createVerticalStrut(10));
+		}
+		  operazioneRistoranteGui.ordiniAssegnatiPanel.setPreferredSize(new Dimension(100,size));
 		
+	}
+	
+	public void riempiOrdiniDaAssegnare(int IdRistorante) {
+		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
+		int size = 0;
+		ordini = ordineDao.getOrdiniDaAssegnare(IdRistorante);
+		for (int i = 0; i< ordini.size(); i++) {
+			size += 115;
+			operazioneRistoranteGui.ordiniDaAssegnarePanel.add(new OrdinePanel(ordini.get(i)));
+			operazioneRistoranteGui.add(Box.createVerticalStrut(10));
+		}
+		  operazioneRistoranteGui.ordiniAssegnatiPanel.setPreferredSize(new Dimension(100,size));
 		
 	}
 	

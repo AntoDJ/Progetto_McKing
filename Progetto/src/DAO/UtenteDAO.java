@@ -41,6 +41,7 @@ public class UtenteDAO {
 					return profilo;
 				}				
 			}
+			ps.close();
 			connection.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -64,6 +65,7 @@ public class UtenteDAO {
 				utente.setCartaDiCredito(nuovaCartaDiCredito == null ? utente.getCartaDiCredito(): nuovaCartaDiCredito);
 				utente.setNumeroDiTelefono(nuovoNumeroDiTelefono == null ? utente.getNumeroDiTelefono() : nuovoNumeroDiTelefono);
 			}
+			ps.close();
 			connection.close();
 		}catch(SQLException e) {
 			e.printStackTrace();

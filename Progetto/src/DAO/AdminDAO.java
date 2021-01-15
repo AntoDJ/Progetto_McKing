@@ -38,6 +38,7 @@ public class AdminDAO {
 					return profilo;
 				}				
 			}
+			ps.close();
 			connection.close();
 		}catch(SQLException e) {
 			e.printStackTrace();

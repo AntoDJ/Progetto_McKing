@@ -29,8 +29,8 @@ public class RistorantiDAO {
 														rs.getTime("OrarioApertura"), rs.getTime("OrarioChiusura"), rs.getDouble("DistanzaMassima"));	
 				ristoranti.add(ristorante);
 			}
+			st.close();
 			connection.close();
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}				

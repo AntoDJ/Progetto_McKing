@@ -1,11 +1,6 @@
-/Controller/
-/DAO/
-<<<<<<< HEAD
-=======
-/Entità/
->>>>>>> branch 'master' of https://github.com/AntoDJ/Progetto_McKing.git
-/General/
-/Utente/
-/Admin/
-/AdminCatena/
 /Utility/
+/Utente/
+/GUI/
+/Entità/
+/DAO/
+/Controller/

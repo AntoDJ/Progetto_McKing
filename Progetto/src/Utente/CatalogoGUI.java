@@ -32,8 +32,15 @@ import java.awt.FlowLayout;
 
 public class CatalogoGUI extends MediumFrame {	
 	private Controller controller;
+	private String tipoAttivo;
+	public JPanel catalogoPanel;
 
-
+	public String getTipoAttivo() {
+		return tipoAttivo;
+	}
+	public JPanel getCatalogoPanel() {
+		return catalogoPanel;
+	}
 	/**
 	 * Launch the application.
 	 */
@@ -113,28 +120,116 @@ public class CatalogoGUI extends MediumFrame {
 				paniniLabel.setVisible(true);
 				paniniImage.setVisible(false);
 			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println("Hai premuto " + paniniLabel.getText() + " e tipo attivo = " + tipoAttivo);
+				if(!paniniLabel.getText().equals(tipoAttivo)) {
+					tipoAttivo = paniniLabel.getText();
+					controller.popolaCatalogo(tipoAttivo, catalogoPanel);
+				}
+			}
 		});
 		paniniLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		paniniLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
 		paniniLabel.setBounds(0, 0, 127, 72);
 		prodottiPanel.add(paniniLabel);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 224));
-		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 35, 25));
-
+		patatineLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				patatineLabel.setVisible(true);
+				//patatineImage.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				patatineLabel.setVisible(true);
+				//patatineImage.setVisible(false);
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println("Hai premuto " + patatineLabel.getText() + " e tipo attivo = " + tipoAttivo);
+				if(!patatineLabel.getText().equals(tipoAttivo)) {
+					tipoAttivo = patatineLabel.getText();
+					controller.popolaCatalogo(tipoAttivo, catalogoPanel);
+				}
+			}
+		});
 		
-		//TODO riempire catalogo e aggiungere size variabile
-		int size = 0;
-		for(int i = 0 ; i < controller.getProdotti().size(); i++) {
-			if(i%2 == 0) size += 170;
-			panel.add(new ProdottoPanel(controller.getProdotti().get(i).getNome(), controller.getProdotti().get(i).getUrl()));
-		}
-		panel.setPreferredSize(new Dimension(518,size));
-		ModernScrollPane scrollPane = new ModernScrollPane(panel);
+		bevandeLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				bevandeLabel.setVisible(true);
+				//bevandeImage.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				patatineLabel.setVisible(true);
+				//bevandeImage.setVisible(false);
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println("Hai premuto " + bevandeLabel.getText() + " e tipo attivo = " + tipoAttivo);
+				if(!bevandeLabel.getText().equals(tipoAttivo)) {
+					tipoAttivo = bevandeLabel.getText();
+					controller.popolaCatalogo(tipoAttivo, catalogoPanel);
+				}
+			}
+		});
+		
+		dessertsLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				dessertsLabel.setVisible(true);
+				//dessertsImage.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				dessertsLabel.setVisible(true);
+				//dessertsImage.setVisible(false);
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println("Hai premuto " + dessertsLabel.getText() + " e tipo attivo = " + tipoAttivo);
+				if(!dessertsLabel.getText().equals(tipoAttivo)) {
+					tipoAttivo = dessertsLabel.getText();
+					controller.popolaCatalogo(tipoAttivo, catalogoPanel);
+				}
+			}
+		});
+		
+		altroLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				altroLabel.setVisible(true);
+				//altroImage.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				altroLabel.setVisible(true);
+				//altroImage.setVisible(false);
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println("Hai premuto " + altroLabel.getText() + " e tipo attivo = " + tipoAttivo);
+				if(!altroLabel.getText().equals(tipoAttivo)) {
+					tipoAttivo = altroLabel.getText();
+					controller.popolaCatalogo(tipoAttivo, catalogoPanel);
+				}
+			}
+		});
+		
+		// inizializzo lo scroll pane e lo popolo attraverso il controller
+		catalogoPanel = new JPanel();
+		catalogoPanel.setBackground(new Color(255, 255, 224));
+		catalogoPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 35, 25));
+
+		// inizializzo il tipoAttivo per riempire il catalogo dal controller
+		tipoAttivo = paniniLabel.getText();
+		
+		ModernScrollPane scrollPane = new ModernScrollPane(catalogoPanel);
 		scrollPane.setBounds(147, 38, 518, 362);
-		scrollPane.add(panel);
-		scrollPane.setViewportView(panel);
+		scrollPane.add(catalogoPanel);
+		scrollPane.setViewportView(catalogoPanel);
 		getBodyPanel().add(scrollPane);
 		
 		getBackButton().setVisible(false);
@@ -157,4 +252,5 @@ public class CatalogoGUI extends MediumFrame {
 		
 		
 	}
+
 }

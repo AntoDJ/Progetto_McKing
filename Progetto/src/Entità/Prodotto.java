@@ -20,7 +20,11 @@ public class Prodotto {
 		this.attivo = attivo;
 		this.url = url;
 	}
-	
+	public Prodotto(String nome, String url) {
+		super();
+		this.nome = nome;
+		this.url = url;
+	}
 	
 	public String getNome() {
 		return nome;

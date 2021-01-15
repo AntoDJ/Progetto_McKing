@@ -17,9 +17,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 import javax.swing.Box;
 
 import Admin.GestioneRiderGUI;
+
+import javax.swing.JPanel;
+
+
 import Admin.OperazioneRistoranteGUI;
 import AdminCatena.OperazioniCatenaGUI;
 import Entità.Admin;
@@ -30,7 +35,12 @@ import ExceptionsSQL.AccountNonDisponibileException;
 import General.AccessoGUI;
 import General.LoginFormGUI;
 import Utente.CatalogoGUI;
+
 import Utility.RiderPanel;
+
+import Utility.ModernScrollPane;
+import Utility.ProdottoPanel;
+
 
 public class Controller {
 	private UtenteDAO utenteDao;
@@ -77,14 +87,10 @@ public class Controller {
 		System.out.println("Tipo " + tipoAccesso + "   Email " + email + "   Password " + password);
 		if(tipoAccesso.equals("Utente")) {
 			utenteAttivo= utenteDao.verificaAccesso(email, password);
-			prodotti = prodottoDao.getProdottiAttivi();
 			catalogoGui = new CatalogoGUI(this); 			
-			loginFormGui.setVisible(false);			
+			loginFormGui.setVisible(false);
+			popolaCatalogo(catalogoGui.getTipoAttivo(), catalogoGui.getCatalogoPanel());
 			catalogoGui.setVisible(true);
-			
-			for(Prodotto i: prodotti) {
-				System.out.println(i.getNome() + i.getUrl());				
-			}
 		}
 		else { 
 			adminAttivo= adminDao.verificaAccesso(email, password);
@@ -103,6 +109,25 @@ public class Controller {
 	public ArrayList<Prodotto> getProdotti(){
 		return prodotti;
 	}
+
+	public void popolaCatalogo(String tipoProdotto, JPanel catalogoPanel) {
+		catalogoPanel.removeAll();
+		int size = 0;
+		prodotti = prodottoDao.getProdottiAttivi(tipoProdotto);
+		for(int i = 0 ; i < prodotti.size(); i++) {
+			if(i%2 == 0) size += 170;
+			try {
+				catalogoGui.catalogoPanel.add(new ProdottoPanel(prodotti.get(i).getNome(), prodotti.get(i).getUrl()));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		catalogoPanel.revalidate();
+		catalogoPanel.repaint();
+		catalogoPanel.setPreferredSize(new Dimension(518,size));
+	}
+
 	
 	public void gestisciRider() {
 		try {

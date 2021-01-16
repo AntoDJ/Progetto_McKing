@@ -8,7 +8,7 @@ public class Prodotto {
 	private String tipoProdotto;
 	private boolean attivo;
 	private String url;
-	
+	private int quantità = 0;
 	
 	
 	public Prodotto(String nome, double prezzo, String dimensione, String tipoProdotto, boolean attivo, String url) {
@@ -62,7 +62,17 @@ public class Prodotto {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
+	public int getQuantità() {
+		return quantità;
+	}
+	public void setQuantità(int quantità) {
+		this.quantità = quantità;
+	}
+	@Override
+	public String toString() {
+		return "Prodotto [nome=" + nome + ", prezzo=" + prezzo + ", dimensione=" + dimensione + ", tipoProdotto="
+				+ tipoProdotto + ", attivo=" + attivo + ", quantità=" + quantità + "]";
+	}
 	
 	
 

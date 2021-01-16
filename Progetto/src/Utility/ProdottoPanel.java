@@ -1,6 +1,7 @@
 package Utility;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -19,22 +20,35 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class ProdottoPanel extends JPanel {
+import Controller.Controller;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class ProdottoPanel extends JPanel {
+	private Controller controller;
 	/**
 	 * Create the panel.
 	 * @throws IOException 
 	 */
 	
 	
-	public ProdottoPanel(String nomeProdotto, String URL) throws IOException {
+	public ProdottoPanel(String nomeProdotto, String URL, Controller controller) throws IOException {
 		super();
-				
+		this.controller = controller;
+		
 		setBounds( 0, 0, 206, 142);		
 		setPreferredSize(new Dimension(206,142));
 		setLayout(null);
 		
 		JLabel prodottoLabel = new JLabel(String.format("<html><body style=\"text-align: justify;  text-justify: inter-word;\">%s</body></html>",nomeProdotto));
+		prodottoLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				controller.prodottoSelezionato(nomeProdotto);
+			}
+		});
+		prodottoLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		prodottoLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		prodottoLabel.setBackground(Color.white);
 		prodottoLabel.setOpaque(true);

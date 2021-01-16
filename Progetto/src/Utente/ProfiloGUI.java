@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import Controller.Controller;
+import Entità.Utente;
 import Utility.MenuButton;
 import Utility.SmallFrame;
 
@@ -19,33 +21,35 @@ public class ProfiloGUI extends SmallFrame {
 	private JTextField numeroDiTelefonoTextField;
 	private JTextField indirizzoTextField;
 	private JTextField cartaDiCreditoTextField;
-	private JTextField countruCodeTextField;
+	private JTextField countryCodeTextField;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private Controller controller;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ProfiloGUI frame = new ProfiloGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					ProfiloGUI frame = new ProfiloGUI();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
+	 * @param controller 
+	 * @param utenteAttivo 
 	 */
-	public ProfiloGUI() {
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public ProfiloGUI(Utente utenteAttivo, Controller controller) {
+		this.controller = controller;
 		getBodyPanel().setLayout(null);
 		getBodyPanel().setBackground(new Color(255, 255, 153));
 		
@@ -57,37 +61,37 @@ public class ProfiloGUI extends SmallFrame {
 		etichettePanel.setLayout(null);
 		
 		JLabel infoLabel = new JLabel("I tuoi dati:");
-		infoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		infoLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
 		infoLabel.setBounds(10, 10, 93, 19);
 		etichettePanel.add(infoLabel);
 		
 		JLabel nomeLabel = new JLabel("Nome");
-		nomeLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		nomeLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
 		nomeLabel.setBounds(10, 39, 93, 19);
 		etichettePanel.add(nomeLabel);
 		
 		JLabel cognomeLabel = new JLabel("Cognome");
-		cognomeLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		cognomeLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
 		cognomeLabel.setBounds(10, 68, 93, 19);
 		etichettePanel.add(cognomeLabel);
 		
 		JLabel emailLabel = new JLabel("Email");
-		emailLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		emailLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
 		emailLabel.setBounds(10, 96, 93, 19);
 		etichettePanel.add(emailLabel);
 		
 		JLabel numeroDiTelefonoLabel = new JLabel("Numero di telefono");
-		numeroDiTelefonoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		numeroDiTelefonoLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
 		numeroDiTelefonoLabel.setBounds(10, 125, 136, 19);
 		etichettePanel.add(numeroDiTelefonoLabel);
 		
 		JLabel indirizzoLabel = new JLabel("Indirizzo");
-		indirizzoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		indirizzoLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
 		indirizzoLabel.setBounds(10, 154, 93, 19);
 		etichettePanel.add(indirizzoLabel);
 		
 		JLabel cartaDiCreditoLabel = new JLabel("Carta di credito");
-		cartaDiCreditoLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		cartaDiCreditoLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
 		cartaDiCreditoLabel.setBounds(10, 183, 129, 19);
 		etichettePanel.add(cartaDiCreditoLabel);
 		
@@ -97,36 +101,39 @@ public class ProfiloGUI extends SmallFrame {
 		getBodyPanel().add(dettagliPanel);
 		dettagliPanel.setLayout(null);
 		
-		JLabel contenitoreNomeLabel = new JLabel("");
-		contenitoreNomeLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		JLabel contenitoreNomeLabel = new JLabel(utenteAttivo.getNome());
+		contenitoreNomeLabel.setFont(new Font("Bell MT", Font.ITALIC, 16));
 		contenitoreNomeLabel.setBounds(10, 35, 283, 19);
 		dettagliPanel.add(contenitoreNomeLabel);
 		
-		JLabel contenitoreCognomeLabel = new JLabel("");
-		contenitoreCognomeLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		JLabel contenitoreCognomeLabel = new JLabel(utenteAttivo.getCognome());
+		contenitoreCognomeLabel.setFont(new Font("Bell MT", Font.ITALIC, 16));
 		contenitoreCognomeLabel.setBounds(10, 60, 283, 19);
 		dettagliPanel.add(contenitoreCognomeLabel);
 		
-		JLabel contenitoreEmailLabel = new JLabel("");
-		contenitoreEmailLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		JLabel contenitoreEmailLabel = new JLabel(utenteAttivo.getEmail());
+		contenitoreEmailLabel.setFont(new Font("Bell MT", Font.ITALIC, 16));
 		contenitoreEmailLabel.setBounds(10, 88, 283, 19);
 		dettagliPanel.add(contenitoreEmailLabel);
 		
-		numeroDiTelefonoTextField = new JTextField();
-		numeroDiTelefonoTextField.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		numeroDiTelefonoTextField.setToolTipText("Numero di telefono: es. 3658965845");
+		numeroDiTelefonoTextField = new JTextField("");
+		if(!utenteAttivo.getNumeroDiTelefono().isBlank()) numeroDiTelefonoLabel.setText(utenteAttivo.getNumeroDiTelefono());
+		numeroDiTelefonoTextField.setFont(new Font("Bell MT", Font.ITALIC, 16));
+		numeroDiTelefonoTextField.setToolTipText("Esempio Numero di telefono: 3658965845");
 		numeroDiTelefonoTextField.setBounds(93, 127, 200, 19);
 		dettagliPanel.add(numeroDiTelefonoTextField);
 		numeroDiTelefonoTextField.setColumns(10);
 		
-		indirizzoTextField = new JTextField();
-		indirizzoTextField.setToolTipText("Indirizzo: es. Via Roma, 7");
+		indirizzoTextField = new JTextField("");
+		if(!utenteAttivo.getIndirizzo().isBlank()) indirizzoLabel.setText(utenteAttivo.getIndirizzo());
+		indirizzoTextField.setToolTipText("Esempio Indirizzo: Via Roma, 7");
 		indirizzoTextField.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		indirizzoTextField.setColumns(10);
 		indirizzoTextField.setBounds(10, 156, 283, 19);
 		dettagliPanel.add(indirizzoTextField);
 		
-		cartaDiCreditoTextField = new JTextField();
+		cartaDiCreditoTextField = new JTextField("");
+		if(!utenteAttivo.getCartaDiCredito().isBlank()) cartaDiCreditoLabel.setText(utenteAttivo.getCartaDiCredito());
 		cartaDiCreditoTextField.setHorizontalAlignment(SwingConstants.CENTER);
 		cartaDiCreditoTextField.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		cartaDiCreditoTextField.setColumns(10);
@@ -137,11 +144,11 @@ public class ProfiloGUI extends SmallFrame {
 		btnNewButton.setBounds(195, 225, 98, 21);
 		dettagliPanel.add(btnNewButton);
 		
-		countruCodeTextField = new JTextField();
-		countruCodeTextField.setHorizontalAlignment(SwingConstants.CENTER);
-		countruCodeTextField.setBounds(42, 127, 41, 19);
-		dettagliPanel.add(countruCodeTextField);
-		countruCodeTextField.setColumns(10);
+		countryCodeTextField = new JTextField();
+		countryCodeTextField.setHorizontalAlignment(SwingConstants.CENTER);
+		countryCodeTextField.setBounds(42, 127, 41, 19);
+		dettagliPanel.add(countryCodeTextField);
+		countryCodeTextField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("+");
 		lblNewLabel.setFont(new Font("Bell MT", Font.BOLD, 16));

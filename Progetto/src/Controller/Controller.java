@@ -1,5 +1,6 @@
 package Controller;
 
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,7 +36,8 @@ import ExceptionsSQL.AccountNonDisponibileException;
 import General.AccessoGUI;
 import General.LoginFormGUI;
 import Utente.CatalogoGUI;
-
+import Utente.DettagliOrdineProdottoGUI;
+import Utente.ProfiloGUI;
 import Utility.RiderPanel;
 
 import Utility.ModernScrollPane;
@@ -50,11 +52,14 @@ public class Controller {
 	private String tipoAccesso;
 	private ProdottoDAO prodottoDao;
 	private RiderDAO riderDao;
-	private ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
+	private ArrayList<Prodotto> prodotti;
+	private ArrayList<Prodotto> carrello;
 // GUI
 	private AccessoGUI accessoGui;
 	private LoginFormGUI loginFormGui;
 	private CatalogoGUI catalogoGui;
+	private ProfiloGUI profiloGui;
+	private DettagliOrdineProdottoGUI dettagliOrdineProdottoGui;
 	private OperazioneRistoranteGUI operazioneRistoranteGui;
 	private OperazioniCatenaGUI operazioniCatenaGui;
 	private GestioneRiderGUI gestioneRiderGui;
@@ -89,7 +94,9 @@ public class Controller {
 			utenteAttivo= utenteDao.verificaAccesso(email, password);
 			catalogoGui = new CatalogoGUI(this); 			
 			loginFormGui.setVisible(false);
+			//Preparo la finestra prima di aprirla e creo il carrello dell'utente
 			popolaCatalogo(catalogoGui.getTipoAttivo(), catalogoGui.getCatalogoPanel());
+			carrello = new ArrayList<Prodotto>();
 			catalogoGui.setVisible(true);
 		}
 		else { 
@@ -117,7 +124,7 @@ public class Controller {
 		for(int i = 0 ; i < prodotti.size(); i++) {
 			if(i%2 == 0) size += 170;
 			try {
-				catalogoGui.catalogoPanel.add(new ProdottoPanel(prodotti.get(i).getNome(), prodotti.get(i).getUrl()));
+				catalogoGui.catalogoPanel.add(new ProdottoPanel(prodotti.get(i).getNome(), prodotti.get(i).getUrl(), this));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -153,9 +160,224 @@ public class Controller {
 		
 		
 	}
+
+	public void prodottoSelezionato(String nomeProdotto) {
+		ArrayList<Prodotto> dimensioniProdottoSelezionato = prodottoDao.getProdotto(nomeProdotto);
+		dettagliOrdineProdottoGui = new DettagliOrdineProdottoGUI(dimensioniProdottoSelezionato, this);
+		dettagliOrdineProdottoGui.setVisible(true);
+	}
+
+	public void prodottoAggiunto(Prodotto prodottoCarrello) {
+		carrello.add(prodottoCarrello);
+		System.out.println("Prodotto Aggiunto Al Carrello");
+		//chiudi
+	}
+
+	public void mostraProfilo() {
+		catalogoGui.setVisible(false);
+		profiloGui = new ProfiloGUI(utenteAttivo,this);
+		profiloGui.setVisible(true);
+	}
 	
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 	
 	

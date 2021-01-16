@@ -18,7 +18,6 @@ public class AdminDAO {
 		try {
 			dbconnection = DBConnection.getInstance();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 	}
@@ -31,13 +30,14 @@ public class AdminDAO {
 			ps.setString(1, email);
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();			
-			if (rs.next()== true) {				 
-				Admin profilo= new Admin(rs.getBoolean("AdminCatena"), rs.getString("Cognome"), rs.getString("Nome"), rs.getString("Email"), rs.getBoolean("Attivo"), rs.getInt("IdRistorante"));
-				if(profilo.isAttivo()==true) {
+			if (rs.next() == true) {				 
+				Admin profilo = new Admin(rs.getBoolean("AdminCatena"), rs.getString("Cognome"), rs.getString("Nome"), rs.getString("Email"), rs.getBoolean("Attivo"), rs.getInt("IdRistorante"));
+				if(profilo.isAttivo() == true) {
 					connection.close();
 					return profilo;
 				}				
 			}
+			ps.close();
 			connection.close();
 		}catch(SQLException e) {
 			e.printStackTrace();

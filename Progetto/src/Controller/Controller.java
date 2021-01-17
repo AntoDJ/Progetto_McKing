@@ -178,6 +178,21 @@ public class Controller {
 		profiloGui = new ProfiloGUI(utenteAttivo,this);
 		profiloGui.setVisible(true);
 	}
+
+	public void modificaNumeroDiTelefono(String text) throws SQLException {
+		utenteDao.modificaNumero(utenteAttivo.getEmail(), text);
+		utenteAttivo.setNumeroDiTelefono(text);
+	}
+
+	public void modificaIndirizzo(String text) throws SQLException{
+		utenteDao.modificaIndirizzo(utenteAttivo.getEmail(), text);
+		utenteAttivo.setIndirizzo(text);
+	}
+	
+	public void modificaCartaDiCredito(String text) throws SQLException{
+		utenteDao.modificaCarta(utenteAttivo.getEmail(), text);
+		utenteAttivo.setIndirizzo(text);
+	}
 	
 	
 

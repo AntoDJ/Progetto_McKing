@@ -53,7 +53,7 @@ public class UtenteDAO {
 	public void modificaDati(Utente utente, String nuovoNumeroDiTelefono, String nuovaCartaDiCredito, String nuovoIndirizzo) {
 		try { 
 			connection = dbconnection.getConnection();
-			PreparedStatement ps= connection.prepareStatement("UPDATE \"Profilo\" SET \"Indirizzo\" = ?, \"CartaDiCredito\" = ?, \"NumeroDiTelefono\" = ? WHERE \"Email\" = ?;");
+			PreparedStatement ps = connection.prepareStatement("UPDATE \"Profilo\" SET \"Indirizzo\" = ?, \"CartaDiCredito\" = ?, \"NumeroDiTelefono\" = ? WHERE \"Email\" = ?;");
 			ps.setString(1, nuovoIndirizzo == null ? utente.getIndirizzo() : nuovoIndirizzo);
 			ps.setString(2, nuovaCartaDiCredito == null ? utente.getCartaDiCredito(): nuovaCartaDiCredito);
 			ps.setString(3, nuovoNumeroDiTelefono == null ? utente.getNumeroDiTelefono() : nuovoNumeroDiTelefono);
@@ -72,6 +72,38 @@ public class UtenteDAO {
 			//Avremmo potuto trattare meglio le regex
 		}
 		
+	}
+
+
+	public void modificaNumero(String email, String nuovoNumeroDiTelefono) throws SQLException {
+		connection = dbconnection.getConnection();
+		PreparedStatement ps = connection.prepareStatement("UPDATE \"Profilo\" SET \"NumeroDiTelefono\" = ? WHERE \"Email\" = ?;");
+		ps.setString(1, nuovoNumeroDiTelefono);
+		ps.setString(2, email);
+		int updateEffettuato = ps.executeUpdate();
+		System.out.println(updateEffettuato == 1 ? "Update eseguito" : "Update non eseguito");
+		ps.close();
+		connection.close();
+	}
+	public void modificaCarta(String email, String nuovoCartaDiCredito) throws SQLException {
+		connection = dbconnection.getConnection();
+		PreparedStatement ps = connection.prepareStatement("UPDATE \"Profilo\" SET \"CartaDiCredito\" = ? WHERE \"Email\" = ?;");
+		ps.setString(1, nuovoCartaDiCredito);
+		ps.setString(2, email);
+		int updateEffettuato = ps.executeUpdate();
+		System.out.println(updateEffettuato == 1 ? "Update eseguito" : "Update non eseguito");
+		ps.close();
+		connection.close();
+	}
+	public void modificaIndirizzo(String email, String nuovoIndirizzo) throws SQLException {
+		connection = dbconnection.getConnection();
+		PreparedStatement ps = connection.prepareStatement("UPDATE \"Profilo\" SET \"Indirizzo\" = ? WHERE \"Email\" = ?;");
+		ps.setString(1, nuovoIndirizzo);
+		ps.setString(2, email);
+		int updateEffettuato = ps.executeUpdate();
+		System.out.println(updateEffettuato == 1 ? "Update eseguito" : "Update non eseguito");
+		ps.close();
+		connection.close();
 	}
 
 }

@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
@@ -16,15 +18,18 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ProfiloGUI extends SmallFrame {
 	private JTextField numeroDiTelefonoTextField;
 	private JTextField indirizzoTextField;
 	private JTextField cartaDiCreditoTextField;
-	private JTextField countryCodeTextField;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
 	private Controller controller;
 
 	/**
@@ -56,7 +61,7 @@ public class ProfiloGUI extends SmallFrame {
 		//TODO inserire dati profilo
 		
 		JPanel etichettePanel = new JPanel();
-		etichettePanel.setBounds(0, 0, 146, 256);
+		etichettePanel.setBounds(0, 0, 152, 256);
 		getBodyPanel().add(etichettePanel);
 		etichettePanel.setLayout(null);
 		
@@ -81,120 +86,148 @@ public class ProfiloGUI extends SmallFrame {
 		etichettePanel.add(emailLabel);
 		
 		JLabel numeroDiTelefonoLabel = new JLabel("Numero di telefono");
-		numeroDiTelefonoLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
-		numeroDiTelefonoLabel.setBounds(10, 125, 136, 19);
+		numeroDiTelefonoLabel.setFont(new Font("Dialog", Font.BOLD, 14));
+		numeroDiTelefonoLabel.setBounds(10, 137, 136, 19);
 		etichettePanel.add(numeroDiTelefonoLabel);
 		
 		JLabel indirizzoLabel = new JLabel("Indirizzo");
 		indirizzoLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
-		indirizzoLabel.setBounds(10, 154, 93, 19);
+		indirizzoLabel.setBounds(10, 167, 93, 19);
 		etichettePanel.add(indirizzoLabel);
 		
 		JLabel cartaDiCreditoLabel = new JLabel("Carta di credito");
 		cartaDiCreditoLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
-		cartaDiCreditoLabel.setBounds(10, 183, 129, 19);
+		cartaDiCreditoLabel.setBounds(10, 208, 129, 19);
 		etichettePanel.add(cartaDiCreditoLabel);
 		
 		JPanel dettagliPanel = new JPanel();
 		dettagliPanel.setBackground(new Color(255, 255, 153));
-		dettagliPanel.setBounds(147, 0, 303, 256);
+		dettagliPanel.setBounds(150, 0, 300, 256);
 		getBodyPanel().add(dettagliPanel);
 		dettagliPanel.setLayout(null);
 		
 		JLabel contenitoreNomeLabel = new JLabel(utenteAttivo.getNome());
 		contenitoreNomeLabel.setFont(new Font("Bell MT", Font.ITALIC, 16));
-		contenitoreNomeLabel.setBounds(10, 35, 283, 19);
+		contenitoreNomeLabel.setBounds(10, 38, 283, 19);
 		dettagliPanel.add(contenitoreNomeLabel);
 		
 		JLabel contenitoreCognomeLabel = new JLabel(utenteAttivo.getCognome());
 		contenitoreCognomeLabel.setFont(new Font("Bell MT", Font.ITALIC, 16));
-		contenitoreCognomeLabel.setBounds(10, 60, 283, 19);
+		contenitoreCognomeLabel.setBounds(10, 64, 283, 19);
 		dettagliPanel.add(contenitoreCognomeLabel);
 		
 		JLabel contenitoreEmailLabel = new JLabel(utenteAttivo.getEmail());
 		contenitoreEmailLabel.setFont(new Font("Bell MT", Font.ITALIC, 16));
-		contenitoreEmailLabel.setBounds(10, 88, 283, 19);
+		contenitoreEmailLabel.setBounds(10, 92, 283, 19);
 		dettagliPanel.add(contenitoreEmailLabel);
 		
 		numeroDiTelefonoTextField = new JTextField("");
-		if(!utenteAttivo.getNumeroDiTelefono().isBlank()) numeroDiTelefonoLabel.setText(utenteAttivo.getNumeroDiTelefono());
+		numeroDiTelefonoTextField.setEditable(false);
+		if(utenteAttivo.getNumeroDiTelefono() != null) numeroDiTelefonoTextField.setText(utenteAttivo.getNumeroDiTelefono());
 		numeroDiTelefonoTextField.setFont(new Font("Bell MT", Font.ITALIC, 16));
 		numeroDiTelefonoTextField.setToolTipText("Esempio Numero di telefono: 3658965845");
-		numeroDiTelefonoTextField.setBounds(93, 127, 200, 19);
+		numeroDiTelefonoTextField.setBounds(10, 137, 173, 22);
 		dettagliPanel.add(numeroDiTelefonoTextField);
 		numeroDiTelefonoTextField.setColumns(10);
 		
 		indirizzoTextField = new JTextField("");
-		if(!utenteAttivo.getIndirizzo().isBlank()) indirizzoLabel.setText(utenteAttivo.getIndirizzo());
+		indirizzoTextField.setEditable(false);
+		if(utenteAttivo.getIndirizzo() != null) indirizzoTextField.setText(utenteAttivo.getIndirizzo());
 		indirizzoTextField.setToolTipText("Esempio Indirizzo: Via Roma, 7");
 		indirizzoTextField.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		indirizzoTextField.setColumns(10);
-		indirizzoTextField.setBounds(10, 156, 283, 19);
+		indirizzoTextField.setBounds(10, 170, 173, 22);
 		dettagliPanel.add(indirizzoTextField);
 		
 		cartaDiCreditoTextField = new JTextField("");
-		if(!utenteAttivo.getCartaDiCredito().isBlank()) cartaDiCreditoLabel.setText(utenteAttivo.getCartaDiCredito());
+		cartaDiCreditoTextField.setEditable(false);
+		if(utenteAttivo.getCartaDiCredito() != null) cartaDiCreditoTextField.setText(utenteAttivo.getCartaDiCredito());
 		cartaDiCreditoTextField.setHorizontalAlignment(SwingConstants.CENTER);
 		cartaDiCreditoTextField.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		cartaDiCreditoTextField.setColumns(10);
-		cartaDiCreditoTextField.setBounds(10, 185, 50, 19);
+		cartaDiCreditoTextField.setBounds(10, 209, 173, 19);
 		dettagliPanel.add(cartaDiCreditoTextField);
 		
-		MenuButton btnNewButton = new MenuButton("Modifica");
-		btnNewButton.setBounds(195, 225, 98, 21);
-		dettagliPanel.add(btnNewButton);
+		MenuButton modificaTelefonoButton = new MenuButton("Modifica");
+		modificaTelefonoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(!modificaTelefonoButton.isPressed()) {
+					modificaTelefonoButton.setPressed(true);
+					numeroDiTelefonoTextField.setEditable(true);
+					modificaTelefonoButton.setText("Salva");
+				}
+				else {
+					modificaTelefonoButton.setPressed(false);
+					numeroDiTelefonoTextField.setEditable(false);
+					modificaTelefonoButton.setText("Modifica");
+					if(!numeroDiTelefonoTextField.getText().equals(utenteAttivo.getNumeroDiTelefono())) {
+						try {
+							controller.modificaNumeroDiTelefono(numeroDiTelefonoTextField.getText());
+						} catch(SQLException err){
+							JDialog errorDialog = new JDialog();
+							errorDialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+							JOptionPane.showMessageDialog(errorDialog, "Numero inserito non valido");
+						}
+					}
+				}
+			}
+		});
+		modificaTelefonoButton.setBounds(193, 138, 92, 21);
+		dettagliPanel.add(modificaTelefonoButton);
 		
-		countryCodeTextField = new JTextField();
-		countryCodeTextField.setHorizontalAlignment(SwingConstants.CENTER);
-		countryCodeTextField.setBounds(42, 127, 41, 19);
-		dettagliPanel.add(countryCodeTextField);
-		countryCodeTextField.setColumns(10);
+		MenuButton modificaIndirizzo = new MenuButton("Modifica");
+		modificaIndirizzo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(!modificaIndirizzo.isPressed()) {
+					modificaIndirizzo.setPressed(true);
+					indirizzoTextField.setEditable(true);
+					modificaIndirizzo.setText("Salva");
+				}
+				else {
+					modificaIndirizzo.setPressed(false);
+					indirizzoTextField.setEditable(false);
+					modificaIndirizzo.setText("Modifica");
+					if(!indirizzoTextField.getText().equals(utenteAttivo.getNumeroDiTelefono())) {
+						try {
+							controller.modificaIndirizzo(indirizzoTextField.getText());
+						} catch(SQLException err){
+							JDialog errorDialog = new JDialog();
+							errorDialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+							JOptionPane.showMessageDialog(errorDialog, "Numero inserito non valido");
+						}
+					}
+				}
+			}
+		});
+		modificaIndirizzo.setBounds(193, 171, 92, 21);
+		dettagliPanel.add(modificaIndirizzo);
 		
-		JLabel lblNewLabel = new JLabel("+");
-		lblNewLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(4, 117, 41, 37);
-		dettagliPanel.add(lblNewLabel);
-		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		textField.setColumns(10);
-		textField.setBounds(87, 185, 50, 19);
-		dettagliPanel.add(textField);
-		
-		textField_1 = new JTextField();
-		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_1.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		textField_1.setColumns(10);
-		textField_1.setBounds(164, 185, 50, 19);
-		dettagliPanel.add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_2.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		textField_2.setColumns(10);
-		textField_2.setBounds(241, 185, 50, 19);
-		dettagliPanel.add(textField_2);
-		
-		JLabel trattinoNewLabel = new JLabel("-");
-		trattinoNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		trattinoNewLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		trattinoNewLabel.setBounds(52, 185, 45, 12);
-		dettagliPanel.add(trattinoNewLabel);
-		
-		JLabel trattinoNewLabel_1 = new JLabel("-");
-		trattinoNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		trattinoNewLabel_1.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		trattinoNewLabel_1.setBounds(130, 185, 45, 12);
-		dettagliPanel.add(trattinoNewLabel_1);
-		
-		JLabel trattinoNewLabel_2 = new JLabel("-");
-		trattinoNewLabel_2.setVerticalAlignment(SwingConstants.BOTTOM);
-		trattinoNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		trattinoNewLabel_2.setFont(new Font("Bell MT", Font.PLAIN, 16));
-		trattinoNewLabel_2.setBounds(204, 185, 45, 15);
-		dettagliPanel.add(trattinoNewLabel_2);
+		MenuButton modificaCartaDiCredito = new MenuButton("Modifica");
+		modificaCartaDiCredito.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(!modificaCartaDiCredito.isPressed()) {
+					modificaCartaDiCredito.setPressed(true);
+					cartaDiCreditoTextField.setEditable(true);
+					modificaCartaDiCredito.setText("Salva");
+				}
+				else {
+					modificaCartaDiCredito.setPressed(false);
+					cartaDiCreditoTextField.setEditable(false);
+					modificaCartaDiCredito.setText("Modifica");
+					if(!cartaDiCreditoTextField.getText().equals(utenteAttivo.getNumeroDiTelefono())) {
+						try {
+							controller.modificaCartaDiCredito(cartaDiCreditoTextField.getText());
+						} catch(SQLException err){
+							JDialog errorDialog = new JDialog();
+							errorDialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+							JOptionPane.showMessageDialog(errorDialog, "Numero inserito non valido");
+						}
+					}
+				}
+			}
+		});
+		modificaCartaDiCredito.setBounds(193, 208, 92, 21);
+		dettagliPanel.add(modificaCartaDiCredito);
 
 	}
 }

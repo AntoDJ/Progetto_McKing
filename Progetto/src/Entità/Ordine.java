@@ -10,23 +10,22 @@ public class Ordine {
 	private String indirizzoConsegna;
 	private boolean consegnato;
 	private double prezzoTotale;
-	private int idRistorante;
-	private int idRider;
-	private int idProfilo;
+	private Rider rider;
+	private Utente utente;
 	
 	
 	public Ordine(Date dataOrdine, Time orarioPrevisto, String indirizzoConsegna, boolean consegnato,
-			double prezzoTotale, int idRistorante, int idRider, int idProfilo) {
+			double prezzoTotale, Rider rider, Utente utente) {
 		super();
 		this.dataOrdine = dataOrdine;
 		this.orarioPrevisto = orarioPrevisto;
 		this.indirizzoConsegna = indirizzoConsegna;
 		this.consegnato = consegnato;
 		this.prezzoTotale = prezzoTotale;
-		this.idRistorante = idRistorante;
-		this.idRider = idRider;
-		this.idProfilo = idProfilo;
+		this.rider = rider;
+		this.utente = utente;
 	}
+	
 	
 	public Date getDataOrdine() {
 		return dataOrdine;
@@ -58,30 +57,24 @@ public class Ordine {
 	public void setPrezzoTotale(double prezzoTotale) {
 		this.prezzoTotale = prezzoTotale;
 	}
-	public int getIdRistorante() {
-		return idRistorante;
+	public Rider getRider() {
+		return rider;
 	}
-	public void setIdRistorante(int idRistorante) {
-		this.idRistorante = idRistorante;
+	public void setRider(Rider rider) {
+		this.rider = rider;
 	}
-	public int getIdRider() {
-		return idRider;
+	public Utente getUtente() {
+		return utente;
 	}
-	public void setIdRider(int idRider) {
-		this.idRider = idRider;
+	public void setUtente(Utente utente) {
+		this.utente = utente;
 	}
-	public int getIdProfilo() {
-		return idProfilo;
-	}
-	public void setIdProfilo(int idProfilo) {
-		this.idProfilo = idProfilo;
-	}
+
 
 	@Override
 	public String toString() {
 		return "Ordine [dataOrdine=" + dataOrdine + ", orarioPrevisto=" + orarioPrevisto + ", indirizzoConsegna="
-				+ indirizzoConsegna + ", consegnato=" + consegnato + ", prezzoTotale=" + prezzoTotale
-				+ ", idRistorante=" + idRistorante + ", idRider=" + idRider + ", idProfilo=" + idProfilo + "]";
+				+ indirizzoConsegna + ", consegnato=" + consegnato + ", prezzoTotale=" + prezzoTotale + "]";
 	}
 	
 	

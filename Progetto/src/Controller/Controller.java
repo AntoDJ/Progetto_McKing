@@ -41,7 +41,8 @@ import Utente.CatalogoGUI;
 import Utility.RiderPanel;
 
 import Utility.ModernScrollPane;
-import Utility.OrdinePanel;
+import Utility.OrdineAssegnatoPanel;
+import Utility.OrdineDaAssegnarePanel;
 import Utility.ProdottoPanel;
 
 
@@ -160,33 +161,47 @@ public class Controller {
 	}
 	
 	public void riempiOrdiniAssegnati(int IdRistorante) {
-		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
+		ArrayList<Ordine> ordini ;
 		int size = 0;
 		ordini = ordineDao.getOrdiniAssegnati(IdRistorante);
 		for (int i = 0; i< ordini.size(); i++) {
 			size += 115;
-			operazioneRistoranteGui.ordiniAssegnatiPanel.add(new OrdinePanel(ordini.get(i)));
+			operazioneRistoranteGui.ordiniAssegnatiPanel.add(new OrdineAssegnatoPanel(ordini.get(i)));
 			operazioneRistoranteGui.add(Box.createVerticalStrut(10));
 		}
 		  operazioneRistoranteGui.ordiniAssegnatiPanel.setPreferredSize(new Dimension(100,size));
 		
 	}
 	
-	public void riempiOrdiniDaAssegnare(int IdRistorante) {
+	public void riempiOrdiniDaAssegnare(int IdRistorante)  {
 		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
 		int size = 0;
 		ordini = ordineDao.getOrdiniDaAssegnare(IdRistorante);
 		for (int i = 0; i< ordini.size(); i++) {
 			size += 115;
-			operazioneRistoranteGui.ordiniDaAssegnarePanel.add(new OrdinePanel(ordini.get(i)));
-			operazioneRistoranteGui.add(Box.createVerticalStrut(10));
+			try {
+				operazioneRistoranteGui.ordiniDaAssegnarePanel.add(new OrdineDaAssegnarePanel(ordini.get(i), riderDao.getRider(adminAttivo), this));
+				operazioneRistoranteGui.add(Box.createVerticalStrut(10));
+			} catch (SQLException e) {				
+				e.printStackTrace();
+				System.out.println("Non ci sono rider disponibili");
+			}
 		}
-		  operazioneRistoranteGui.ordiniAssegnatiPanel.setPreferredSize(new Dimension(100,size));
+		  operazioneRistoranteGui.ordiniDaAssegnarePanel.setPreferredSize(new Dimension(100,size));
 		
 	}
 	
 	
-
+	public void riderScelto(Ordine ordine) {
+		
+	
+		
+	}
+	
+	
+	
+	
+	
 }
 	
 	

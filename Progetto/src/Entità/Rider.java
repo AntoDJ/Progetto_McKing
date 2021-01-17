@@ -59,9 +59,10 @@ public class Rider {
 
 	@Override
 	public String toString() {
-		return "Rider [cognome=" + cognome + ", nome=" + nome + ", numeroDiTelefono=" + numeroDiTelefono
-				+ ", tipoMezzo=" + tipoMezzo + ", attivo=" + attivo + ", idRistorante=" + idRistorante + "]";
+		return cognome + " " + nome;
 	}
+	
+
 	
 	
 	

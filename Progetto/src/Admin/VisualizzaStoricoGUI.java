@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 
 import Utility.MediumFrame;
 import Utility.ModernScrollPane;
-import Utility.OrdinePanel;
+import Utility.OrdineAssegnatoPanel;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -79,7 +79,7 @@ public class VisualizzaStoricoGUI extends MediumFrame {
 		int size = 0;
 		for (int i = 0; i< 4; i++) {
 			size += 115;
-			ordinePanel.add(new OrdinePanel());
+			ordinePanel.add(new OrdineAssegnatoPanel());
 			ordinePanel.add(Box.createVerticalStrut(10));
 		}
 		ordinePanel.setPreferredSize(new Dimension(100,size));

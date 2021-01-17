@@ -17,7 +17,7 @@ import Controller.Controller;
 import Utility.MediumFrame;
 import Utility.MenuButton;
 import Utility.ModernScrollPane;
-import Utility.OrdinePanel;
+import Utility.OrdineAssegnatoPanel;
 import Utility.RiderPanel;
 import java.awt.Color;
 

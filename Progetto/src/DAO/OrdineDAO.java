@@ -37,7 +37,7 @@ public class OrdineDAO {
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				//CREAZIONE Ordine
-				o = new Ordine(rs.getDate("DataOrdine"), rs.getTime("OrarioPrevisto"), rs.getString("IndirizzoDiConsegna"), rs.getBoolean("Consegnato"), rs.getDouble("PrezzoTotale"), null, null);
+				o = new Ordine(rs.getInt("IdOrdine"),rs.getDate("DataOrdine"), rs.getTime("OrarioPrevisto"), rs.getString("IndirizzoDiConsegna"), rs.getBoolean("Consegnato"), rs.getDouble("PrezzoTotale"), null, null);
 				ordiniAssegnati.add(o);
 				System.out.println(o);				
 				
@@ -59,7 +59,7 @@ public class OrdineDAO {
 				ps3.setInt(1, rs.getInt("IdRider"));
 				ResultSet rs3 = ps3.executeQuery();	
 				rs3.next();
-				r = new Rider(rs3.getString("Cognome"), rs3.getString("Nome"), rs3.getString("NumeroDiTelefono"), rs3.getString("TipoMezzo"), rs3.getBoolean("Attivo"),
+				r = new Rider(rs.getInt("IdRider"), rs3.getString("Cognome"), rs3.getString("Nome"), rs3.getString("NumeroDiTelefono"), rs3.getString("TipoMezzo"), rs3.getBoolean("Attivo"),
 						rs3.getInt("IdRistorante"));	
 				o.setRider(r);
 				System.out.println("RIDERRRRRRRRR");
@@ -81,12 +81,12 @@ public class OrdineDAO {
 			Utente u;
 			Rider r;
 			ordiniAssegnati = new ArrayList<Ordine>();
-			PreparedStatement ps = connection.prepareStatement("SELECT * FROM \"Ordine\" WHERE \"IdRistorante\" = ? AND \"IdRider\" IS NULL ;");
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM \"Ordine\" WHERE \"IdRistorante\" = ? AND \"IdRider\" IS NULL AND \"Consegnato\" = 'false' ; ");
 			ps.setInt(1, IdRistorante);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				//CREAZIONE Ordine
-				o = new Ordine(rs.getDate("DataOrdine"), rs.getTime("OrarioPrevisto"), rs.getString("IndirizzoDiConsegna"), rs.getBoolean("Consegnato"), rs.getDouble("PrezzoTotale"), null, null);
+				o = new Ordine(rs.getInt("IdOrdine"), rs.getDate("DataOrdine"), rs.getTime("OrarioPrevisto"), rs.getString("IndirizzoDiConsegna"), rs.getBoolean("Consegnato"), rs.getDouble("PrezzoTotale"), null, null);
 				ordiniAssegnati.add(o);
 				System.out.println(o);				
 				

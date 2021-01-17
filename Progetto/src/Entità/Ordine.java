@@ -5,6 +5,7 @@ import java.sql.Time;
 
 public class Ordine {
 	
+	private int idOrdine;
 	private Date dataOrdine;
 	private Time orarioPrevisto;
 	private String indirizzoConsegna;
@@ -14,9 +15,10 @@ public class Ordine {
 	private Utente utente;
 	
 	
-	public Ordine(Date dataOrdine, Time orarioPrevisto, String indirizzoConsegna, boolean consegnato,
+	public Ordine(int idOrdine, Date dataOrdine, Time orarioPrevisto, String indirizzoConsegna, boolean consegnato,
 			double prezzoTotale, Rider rider, Utente utente) {
 		super();
+		this.idOrdine = idOrdine;
 		this.dataOrdine = dataOrdine;
 		this.orarioPrevisto = orarioPrevisto;
 		this.indirizzoConsegna = indirizzoConsegna;
@@ -27,6 +29,12 @@ public class Ordine {
 	}
 	
 	
+	public int getIdOrdine() {
+		return idOrdine;
+	}
+	public void setIdOrdine(int idOrdine) {
+		this.idOrdine = idOrdine;
+	}
 	public Date getDataOrdine() {
 		return dataOrdine;
 	}

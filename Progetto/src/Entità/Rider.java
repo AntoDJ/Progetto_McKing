@@ -2,6 +2,7 @@ package Entità;
 
 public class Rider {
 	
+	private int idRider;
 	private String cognome;
 	private String nome;
 	private String numeroDiTelefono;
@@ -9,9 +10,10 @@ public class Rider {
 	private boolean attivo;
 	private int idRistorante;
 	
-	public Rider(String cognome, String nome, String numeroDiTelefono, String tipoMezzo, boolean attivo,
+	public Rider(int idRider, String cognome, String nome, String numeroDiTelefono, String tipoMezzo, boolean attivo,
 			int idRistorante) {
 		super();
+		this.idRider = idRider;
 		this.cognome = cognome;
 		this.nome = nome;
 		this.numeroDiTelefono = numeroDiTelefono;
@@ -20,6 +22,14 @@ public class Rider {
 		this.idRistorante = idRistorante;
 	}
 	
+	
+	
+	public int getIdRider() {
+		return idRider;
+	}
+	public void setIdRider(int idRider) {
+		this.idRider = idRider;
+	}
 	public String getCognome() {
 		return cognome;
 	}

@@ -24,7 +24,7 @@ import javax.swing.Box;
 import Admin.GestioneRiderGUI;
 
 import javax.swing.JPanel;
-
+import javax.swing.SwingUtilities;
 
 import Admin.OperazioneRistoranteGUI;
 import AdminCatena.OperazioniCatenaGUI;
@@ -105,11 +105,8 @@ public class Controller {
 				operazioniCatenaGui = new OperazioniCatenaGUI(this);
 				operazioniCatenaGui.setVisible(true);						
 			}
-			else { 
-				operazioneRistoranteGui = new OperazioneRistoranteGUI(this);
-				riempiOrdiniAssegnati(adminAttivo.getIdRistorante());
-				riempiOrdiniDaAssegnare(adminAttivo.getIdRistorante());
-				operazioneRistoranteGui.setVisible(true);
+			else { //QUIIIIII
+				creaOperazioneRistoranteGUI();
 			}							
 		}
 	}
@@ -160,6 +157,17 @@ public class Controller {
 		gestioneRiderGui.ordinePanel.setPreferredSize(new Dimension(100,size));
 	}
 	
+	
+	//PROVA
+	public void creaOperazioneRistoranteGUI() {
+		operazioneRistoranteGui = new OperazioneRistoranteGUI(this);
+		riempiOrdiniAssegnati(adminAttivo.getIdRistorante());
+		riempiOrdiniDaAssegnare(adminAttivo.getIdRistorante());
+		operazioneRistoranteGui.setVisible(true);
+	}
+	
+	
+	
 	public void riempiOrdiniAssegnati(int IdRistorante) {
 		ArrayList<Ordine> ordini ;
 		int size = 0;
@@ -193,9 +201,9 @@ public class Controller {
 	
 	
 	public void riderScelto(Ordine ordine) {
-		
-	
-		
+		riderDao.aggiungiRider(ordine);
+		operazioneRistoranteGui.dispose();
+		creaOperazioneRistoranteGUI();
 	}
 	
 	

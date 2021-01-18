@@ -57,7 +57,7 @@ public class RiderPanel extends JPanel {
 		
 		JLabel valoreNumeroDiTelefonoLabel = new JLabel(rider.getNumeroDiTelefono());
 		valoreNumeroDiTelefonoLabel.setFont(new Font("Bell MT", Font.ITALIC, 16));
-		valoreNumeroDiTelefonoLabel.setBounds(495, 10, 136, 28);
+		valoreNumeroDiTelefonoLabel.setBounds(503, 10, 128, 28);
 		add(valoreNumeroDiTelefonoLabel);
 		
 		JLabel valoreTipoMezzoLabel = new JLabel(rider.getTipoMezzo());

@@ -50,7 +50,7 @@ public class DettagliOrdineProdottoGUI extends SmallFrame {
 	 */
 	public DettagliOrdineProdottoGUI(ArrayList<Prodotto> formatiProdottoDisponibili, Controller controller) {
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getBodyPanel().setLayout(null);
 		getBodyPanel().setBackground(new Color(255, 255, 153));
 		

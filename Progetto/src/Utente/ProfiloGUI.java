@@ -201,7 +201,7 @@ public class ProfiloGUI extends SmallFrame {
 		});
 		modificaIndirizzo.setBounds(193, 171, 92, 21);
 		dettagliPanel.add(modificaIndirizzo);
-		
+		//COMMENTO
 		MenuButton modificaCartaDiCredito = new MenuButton("Modifica");
 		modificaCartaDiCredito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

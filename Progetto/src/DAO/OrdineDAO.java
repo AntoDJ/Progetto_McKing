@@ -110,5 +110,33 @@ public class OrdineDAO {
 		}		
 		return ordiniAssegnati;		
 	}
+	
+	
+	public void cambioStatoConsegna(Ordine o) {
+		try {
+			connection = dbconnection.getConnection();
+			PreparedStatement ps = connection.prepareStatement("UPDATE \"Ordine\" SET \"Consegnato\" = 'true' WHERE \"IdOrdine\" = ? ; ");
+			ps.setInt(1, o.getIdOrdine());
+			int rs = ps.executeUpdate();
+			if (rs == 0)
+				System.out.println("Erroreeeeeeeee");
+			else System.out.println("Modificato");			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

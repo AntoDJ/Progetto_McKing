@@ -41,7 +41,7 @@ import Utente.CatalogoGUI;
 import Utente.DettagliOrdineProdottoGUI;
 import Utente.ProfiloGUI;
 import Utility.RiderPanel;
-
+import Utility.Caricamento;
 import Utility.ModernScrollPane;
 import Utility.OrdineAssegnatoPanel;
 import Utility.OrdineDaAssegnarePanel;
@@ -181,7 +181,7 @@ public class Controller {
 		ordini = ordineDao.getOrdiniAssegnati(IdRistorante);
 		for (int i = 0; i< ordini.size(); i++) {
 			size += 115;
-			operazioneRistoranteGui.ordiniAssegnatiPanel.add(new OrdineAssegnatoPanel(ordini.get(i)));
+			operazioneRistoranteGui.ordiniAssegnatiPanel.add(new OrdineAssegnatoPanel(ordini.get(i), this));
 			operazioneRistoranteGui.add(Box.createVerticalStrut(10));
 		}
 		  operazioneRistoranteGui.ordiniAssegnatiPanel.setPreferredSize(new Dimension(100,size));
@@ -244,10 +244,17 @@ public class Controller {
 		riderDao.aggiungiRider(ordine);
 		operazioneRistoranteGui.dispose();
 		creaOperazioneRistoranteGUI();
+		
+		
 	}
 	
 	
-	
+	public void cambiaStatoConsegna(Ordine ordine) {
+		ordineDao.cambioStatoConsegna(ordine);
+		operazioneRistoranteGui.dispose();
+		creaOperazioneRistoranteGUI();
+		
+	}
 	
 	
 	

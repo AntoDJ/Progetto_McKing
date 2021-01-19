@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,6 +19,8 @@ import javax.swing.ImageIcon;
 
 public class MediumFrame extends JFrame {
 
+	private int posX;
+	private int posY;
 	private JPanel contentPane;
 	private JPanel titoloPanel;
 	private JPanel bodyPanel;
@@ -98,8 +102,30 @@ public class MediumFrame extends JFrame {
 		backButton.setBorder(null);
 		titoloPanel.add(backButton);
 		getTitoloPanel().add(backButton);
+		
+		titoloPanel.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				posX=e.getX();
+				posY=e.getY();
+			}
+		});
+
+		titoloPanel.addMouseMotionListener(new MouseAdapter()
+		{
+		     public void mouseDragged(MouseEvent evt)
+		     {
+				//sets frame position when mouse dragged			
+				setLocation (evt.getXOnScreen()-posX,evt.getYOnScreen()-posY);
+							
+		     }
+		});
 	}
 
+	public JButton getExitButton() {
+		return exitButton;
+	}
 	public JPanel getBodyPanel() {
 		return bodyPanel;
 	}

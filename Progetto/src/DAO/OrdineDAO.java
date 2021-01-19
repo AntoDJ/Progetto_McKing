@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import DBConnection.DBConnection;
 import Entità.Ordine;
@@ -127,7 +130,24 @@ public class OrdineDAO {
 		}
 		
 	}
-	
+
+	public void inserisciOrdine(Ordine nuovoOrdine) throws SQLException{
+		connection = dbconnection.getConnection();
+		PreparedStatement ps = connection.prepareStatement("INSERT INTO public.\"Ordine\"(\"DataOrdine\", \"OrarioPrevisto\", \"IndirizzoDiConsegna\", \"PrezzoTotale\", \"IdRistorante\", \"IdProfilo\")VALUES (to_timestamp(?, 'YYYY-MM-DD hh24:mi:ss')::timestamp without time zone at time zone 'Etc/UTC', ?, ?, ?, ?, ?);");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		//Date date = new Date(System.currentTimeMillis());
+		ps.setString(1, formatter.format(new Timestamp(System.currentTimeMillis())));
+		ps.setTime(2, nuovoOrdine.getOrarioPrevisto());
+		ps.setString(3, nuovoOrdine.getIndirizzoConsegna());
+		ps.setDouble(4, nuovoOrdine.getPrezzoTotale());
+		ps.setInt(5, nuovoOrdine.getRistorante().getId());
+		ps.setInt(6, nuovoOrdine.getUtente().getId());
+		int rs = ps.executeUpdate();
+		if (rs == 0)
+			System.out.println("Erroreeeeeeeee");
+		else System.out.println("Modificato");			
+	}
+
 	
 	
 	

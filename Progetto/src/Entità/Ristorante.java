@@ -3,7 +3,7 @@ package Entità;
 import java.sql.Time;
 
 public class Ristorante {
-	
+	private int id;
 	private String citta;
 	private String indirizzo;
 	private String numeroDiTelefono;
@@ -22,8 +22,27 @@ public class Ristorante {
 		this.orarioChiusura = orarioChiusura;
 		this.distanzaMassima = distanzaMassima;
 	}
+	public Ristorante(int id,String citta, String indirizzo, String numeroDiTelefono, Time orarioApertura, Time orarioChiusura, double distanzaMassima) {
+		super();
+		this.id = id;
+		this.citta = citta;
+		this.indirizzo = indirizzo;
+		this.numeroDiTelefono = numeroDiTelefono;
+		this.orarioApertura = orarioApertura;
+		this.orarioChiusura = orarioChiusura;
+		this.distanzaMassima = distanzaMassima;
+	}
 	
-	
+	@Override
+	public String toString() {
+		return  citta + ", " + indirizzo;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getCitta() {
 		return citta;
 	}

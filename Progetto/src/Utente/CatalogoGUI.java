@@ -235,6 +235,11 @@ public class CatalogoGUI extends MediumFrame {
 		getBodyPanel().add(scrollPane);
 		
 		MenuButton CarrelloButton = new MenuButton("Visualizza Carrello");
+		CarrelloButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.mostraCarrello();
+			}
+		});
 		CarrelloButton.setBounds(497, 10, 168, 23);
 		getBodyPanel().add(CarrelloButton);
 		
@@ -259,8 +264,12 @@ public class CatalogoGUI extends MediumFrame {
 		profiloMenu.add(profiloMenuItem);
 		
 		JMenuItem profiloMenuItem_1 = new JMenuItem("Esci");
+		profiloMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.logoutUtente();
+			}
+		});
 		profiloMenu.add(profiloMenuItem_1);
-		
 		
 	}
 }

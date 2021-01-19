@@ -9,8 +9,9 @@ public class Ordine {
 	private Date dataOrdine;
 	private Time orarioPrevisto;
 	private String indirizzoConsegna;
-	private boolean consegnato;
+	private boolean consegnato = false;
 	private double prezzoTotale;
+	private Ristorante ristorante;
 	private Rider rider;
 	private Utente utente;
 	
@@ -29,6 +30,16 @@ public class Ordine {
 	}
 	
 	
+	public Ordine(Time orarioPrevisto, String indirizzoConsegna, double prezzoTotale, Utente utente, Ristorante ristorante2) {
+		super();
+		this.orarioPrevisto = orarioPrevisto;
+		this.indirizzoConsegna = indirizzoConsegna;
+		this.prezzoTotale = prezzoTotale;
+		this.utente = utente;
+		this.ristorante = ristorante2;
+	}
+
+
 	public int getIdOrdine() {
 		return idOrdine;
 	}
@@ -84,7 +95,17 @@ public class Ordine {
 		return "Ordine [dataOrdine=" + dataOrdine + ", orarioPrevisto=" + orarioPrevisto + ", indirizzoConsegna="
 				+ indirizzoConsegna + ", consegnato=" + consegnato + ", prezzoTotale=" + prezzoTotale + "]";
 	}
-	
+
+
+	public Ristorante getRistorante() {
+		return ristorante;
+	}
+
+
+	public void setRistorante(Ristorante ristorante) {
+		this.ristorante = ristorante;
+	}
+
 	
 	
 	

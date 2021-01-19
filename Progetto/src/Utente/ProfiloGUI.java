@@ -54,7 +54,13 @@ public class ProfiloGUI extends SmallFrame {
 	 * @param utenteAttivo 
 	 */
 	public ProfiloGUI(Utente utenteAttivo, Controller controller) {
+		getBackButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.tornaAlCatalogoDaProfiloGUI();
+			}
+		});
 		this.controller = controller;
+		getExitButton().setVisible(false);
 		getBodyPanel().setLayout(null);
 		getBodyPanel().setBackground(new Color(255, 255, 153));
 		
@@ -122,6 +128,7 @@ public class ProfiloGUI extends SmallFrame {
 		dettagliPanel.add(contenitoreEmailLabel);
 		
 		numeroDiTelefonoTextField = new JTextField("");
+		numeroDiTelefonoTextField.setHorizontalAlignment(SwingConstants.RIGHT);
 		numeroDiTelefonoTextField.setEditable(false);
 		if(utenteAttivo.getNumeroDiTelefono() != null) numeroDiTelefonoTextField.setText(utenteAttivo.getNumeroDiTelefono());
 		numeroDiTelefonoTextField.setFont(new Font("Bell MT", Font.ITALIC, 16));
@@ -131,6 +138,7 @@ public class ProfiloGUI extends SmallFrame {
 		numeroDiTelefonoTextField.setColumns(10);
 		
 		indirizzoTextField = new JTextField("");
+		indirizzoTextField.setHorizontalAlignment(SwingConstants.RIGHT);
 		indirizzoTextField.setEditable(false);
 		if(utenteAttivo.getIndirizzo() != null) indirizzoTextField.setText(utenteAttivo.getIndirizzo());
 		indirizzoTextField.setToolTipText("Esempio Indirizzo: Via Roma, 7");
@@ -142,7 +150,7 @@ public class ProfiloGUI extends SmallFrame {
 		cartaDiCreditoTextField = new JTextField("");
 		cartaDiCreditoTextField.setEditable(false);
 		if(utenteAttivo.getCartaDiCredito() != null) cartaDiCreditoTextField.setText(utenteAttivo.getCartaDiCredito());
-		cartaDiCreditoTextField.setHorizontalAlignment(SwingConstants.CENTER);
+		cartaDiCreditoTextField.setHorizontalAlignment(SwingConstants.RIGHT);
 		cartaDiCreditoTextField.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		cartaDiCreditoTextField.setColumns(10);
 		cartaDiCreditoTextField.setBounds(10, 209, 173, 19);
@@ -167,6 +175,7 @@ public class ProfiloGUI extends SmallFrame {
 							JDialog errorDialog = new JDialog();
 							errorDialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 							JOptionPane.showMessageDialog(errorDialog, "Numero inserito non valido");
+							numeroDiTelefonoTextField.setText(utenteAttivo.getNumeroDiTelefono());
 						}
 					}
 				}
@@ -193,7 +202,8 @@ public class ProfiloGUI extends SmallFrame {
 						} catch(SQLException err){
 							JDialog errorDialog = new JDialog();
 							errorDialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-							JOptionPane.showMessageDialog(errorDialog, "Numero inserito non valido");
+							JOptionPane.showMessageDialog(errorDialog, "Indirizzo non valido");
+							indirizzoTextField.setText(utenteAttivo.getIndirizzo());
 						}
 					}
 				}
@@ -220,7 +230,8 @@ public class ProfiloGUI extends SmallFrame {
 						} catch(SQLException err){
 							JDialog errorDialog = new JDialog();
 							errorDialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-							JOptionPane.showMessageDialog(errorDialog, "Numero inserito non valido");
+							JOptionPane.showMessageDialog(errorDialog, "Carta di credito non valida");
+							cartaDiCreditoTextField.setText(utenteAttivo.getCartaDiCredito());
 						}
 					}
 				}

@@ -20,6 +20,8 @@ import Utility.ModernScrollPane;
 import Utility.OrdineAssegnatoPanel;
 import Utility.RiderPanel;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GestioneRiderGUI extends MediumFrame {
 	private Controller controller;
@@ -45,6 +47,11 @@ public class GestioneRiderGUI extends MediumFrame {
 	 * @throws SQLException 
 	 */
 	public GestioneRiderGUI(Controller controller) throws SQLException {
+		getBackButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.indietroGrstisciRider();
+			}
+		});
 		this.controller = controller;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
@@ -76,10 +83,25 @@ public class GestioneRiderGUI extends MediumFrame {
 		getBodyPanel().add(scrollPane);
 		
 		MenuButton aggiungiButton = new MenuButton("Aggiungi rider");
+		aggiungiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.apriInserisciRider();
+			}
+		});
 		aggiungiButton.setBounds(120, 80, 167, 28);
 		getBodyPanel().add(aggiungiButton);
 		
 		MenuButton storicoButton_1 = new MenuButton("Elimina rider");
+		storicoButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					controller.apriEliminazioneRider();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		storicoButton_1.setBounds(387, 80, 167, 28);
 		getBodyPanel().add(storicoButton_1);
 	}

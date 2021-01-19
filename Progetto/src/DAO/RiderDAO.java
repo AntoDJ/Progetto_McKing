@@ -71,6 +71,7 @@ public class RiderDAO {
 		return rider;
 	}
 	
+	// VIENE ASSEGNATO IL RIDER AD UN ORDINE
 	public void aggiungiRider(Ordine o) {
 		try {
 			connection = dbconnection.getConnection();	
@@ -90,7 +91,50 @@ public class RiderDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-	} 
+	}
+	// VIENE ELIMINATO UN RIDER DAL DB
+	public int elimiaRider(Rider rider) {
+		try {
+			connection = dbconnection.getConnection();
+			PreparedStatement ps = connection.prepareStatement("UPDATE \"Rider\" SET \"Attivo\" = 'false' WHERE \"IdRider\" = ? ; ");
+			ps.setInt(1, rider.getIdRider());
+			int rs = ps.executeUpdate();
+			if(rs == 0)
+				return 0;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 1;
+	}
+	
+	// VIENE INSERITO UN NUOVO RIDER NEL DB
+	public int inserisciRider(Rider r) {
+		int risultato = 0;
+		try {
+			connection = dbconnection.getConnection();
+			PreparedStatement ps = connection.prepareStatement("INSERT INTO \"Rider\"( \"Cognome\", \"Nome\", \"NumeroDiTelefono\", \"TipoMezzo\", \"Attivo\", \"IdRistorante\") VALUES ( ?, ?, ?, CAST (? AS \"TipoMezzo\"), ?, ?); ");
+			ps.setString(1, r.getCognome());
+			ps.setString(2, r.getNome());
+			ps.setString(3, r.getNumeroDiTelefono());
+			ps.setString(4, r.getTipoMezzo());
+			ps.setBoolean(5, true);
+			ps.setInt(6, r.getIdRistorante());
+			
+			System.out.println(r.getCognome()+ r.getNome() + r.getNumeroDiTelefono() + r.getTipoMezzo());
+			
+			int rs = ps.executeUpdate();
+			if(rs == 0) System.out.println("Rider inserito correttamente");
+			else System.out.println("Rider inserito correttamente");
+			risultato = rs;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return risultato;
+	}
 	
 	
 

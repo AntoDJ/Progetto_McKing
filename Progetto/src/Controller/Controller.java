@@ -20,13 +20,20 @@ import java.util.ArrayList;
 
 
 import javax.swing.Box;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
+import Admin.Aggiungi_GestioneRiderGUI;
+import Admin.Cancella_GestioneRiderGUI;
 import Admin.GestioneRiderGUI;
 
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import Admin.OperazioneRistoranteGUI;
+import Admin.VisualizzaStoricoGUI;
+import AdminCatena.Aggiungi_GestioneCatalogoGUI;
 import AdminCatena.OperazioniCatenaGUI;
 import Entità.Admin;
 import Entità.Ordine;
@@ -39,6 +46,7 @@ import General.LoginFormGUI;
 import Utente.CatalogoGUI;
 
 import Utility.RiderPanel;
+import Utility.StoricoPanel;
 import Utility.Caricamento;
 import Utility.ModernScrollPane;
 import Utility.OrdineAssegnatoPanel;
@@ -63,6 +71,9 @@ public class Controller {
 	private OperazioneRistoranteGUI operazioneRistoranteGui;
 	private OperazioniCatenaGUI operazioniCatenaGui;
 	private GestioneRiderGUI gestioneRiderGui;
+	private VisualizzaStoricoGUI visualizzaStoricoGui;
+	private Cancella_GestioneRiderGUI cancella_gestioneRiderGui;
+	private Aggiungi_GestioneRiderGUI aggiungi_gestioneRiderGui;
 	
 
 	
@@ -134,7 +145,7 @@ public class Controller {
 	}
 
 	
-	public void gestisciRider() {
+	public void apriGestisciRider() {
 		try {
 			gestioneRiderGui = new GestioneRiderGUI(this);
 			popolaRider();
@@ -143,6 +154,11 @@ public class Controller {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}				
+	}
+	
+	public void indietroGrstisciRider() {
+		gestioneRiderGui.dispose();
+		operazioneRistoranteGui.setVisible(true);				
 	}
 	
 	public void popolaRider() throws SQLException {
@@ -181,19 +197,20 @@ public class Controller {
 		
 	}
 	
-	public void riempiOrdiniDaAssegnare(int IdRistorante)  {
+	public void riempiOrdiniDaAssegnare(int IdRistorante) {
+		ArrayList<Rider> rider = null;
 		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
 		int size = 0;
 		ordini = ordineDao.getOrdiniDaAssegnare(IdRistorante);
+		try {
+			rider = riderDao.getRider(adminAttivo);
+		} catch (SQLException e1) {
+			System.out.println("Nessun Rider Disponibile");
+		}
 		for (int i = 0; i< ordini.size(); i++) {
 			size += 115;
-			try {
-				operazioneRistoranteGui.ordiniDaAssegnarePanel.add(new OrdineDaAssegnarePanel(ordini.get(i), riderDao.getRider(adminAttivo), this));
-				operazioneRistoranteGui.add(Box.createVerticalStrut(10));
-			} catch (SQLException e) {				
-				e.printStackTrace();
-				System.out.println("Non ci sono rider disponibili");
-			}
+			operazioneRistoranteGui.ordiniDaAssegnarePanel.add(new OrdineDaAssegnarePanel(ordini.get(i), rider, this));
+			operazioneRistoranteGui.add(Box.createVerticalStrut(10));
 		}
 		  operazioneRistoranteGui.ordiniDaAssegnarePanel.setPreferredSize(new Dimension(100,size));
 		
@@ -203,19 +220,138 @@ public class Controller {
 	public void riderScelto(Ordine ordine) {
 		riderDao.aggiungiRider(ordine);
 		operazioneRistoranteGui.dispose();
-		creaOperazioneRistoranteGUI();
-		
-		
+		creaOperazioneRistoranteGUI();		
 	}
 	
 	
 	public void cambiaStatoConsegna(Ordine ordine) {
-		ordineDao.cambioStatoConsegna(ordine);
+		ordineDao.cambioStatoConsegna(ordine);	
 		operazioneRistoranteGui.dispose();
 		creaOperazioneRistoranteGUI();
 		
 	}
 	
+	
+	public void popolaStoricoOrdini(int idRistorante, String anno, String tipoMezzo, double prezzo) {
+		ArrayList<Ordine> ordini = null;
+		int size = 0;
+		ordini = ordineDao.getStoricoRistorante(adminAttivo.getIdRistorante(), anno, tipoMezzo, prezzo);		
+		for (int i = 0; i< ordini.size(); i++) {
+			size += 115;
+			visualizzaStoricoGui.ordinePanel.add(new StoricoPanel(ordini.get(i)));
+			visualizzaStoricoGui.ordinePanel.add(Box.createVerticalStrut(10));
+		}
+		visualizzaStoricoGui.ordinePanel.setPreferredSize(new Dimension(100,size));
+	}
+	
+	public void apriStorico(){
+		visualizzaStoricoGui = new VisualizzaStoricoGUI(this, adminAttivo);
+		popolaStoricoOrdini(adminAttivo.getIdRistorante(), null, null, 0);
+		operazioneRistoranteGui.setVisible(false);
+		visualizzaStoricoGui.setVisible(true);
+	}
+
+	
+	public void indietroStorico() {
+		visualizzaStoricoGui.dispose();
+		operazioneRistoranteGui.setVisible(true);		
+	}
+	
+	public void ricercaPersonalizzata(int idRistorante, String anno, String tipoMezzo, double prezzo){
+		visualizzaStoricoGui = new VisualizzaStoricoGUI(this, adminAttivo);	
+		popolaStoricoOrdini(adminAttivo.getIdRistorante(), anno, tipoMezzo, prezzo);		
+		chiudiVisibilitaComponentiVisualizzaStoricoGui();		
+		visualizzaStoricoGui.setVisible(true);
+	}
+	
+	public void chiudiVisibilitaComponentiVisualizzaStoricoGui() {
+		visualizzaStoricoGui.indietroLabel.setVisible(true);
+		visualizzaStoricoGui.getBackButton().setVisible(false);
+		visualizzaStoricoGui.annoLabel.setVisible(false);
+		visualizzaStoricoGui.annoComboBox.setVisible(false);
+		visualizzaStoricoGui.tipoMezzoComboBox.setVisible(false);
+		visualizzaStoricoGui.tipoMezzoLabel.setVisible(false);
+		visualizzaStoricoGui.prezzoComboBox.setVisible(false);
+		visualizzaStoricoGui.prezzoLabel.setVisible(false);
+		visualizzaStoricoGui.cercaLabel.setVisible(false);
+		visualizzaStoricoGui.maggioreDiLabel.setVisible(false);
+	}
+	
+	public void apriEliminazioneRider() throws SQLException {
+		ArrayList<Rider> rider;			
+			
+		rider = riderDao.getAllRiderDisponibili(adminAttivo);
+		cancella_gestioneRiderGui = new Cancella_GestioneRiderGUI(this, rider);	
+		gestioneRiderGui.setVisible(false);
+		cancella_gestioneRiderGui.setVisible(true);
+		cancella_gestioneRiderGui.risultatoEliminazioneLabel.setVisible(false);
+	}
+	
+	
+	public void indietroEliminaRider() {
+		cancella_gestioneRiderGui.dispose();
+		gestioneRiderGui.setVisible(true);				
+	}
+	
+	public void eliminaRider(Rider r) throws SQLException {
+		int flag;
+		ArrayList<Rider> rider;			
+		flag = riderDao.elimiaRider(r);
+		if(flag == 0) {			
+			cancella_gestioneRiderGui.riderDaEliminareComboBox.setVisible(false);
+			cancella_gestioneRiderGui.risultatoEliminazioneLabel.setText("Non è stato possibile eliminare il rider");
+			cancella_gestioneRiderGui.risultatoEliminazioneLabel.setVisible(true);
+			cancella_gestioneRiderGui.eliminaButton.setVisible(false);
+			}
+		else if (flag == 1){
+			
+			cancella_gestioneRiderGui.riderDaEliminareComboBox.setVisible(false);
+			cancella_gestioneRiderGui.risultatoEliminazioneLabel.setText("Il rider è stato cancellato correttamente");
+			cancella_gestioneRiderGui.risultatoEliminazioneLabel.setVisible(true);
+			cancella_gestioneRiderGui.eliminaButton.setVisible(false);
+		}
+		else {
+			cancella_gestioneRiderGui.riderDaEliminareComboBox.setVisible(false);
+			cancella_gestioneRiderGui.risultatoEliminazioneLabel.setText("Errore!!");
+			cancella_gestioneRiderGui.risultatoEliminazioneLabel.setVisible(true);
+			cancella_gestioneRiderGui.eliminaButton.setVisible(false);
+		}
+	}
+	
+	
+	public void apriInserisciRider() {
+		aggiungi_gestioneRiderGui = new Aggiungi_GestioneRiderGUI(this);
+		gestioneRiderGui.setVisible(false);
+		aggiungi_gestioneRiderGui.setVisible(true);
+	}
+	
+	public void indietroInserisciRider() {
+		aggiungi_gestioneRiderGui.dispose();
+		gestioneRiderGui.setVisible(true);		
+	}
+	
+	public void inserisciRider(String cognome,String nome, String numeroDiTelefono, String tipoMezzo) {
+		String mezzoDiTrasporto;
+		int ritorno;
+		mezzoDiTrasporto = verificaValore(tipoMezzo);		
+		if(cognome != null && nome != null && numeroDiTelefono != null && mezzoDiTrasporto != null) {
+			Rider r = new Rider(0, cognome, nome, numeroDiTelefono, mezzoDiTrasporto, true, adminAttivo.getIdRistorante());
+			ritorno = riderDao.inserisciRider(r);
+			if(ritorno == 0)
+				aggiungi_gestioneRiderGui.risultatoLabel.setText("Non è stato possibile inserire il rider");
+			else if (ritorno == 1)
+				aggiungi_gestioneRiderGui.risultatoLabel.setText("Il nuovo rider è stato inserito correttamente");
+			else	aggiungi_gestioneRiderGui.risultatoLabel.setText("Errore!!");
+		}
+	}
+	
+	
+	// VERIFICO SE IL VALORE PRESO DALLA COMBOBOX E' UGUALE A "  -- SELEZIONA -- " O MENO	
+	public String verificaValore (String valore) {
+		if (valore.equals("  --Seleziona--"))
+			return null;
+		else return valore;
+	}
 	
 }
 	

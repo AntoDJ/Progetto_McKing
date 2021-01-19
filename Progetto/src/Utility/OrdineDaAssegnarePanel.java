@@ -21,13 +21,13 @@ import java.awt.event.ActionEvent;
 public class OrdineDaAssegnarePanel extends JPanel {
 	public JComboBox<Rider> riderComboBox ;
 	private Controller controller;
-	Ordine ordine;
+	
 	
 	/**
 	 * Create the panel.
 	 */
 	public OrdineDaAssegnarePanel(Ordine o, ArrayList rider, Controller controller) {
-		ordine = o;
+	
 		this.controller = controller;
 		setBorder(new LineBorder(new Color(255, 204, 51), 10, true));
 		setBackground(new Color(255, 255, 204));			
@@ -104,15 +104,7 @@ public class OrdineDaAssegnarePanel extends JPanel {
 
 		}
 		
-	public Ordine getOrdine() {
-		return ordine;
-	}
-	
-	
-	public OrdineDaAssegnarePanel getPanel() {
-		return this;
-	}
-	
+
 	
 	
 }

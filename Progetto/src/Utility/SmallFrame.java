@@ -115,4 +115,7 @@ public class SmallFrame extends JFrame {
 	public JButton getBackButton() {
 		return backButton;
 	}
+
+
+	 
 }

@@ -128,6 +128,84 @@ public class OrdineDAO {
 		
 	}
 	
+
+	public ArrayList<Ordine> getStoricoRistorante(int idRistorante, String anno, String tipoMezzo, double prezzo){
+		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
+		Ordine o;
+		Rider r;
+		Utente u;
+		String sql;
+		int indiceAnno = 1;
+		int indiceTipoMezzo = 1;
+		int indicePrezzo = 1;
+		
+		try {
+			connection = dbconnection.getConnection();
+			sql = "SELECT * FROM \"Ordine\" NATURAL JOIN \"Rider\" AS R  WHERE 1=1 AND \"IdRistorante\" = ? ";
+			
+			if(anno != null){
+				sql += "AND CAST (EXTRACT(YEAR FROM \"DataOrdine\") AS character varying) = ? ";
+				indiceAnno++;
+			}
+			if(tipoMezzo != null){
+				sql += "AND CAST ( R.\"TipoMezzo\" AS character varying ) = ? ";
+				indiceTipoMezzo = indiceAnno + 1;
+			}
+			else indiceTipoMezzo = indiceAnno;
+			if(prezzo != 0.0){
+				sql += "AND \"PrezzoTotale\" > ?  ";
+				indicePrezzo = indiceTipoMezzo + 1;
+			}
+			
+			sql += "ORDER BY \"DataOrdine\" ASC; ";			
+			PreparedStatement ps = connection.prepareStatement(sql);
+			
+			
+			
+			ps.setInt(1, idRistorante);
+			
+			if(anno != null){
+				ps.setString(indiceAnno, anno);
+			}
+			if(tipoMezzo != null){
+				ps.setString(indiceTipoMezzo, tipoMezzo);
+			}
+			if(prezzo != 0.0){
+				ps.setDouble(indicePrezzo, prezzo);
+			}
+			ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				
+				//CREAZIONE ORDINE
+				o = new Ordine(rs.getInt("IdOrdine"), rs.getDate("DataOrdine"), rs.getTime("OrarioPrevisto"), rs.getString("IndirizzoDiConsegna"), rs.getBoolean("Consegnato"), rs.getDouble("PrezzoTotale"), null, null);
+				ordini.add(o);
+				System.out.println(o);
+
+				//CREAZIONE RIDER
+				r = new Rider(rs.getInt("IdRider"), rs.getString("Cognome"), rs.getString("Nome"), rs.getString("NumeroDiTelefono"), rs.getString("TipoMezzo"), rs.getBoolean("Attivo"),
+						rs.getInt("IdRistorante"));	
+				o.setRider(r);
+				System.out.println("RIDERRRRRRRRR");
+				
+				PreparedStatement ps2 = connection.prepareStatement("SELECT * FROM \"Profilo\" WHERE \"IdProfilo\" = ?  ;" );											
+				ps2.setInt(1, rs.getInt("IdProfilo"));
+				ResultSet rs2 = ps2.executeQuery();	
+				rs2.next();
+				u = new Utente(rs2.getString("Cognome"), rs2.getString("Nome"), rs2.getString("Indirizzo"), rs2.getString("Email"), rs2.getString("CartaDiCredito"), 
+									rs2.getString("NumeroDiTelefono"), rs2.getBoolean("Attivo"));	
+				o.setUtente(u);				
+				System.out.println("UTENTEEEE");				
+				ps2.close();				
+			}			
+			ps.close();
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ordini;
+	}
 	
 	
 	

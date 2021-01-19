@@ -93,13 +93,18 @@ public class OperazioneRistoranteGUI extends BigFrame {
 		getBodyPanel().add(scrollPane2);
 		
 		MenuButton storicoButton = new MenuButton("Storico");
+		storicoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.apriStorico();
+			}
+		});
 		storicoButton.setBounds(95, 498, 167, 28);
 		getBodyPanel().add(storicoButton);
 		
 		MenuButton gestisciRiderButton_1 = new MenuButton("Gestisci rider");
 		gestisciRiderButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controller.gestisciRider();
+				controller.apriGestisciRider();
 			}
 		});
 		gestisciRiderButton_1.setBounds(580, 498, 167, 28);

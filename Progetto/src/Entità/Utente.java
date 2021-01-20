@@ -2,6 +2,7 @@ package Entità;
 
 public class Utente {
 
+	private int id;
 	private String cognome;
 	private String nome;
 	private String email;
@@ -24,6 +25,19 @@ public class Utente {
 		this.numeroDiTelefono = numeroDiTelefono;
 		this.attivo = attivo;
 	}
+	public Utente(int id, String cognome, String nome, String indirizzo, String email,String cartaDiCtredito,
+			String numeroDiTelefono, boolean attivo) {
+		super();
+		this.id = id;
+		this.cognome = cognome;
+		this.nome = nome;		
+		this.indirizzo = indirizzo;
+		this.email = email;
+		this.cartaDiCredito = cartaDiCtredito;
+		this.numeroDiTelefono = numeroDiTelefono;
+		this.attivo = attivo;
+	}
+	
 	
 	
 	public String getCognome() {
@@ -79,6 +93,12 @@ public class Utente {
 		return "Utente [cognome=" + cognome + ", nome=" + nome + ", email=" + email + ", password=" + password
 				+ ", indirizzo=" + indirizzo + ", cartaDiCredito=" + cartaDiCredito + ", numeroDiTelefono="
 				+ numeroDiTelefono + ", attivo=" + attivo + "]";
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

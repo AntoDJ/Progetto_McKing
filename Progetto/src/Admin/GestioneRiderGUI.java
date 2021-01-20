@@ -49,7 +49,7 @@ public class GestioneRiderGUI extends MediumFrame {
 	public GestioneRiderGUI(Controller controller) throws SQLException {
 		getBackButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controller.indietroGrstisciRider();
+				controller.indietroGestisciRider();
 			}
 		});
 		this.controller = controller;

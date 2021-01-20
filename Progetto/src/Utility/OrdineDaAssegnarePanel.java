@@ -64,7 +64,7 @@ public class OrdineDaAssegnarePanel extends JPanel {
 		add(cognomeValoreLabel);
 		
 		JLabel indirizzoValoreLabel = new JLabel(o.getUtente().getIndirizzo());
-		indirizzoValoreLabel.setBounds(102, 78, 235, 21);
+		indirizzoValoreLabel.setBounds(102, 78, 166, 21);
 		indirizzoValoreLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
 		add(indirizzoValoreLabel);
 		

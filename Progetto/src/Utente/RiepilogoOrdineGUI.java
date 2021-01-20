@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Color;
@@ -13,34 +15,57 @@ import java.awt.Dimension;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 
+import Controller.Controller;
+import Entità.Prodotto;
 import Utility.BigFrame;
+import Utility.MenuButton;
 import Utility.ModernScrollPane;
 import Utility.RiepilogoOrdinePanel;
 
 import javax.swing.BoxLayout;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RiepilogoOrdineGUI extends BigFrame {
-
+	private Controller controller;
+	public JPanel riepilogoOrdinePanel;
+	private JLabel valorePrezzoTotaleLabel;
+	private ModernScrollPane scrollPane;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RiepilogoOrdineGUI frame = new RiepilogoOrdineGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					RiepilogoOrdineGUI frame = new RiepilogoOrdineGUI();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+
+
+
+	public JLabel getValorePrezzoTotaleLabel() {
+		return valorePrezzoTotaleLabel;
 	}
+
+
 
 	/**
 	 * Create the frame.
 	 */
-	public RiepilogoOrdineGUI() {
+	public RiepilogoOrdineGUI(Controller controller) {
+		getBackButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.tornaAlCatalogoDaRiepilogoOrdineGUI();
+			}
+		});
+		this.controller = controller;
 		getBodyPanel().setSize(900, 570);
 		getBodyPanel().setLocation(0, 30);
 		
@@ -56,26 +81,22 @@ public class RiepilogoOrdineGUI extends BigFrame {
 		
 		JLabel prezzoTotaleLabel = new JLabel("Prezzo totale:");
 		prezzoTotaleLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
-		prezzoTotaleLabel.setBounds(10, 10, 101, 31);
+		prezzoTotaleLabel.setBounds(10, 10, 146, 31);
 		prezzoPanel.add(prezzoTotaleLabel);
 		
-		JLabel valorePrezzoTotaleLabel = new JLabel("");
-		valorePrezzoTotaleLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		valorePrezzoTotaleLabel = new JLabel();
+		valorePrezzoTotaleLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		valorePrezzoTotaleLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
 		valorePrezzoTotaleLabel.setBounds(724, 10, 146, 31);
 		prezzoPanel.add(valorePrezzoTotaleLabel);
 		
-		JButton annullaButton = new JButton("Annulla");
-		annullaButton.setFont(new Font("Bell MT", Font.PLAIN, 14));
-		annullaButton.setBackground(Color.WHITE);
-		annullaButton.setForeground(Color.BLACK);
-		annullaButton.setBorderPainted(false);
-		annullaButton.setFocusPainted(false);
-		annullaButton.setFocusTraversalKeysEnabled(false);
-		annullaButton.setFocusable(false);
-		annullaButton.setBounds(10, 538, 113, 21);
-		getBodyPanel().add(annullaButton);
-		
-		JButton confermaButton = new JButton("Conferma");
+		MenuButton confermaButton = new MenuButton("Conferma");
+		confermaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(!controller.getCarrello().isEmpty()) controller.inserisciDatiPagamento(Double.valueOf(valorePrezzoTotaleLabel.getText().substring(0,valorePrezzoTotaleLabel.getText().length()-1)));
+				else JOptionPane.showMessageDialog(confermaButton, "Il carrello è vuoto");
+			}
+		});
 		confermaButton.setFont(new Font("Bell MT", Font.PLAIN, 14));
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.setForeground(Color.BLACK);
@@ -83,25 +104,29 @@ public class RiepilogoOrdineGUI extends BigFrame {
 		confermaButton.setFocusPainted(false);
 		confermaButton.setFocusTraversalKeysEnabled(false);
 		confermaButton.setFocusable(false);
-		confermaButton.setBounds(786, 538, 104, 21);
+		confermaButton.setBounds(763, 538, 127, 21);
 		getBodyPanel().add(confermaButton);
 		
-		JPanel riepilogoOrdinePanel = new JPanel();
+		riepilogoOrdinePanel = new JPanel();
 		
 		riepilogoOrdinePanel.setLayout(new BoxLayout(riepilogoOrdinePanel, BoxLayout.Y_AXIS));
-
-		ModernScrollPane scrollPane = new ModernScrollPane(riepilogoOrdinePanel);
+		
+		scrollPane = new ModernScrollPane(riepilogoOrdinePanel);
 		scrollPane.setBounds(10, 40, 880, 428);
 		scrollPane.setBorder(new LineBorder(new Color(255, 51, 0), 2, true));
 		
-		//TODO riempire riepilogo ordine
-		int size = 0;
-		for (int i = 0; i< 4; i++) {
-			size += 203;
-			riepilogoOrdinePanel.add(new RiepilogoOrdinePanel());
-		}
-		riepilogoOrdinePanel.setPreferredSize(new Dimension(100,size));
 		getBodyPanel().add(scrollPane);
+	}
 
+	public void aggiornaScrollPane() {
+		scrollPane.remove(riepilogoOrdinePanel);
+		
+		riepilogoOrdinePanel = new JPanel();
+		riepilogoOrdinePanel.setLayout(new BoxLayout(riepilogoOrdinePanel, BoxLayout.Y_AXIS));
+		controller.aggiornaCarrello();
+//		riepilogoOrdinePanel.revalidate();
+//		riepilogoOrdinePanel.repaint();
+		scrollPane.setViewportView(riepilogoOrdinePanel);
+		scrollPane.getViewport().revalidate();;
 	}
 }

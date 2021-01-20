@@ -35,7 +35,7 @@ public class UtenteDAO {
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();			
 			if (rs.next()== true) {				 
-				Utente profilo= new Utente(rs.getString("Cognome"), rs.getString("Nome"), rs.getString("Indirizzo"), rs.getString("Email"), rs.getString("CartaDiCredito"), 
+				Utente profilo= new Utente(rs.getInt("IdProfilo"), rs.getString("Cognome"), rs.getString("Nome"), rs.getString("Indirizzo"), rs.getString("Email"), rs.getString("CartaDiCredito"), 
 										rs.getString("NumeroDiTelefono"), rs.getBoolean("Attivo"));
 			
 				if(profilo.isAttivo()==true) {

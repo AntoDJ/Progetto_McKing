@@ -69,8 +69,7 @@ public class LoginFormGUI extends SmallFrame {
 		
 		MenuButton accediButton = new MenuButton("Accedi");
 		accediButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {				
-				
+			public void actionPerformed(ActionEvent e) {
 				try {
 					controller.verificaAccesso(emailTextField.getText(), new String(passwordTextField.getPassword()));
 				} catch (AccountNonDisponibileException e1) {

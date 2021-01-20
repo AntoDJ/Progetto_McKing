@@ -15,11 +15,14 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 
 public class SmallFrame extends JFrame {
 
+	private int posX = 0, posY = 0;
 	private JPanel contentPane;
 	private JPanel titoloPanel;
 	private JPanel bodyPanel;
@@ -29,18 +32,18 @@ public class SmallFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SmallFrame frame = new SmallFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					SmallFrame frame = new SmallFrame();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -62,7 +65,7 @@ public class SmallFrame extends JFrame {
 		titoloPanel.setBounds(0, 0, 450, 46);
 		contentPane.add(titoloPanel);
 		titoloPanel.setLayout(null);
-		
+
 		JLabel titoloLabel = new JLabel("McKing");
 		titoloLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		titoloLabel.setForeground(new Color(255, 255, 50));
@@ -103,7 +106,30 @@ public class SmallFrame extends JFrame {
 		backButton.setBorder(null);
 		titoloPanel.add(backButton);
 		getTitoloPanel().add(backButton);
+		
+		titoloPanel.addMouseListener(new MouseAdapter()
+		{
+		   public void mousePressed(MouseEvent e)
+		   {
+		      posX=e.getX();
+		      posY=e.getY();
+		   }
+		});
 
+		titoloPanel.addMouseMotionListener(new MouseAdapter()
+		{
+		     public void mouseDragged(MouseEvent evt)
+		     {
+				//sets frame position when mouse dragged			
+				setLocation (evt.getXOnScreen()-posX,evt.getYOnScreen()-posY);
+							
+		     }
+		});
+
+	}
+
+	public JButton getExitButton() {
+		return exitButton;
 	}
 
 	public JPanel getBodyPanel() {
@@ -114,8 +140,5 @@ public class SmallFrame extends JFrame {
 	}
 	public JButton getBackButton() {
 		return backButton;
-	}
-
-
-	 
+	}	 
 }

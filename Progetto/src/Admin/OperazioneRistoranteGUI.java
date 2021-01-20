@@ -50,7 +50,11 @@ public class OperazioneRistoranteGUI extends BigFrame {
 	 * Create the frame.
 	 */
 	public OperazioneRistoranteGUI(Controller controller) {
-		getBackButton().setVisible(false);
+		getBackButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.indietroOperazioneRistoranteGUI();
+			}
+		});
 		this.controller = controller;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);

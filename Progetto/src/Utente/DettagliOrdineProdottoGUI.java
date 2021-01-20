@@ -49,12 +49,10 @@ public class DettagliOrdineProdottoGUI extends SmallFrame {
 	 * Create the frame.
 	 */
 	public DettagliOrdineProdottoGUI(ArrayList<Prodotto> formatiProdottoDisponibili, Controller controller) {
-		
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		getExitButton().setVisible(false);
+		getBackButton().setVisible(false);
 		getBodyPanel().setLayout(null);
 		getBodyPanel().setBackground(new Color(255, 255, 153));
-		
-		//TODO inserire dati prodotto
 		
 		JPanel etichettePanel = new JPanel();
 		etichettePanel.setBackground(new Color(240, 240, 240));
@@ -102,23 +100,32 @@ public class DettagliOrdineProdottoGUI extends SmallFrame {
 		quantitaComboBox.setFocusTraversalKeysEnabled(false);
 		quantitaComboBox.setFocusable(false);
 		quantitaComboBox.setBounds(146, 116, 48, 22);
+		quantitaComboBox.setSelectedIndex(0);
 		getBodyPanel().add(quantitaComboBox);
 		
 		ProdottiComboBox dimensioneComboBox = new ProdottiComboBox(formatiProdottoDisponibili);
 		dimensioneComboBox.setBounds(146, 167, 146, 22);
 		getBodyPanel().add(dimensioneComboBox);
 		
-		MenuButton AggiungiButton = new MenuButton("Aggiungi");
-		AggiungiButton.addActionListener(new ActionListener() {
+		MenuButton aggiungiButton = new MenuButton("Aggiungi");
+		aggiungiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Prodotto prodottoCarrello = dimensioneComboBox.getProdottoSelected();
-				prodottoCarrello.setQuantità(quantitaSelezionata);
 				System.out.println(prodottoCarrello);
-				controller.prodottoAggiunto(prodottoCarrello);
+				controller.prodottoAggiunto(prodottoCarrello, quantitaSelezionata);
 			}
 		});
-		AggiungiButton.setBounds(317, 210, 123, 35);
-		getBodyPanel().add(AggiungiButton);
+		aggiungiButton.setBounds(317, 210, 123, 35);
+		getBodyPanel().add(aggiungiButton);
+		
+		MenuButton annullaButton = new MenuButton("Annulla");
+		annullaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.annullaNuovoProdotto();
+			}
+		});
+		annullaButton.setBounds(146, 210, 123, 35);
+		getBodyPanel().add(annullaButton);
 
 	}
 }

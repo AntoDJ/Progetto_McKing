@@ -18,7 +18,7 @@ public class StoricoPanel extends JPanel {
 	public StoricoPanel(Ordine o) {
 		setBorder(new LineBorder(new Color(255, 200, 0), 4, true));
 		setBackground(new Color(255, 255, 102));
-		setBounds(10, 10, 880, 115);
+		setMaximumSize(new java.awt.Dimension(1760, 120));
 		setLayout(null);
 		
 		JLabel nomeUtenteLabel = new JLabel("Cliente:");

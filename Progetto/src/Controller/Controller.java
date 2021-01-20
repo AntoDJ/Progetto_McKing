@@ -37,6 +37,7 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 import Admin.OperazioneRistoranteGUI;
+import Admin.ScegliRiderGUI;
 import Admin.VisualizzaStoricoGUI;
 import AdminCatena.Aggiungi_GestioneCatalogoGUI;
 import AdminCatena.OperazioniCatenaGUI;
@@ -90,7 +91,7 @@ public class Controller {
 	private Aggiungi_GestioneRiderGUI aggiungi_gestioneRiderGui;
 	private RiepilogoOrdineGUI riepilogoOrdineGui;
 	private DettagliOrdineGUI dettagliOrdineGui;
-	
+	private ScegliRiderGUI scegliRiderGui;
 	
 
 	
@@ -138,7 +139,7 @@ public class Controller {
 				operazioniCatenaGui = new OperazioniCatenaGUI(this);
 				operazioniCatenaGui.setVisible(true);						
 			}
-			else { //QUIIIIII
+			else { 
 				creaOperazioneRistoranteGUI();
 			}							
 		}
@@ -157,7 +158,6 @@ public class Controller {
 			try {
 				catalogoGui.catalogoPanel.add(new ProdottoPanel(prodotti.get(i).getNome(), prodotti.get(i).getUrl(), this));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -291,7 +291,6 @@ public class Controller {
 	}
 	
 	
-	//PROVA
 	public void creaOperazioneRistoranteGUI() {
 		operazioneRistoranteGui = new OperazioneRistoranteGUI(this);		
 		riempiOrdiniAssegnati(adminAttivo.getIdRistorante());
@@ -321,22 +320,15 @@ public class Controller {
 	}
 	
 	public void riempiOrdiniDaAssegnare(int IdRistorante) {
-		ArrayList<Rider> rider = null;
 		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
 		int size = 0;
 		ordini = ordineDao.getOrdiniDaAssegnare(IdRistorante);
-		try {
-			rider = riderDao.getRider(adminAttivo);
-		} catch (SQLException e1) {
-			System.out.println("Nessun Rider Disponibile");
-		}
 		for (int i = 0; i< ordini.size(); i++) {
 			size += 115;
-			operazioneRistoranteGui.ordiniDaAssegnarePanel.add(new OrdineDaAssegnarePanel(ordini.get(i), rider, this));
+			operazioneRistoranteGui.ordiniDaAssegnarePanel.add(new OrdineDaAssegnarePanel(ordini.get(i), this));
 			operazioneRistoranteGui.add(Box.createVerticalStrut(10));
 		}
-		  operazioneRistoranteGui.ordiniDaAssegnarePanel.setPreferredSize(new Dimension(100,size));
-		
+		  operazioneRistoranteGui.ordiniDaAssegnarePanel.setPreferredSize(new Dimension(100,size));		
 	}
 
 	public void prodottoSelezionato(String nomeProdotto) {
@@ -385,18 +377,30 @@ public class Controller {
 	}
 	
 	
-	public void riderScelto(Ordine ordine) {		
-		operazioneRistoranteGui.dispose();	
-		riderDao.aggiungiRider(ordine);				
-		creaOperazioneRistoranteGUI();			
+	public void riderScelto(Ordine ordine) {
+		scegliRiderGui.dispose();
+		riderDao.aggiungiRider(ordine);	
+	}
+	public void aggiornaOperazioneRistornate() {
+		operazioneRistoranteGui.dispose();
+		creaOperazioneRistoranteGUI();
+	}
+	
+	public void apriSelezioneRider(Ordine ordine) {
+		ArrayList<Rider> rider = null;
+		try {
+			rider = riderDao.getRider(adminAttivo);
+		} catch (SQLException e1) {
+			System.out.println("Nessun Rider Disponibile");
+		}
+		scegliRiderGui = new ScegliRiderGUI(this, rider, ordine );
+		scegliRiderGui.setVisible(true);
+		
 	}
 	
 	
 	public void cambiaStatoConsegna(Ordine ordine) {
 		ordineDao.cambioStatoConsegna(ordine);	
-		operazioneRistoranteGui.dispose();
-		creaOperazioneRistoranteGUI();
-		
 	}
 	
 	

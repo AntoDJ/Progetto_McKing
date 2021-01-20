@@ -12,7 +12,7 @@ import java.awt.Font;
 public class RiderPanel extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * Create the panel.z
 	 */
 	public RiderPanel(Rider rider) {
 		setBorder(new LineBorder(new Color(0, 204, 102), 10, true));

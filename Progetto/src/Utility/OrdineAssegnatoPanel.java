@@ -91,7 +91,8 @@ public class OrdineAssegnatoPanel extends JPanel {
 		confermaCheckBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(confermaCheckBox.isSelected()) {
-					controller.cambiaStatoConsegna(o);					
+					controller.cambiaStatoConsegna(o);	
+					confermaCheckBox.setVisible(false);
 				}
 			}
 		});

@@ -24,6 +24,7 @@ import javax.swing.border.LineBorder;
 import Controller.Controller;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 
 
 public class OperazioneRistoranteGUI extends BigFrame {
@@ -118,6 +119,16 @@ public class OperazioneRistoranteGUI extends BigFrame {
 		ordiniDaAssegnareLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
 		ordiniDaAssegnareLabel.setBounds(470, 37, 158, 33);
 		getBodyPanel().add(ordiniDaAssegnareLabel);
+		
+		MenuButton aggiornaButton = new MenuButton("Aggiorna");
+		aggiornaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.aggiornaOperazioneRistornate();
+			}
+		});
+		aggiornaButton.setFont(new Font("Bell MT", Font.PLAIN, 14));
+		aggiornaButton.setBounds(10, 10, 94, 21);
+		getBodyPanel().add(aggiornaButton);
 		
 	}
 }

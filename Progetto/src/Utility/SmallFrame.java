@@ -51,8 +51,7 @@ public class SmallFrame extends JFrame {
 	public SmallFrame() {
 		super();
 		setResizable(false);
-		setUndecorated(true);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setUndecorated(true);;
 		setBounds(550, 280, 450, 300);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();

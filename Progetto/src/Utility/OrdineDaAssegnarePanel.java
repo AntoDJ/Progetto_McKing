@@ -19,15 +19,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class OrdineDaAssegnarePanel extends JPanel {
-	public JComboBox<Rider> riderComboBox ;
 	private Controller controller;
+	private Ordine ordine;
 	
 	
 	/**
 	 * Create the panel.
 	 */
-	public OrdineDaAssegnarePanel(Ordine o, ArrayList rider, Controller controller) {
-	
+	public OrdineDaAssegnarePanel(Ordine o,  Controller controller) {
+		this.ordine = o;
 		this.controller = controller;
 		setBorder(new LineBorder(new Color(255, 204, 51), 10, true));
 		setBackground(new Color(255, 255, 204));			
@@ -81,9 +81,8 @@ public class OrdineDaAssegnarePanel extends JPanel {
 		JButton confermaButton = new JButton("Assegna");
 		confermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Rider r = (Rider) riderComboBox.getSelectedItem();
-				o.setRider(r);
-				controller.riderScelto(o);	
+				controller.apriSelezioneRider(o);	
+				confermaButton.setVisible(false);
 			}
 		});
 		confermaButton.setFocusPainted(false);
@@ -91,20 +90,14 @@ public class OrdineDaAssegnarePanel extends JPanel {
 		confermaButton.setFocusable(false);
 		confermaButton.setBackground(Color.WHITE);
 		confermaButton.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		confermaButton.setBounds(269, 75, 85, 21);
+		confermaButton.setBounds(265, 55, 85, 21);
 		add(confermaButton);
 
-		
-		riderComboBox = new JComboBox(rider.toArray(new Rider [0]));		
-		riderComboBox.setBackground(Color.WHITE);
-		riderComboBox.setFocusTraversalKeysEnabled(false);
-		riderComboBox.setFocusable(false);
-		riderComboBox.setBounds(236, 48, 157, 21);
-		add(riderComboBox);		
-
 		}
-		
+	public Ordine getOrdine() {
+		return ordine;
+	}
 
-	
-	
-}
+
+	}
+		

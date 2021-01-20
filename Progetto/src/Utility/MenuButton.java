@@ -8,7 +8,14 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 
 public class MenuButton extends JButton {
-
+	private boolean pressed = false;
+	
+	public boolean isPressed() {
+		return pressed;
+	}
+	public void setPressed(boolean pressed) {
+		this.pressed = pressed;
+	}
 	public MenuButton() {
 		initialize();
 	}

@@ -53,7 +53,7 @@ public class RiderDAO {
 			connection = dbconnection.getConnection();
 			int tot=0;
 			rider = new ArrayList<Rider>();
-			PreparedStatement ps = connection.prepareStatement("SELECT *, (SELECT COUNT(*) FROM \"Ordine\" AS O WHERE  O.\"Consegnato\"='false' AND O.\"IdRider\" = \"Rider\".\"IdRider\") AS TOT FROM \"Rider\" WHERE \"IdRistorante\"= ? ");
+			PreparedStatement ps = connection.prepareStatement("SELECT *, (SELECT COUNT(*) FROM \"Ordine\" AS O WHERE  O.\"Consegnato\"='false' AND O.\"IdRider\" = \"Rider\".\"IdRider\") AS TOT FROM \"Rider\" WHERE \"IdRistorante\"= ? AND \"Attivo\" = 'true'; ");
 			ps.setInt(1, admin.getIdRistorante());
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {

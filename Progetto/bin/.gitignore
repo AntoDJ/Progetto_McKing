@@ -1,4 +1,17 @@
+<<<<<<< HEAD
 /DAO/
 /Admin/
 /Controller/
+=======
+/Admin/
+/AdminCatena/
+/Controller/
+/DAO/
+/DBConnection/
+/Entità/
+/ExceptionsSQL/
+/GUI/
+/General/
+/Utente/
+>>>>>>> branch 'master' of https://github.com/AntoDJ/Progetto_McKing.git
 /Utility/

@@ -28,6 +28,7 @@ public class ProdottoDAO {
 				Prodotto prodotto = new Prodotto(rs.getString("Nome"), rs.getDouble("Prezzo"), rs.getString("Dimensione"), rs.getString("TipoProdotto"), rs.getBoolean("Attivo"), rs.getString("URLImmagine"));
 				prodotti.add(prodotto);
 			}
+			st.close();
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -54,7 +55,29 @@ public class ProdottoDAO {
 		}
 		return prodotti;
 	}
+	
+	//funzione che prende le informazioni di un prodotto con tutti i vari formati
+	public ArrayList<Prodotto> getProdotto(String nomeProdotto){
+		ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
+		try {
+			dbconnection = DBConnection.getInstance();
+			connection = dbconnection.getConnection();
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM \"Prodotto\" AS \"P\" NATURAL JOIN \"ImmaginiProdotti\" WHERE \"P\".\"Nome\" = ? ORDER BY \"Prezzo\" ;");
+			ps.setString(1, nomeProdotto);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Prodotto prodotto = new Prodotto(rs.getString("Nome"), rs.getDouble("Prezzo"), rs.getString("Dimensione"), rs.getString("TipoProdotto"), rs.getBoolean("Attivo"), rs.getString("URLImmagine"));
+				prodotti.add(prodotto);
+			}
+			ps.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return prodotti;
+	}
 
+	//funzione che restituisce tutti i prodotti di un certo tipo
 	public ArrayList<Prodotto> getProdottiAttivi(String tipoProdotto) {
 		ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
 		try {

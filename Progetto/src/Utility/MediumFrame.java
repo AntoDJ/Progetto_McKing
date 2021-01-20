@@ -43,7 +43,7 @@ public class MediumFrame extends JFrame {
 		super();
 		setResizable(false);
 		setUndecorated(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(550, 280, 675, 450);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();

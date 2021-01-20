@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 
 import Controller.Controller;
 import Utility.MediumFrame;
+import Utility.MenuButton;
 import Utility.ModernScrollPane;
 import Utility.ProdottoPanel;
 
@@ -29,6 +30,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JMenuBar;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CatalogoGUI extends MediumFrame {	
 	private Controller controller;
@@ -228,9 +231,12 @@ public class CatalogoGUI extends MediumFrame {
 		
 		ModernScrollPane scrollPane = new ModernScrollPane(catalogoPanel);
 		scrollPane.setBounds(147, 38, 518, 362);
-		scrollPane.add(catalogoPanel);
 		scrollPane.setViewportView(catalogoPanel);
 		getBodyPanel().add(scrollPane);
+		
+		MenuButton CarrelloButton = new MenuButton("Visualizza Carrello");
+		CarrelloButton.setBounds(497, 10, 168, 23);
+		getBodyPanel().add(CarrelloButton);
 		
 		getBackButton().setVisible(false);
 		JMenuBar menuBar = new JMenuBar();
@@ -245,6 +251,11 @@ public class CatalogoGUI extends MediumFrame {
 		menuBar.add(profiloMenu);
 		
 		JMenuItem profiloMenuItem = new JMenuItem("Profilo");
+		profiloMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.mostraProfilo();
+			}
+		});
 		profiloMenu.add(profiloMenuItem);
 		
 		JMenuItem profiloMenuItem_1 = new JMenuItem("Esci");
@@ -252,5 +263,4 @@ public class CatalogoGUI extends MediumFrame {
 		
 		
 	}
-
 }

@@ -50,6 +50,7 @@ import Entità.Utente;
 import ExceptionsSQL.AccountNonDisponibileException;
 import General.AccessoGUI;
 import General.LoginFormGUI;
+import General.VisualizzaRistoranteGUI;
 import Utente.CatalogoGUI;
 import Utente.DettagliOrdineGUI;
 import Utente.DettagliOrdineProdottoGUI;
@@ -78,6 +79,7 @@ public class Controller {
 	private ArrayList<Prodotto> carrello;
 	private RistorantiDAO ristoranteDao;
 // GUI
+	private VisualizzaRistoranteGUI visualizzaRistoranteGui;
 	private AccessoGUI accessoGui;
 	private LoginFormGUI loginFormGui;
 	private CatalogoGUI catalogoGui;

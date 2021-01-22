@@ -8,6 +8,12 @@ import java.awt.EventQueue;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.layout.GridData;
+
+import Controller.Controller;
+import Utility.BigFrame;
 import Utility.SmallFrame;
 
 import java.awt.Font;
@@ -16,28 +22,40 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import chrriis.common.UIUtils;
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import chrriis.dj.nativeswing.swtimpl.NativeInterfaceListener;
+import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
+import chrriis.dj.nativeswing.swtimpl.components.WebBrowserListener;
 
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
 
-public class VisualizzaRistoranteGUI extends SmallFrame {
+public class VisualizzaRistoranteGUI extends BigFrame {
 
+	private Controller controller;
 
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					NativeInterface.open();
+					//for (NativeInterfaceListener nil : NativeInterface.getNativeInterfaceListeners()) nil.
+			        //UIUtils.setPreferredLookAndFeel();
 					VisualizzaRistoranteGUI frame = new VisualizzaRistoranteGUI();
-					frame.setVisible(true);				
-					
+
+					frame.setVisible(true);	
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
+				}	//NativeInterface.runEventPump();
 			}
 		});
 	}
@@ -52,7 +70,7 @@ public class VisualizzaRistoranteGUI extends SmallFrame {
 	
 	
 	public VisualizzaRistoranteGUI() {
-
+		//this.controller = controller;
 		getBodyPanel().setLayout(null);
 		
 		JLabel sceltaRistoranteLabel = new JLabel("Di quale ristorante vuoi avere informazioni?");
@@ -62,6 +80,7 @@ public class VisualizzaRistoranteGUI extends SmallFrame {
 		getBodyPanel().add(sceltaRistoranteLabel);
 		
 		//TODO riempire combobox
+		
 		
 		String [] citta= {"    - - - Seleziona - - -","Napoli","Pisa","Verona"};
 		cittaComboBox = new JComboBox(citta);
@@ -78,29 +97,38 @@ public class VisualizzaRistoranteGUI extends SmallFrame {
 		});
 		cittaComboBox.setBackground(Color.white);
 		cittaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 14));
-		cittaComboBox.setBounds(149, 99, 168, 21);
+		cittaComboBox.setBounds(436, 58, 168, 21);
 		getBodyPanel().add(cittaComboBox);
-				
-		JLabel informazioniRistoranteLabel = new JLabel("//Far comparire le informazioni //");
-		informazioniRistoranteLabel.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		informazioniRistoranteLabel.setBounds(43, 130, 245, 123);
-		getBodyPanel().add(informazioniRistoranteLabel);
+		
+		final JWebBrowser browser = new JWebBrowser();
+		browser.navigate("https://www.google.it/maps/place/Via+Diocleziano,+67,+80124+Napoli+NA");
+		JPanel webPanel = new JPanel();
+		webPanel.setBounds(62, 126, 776, 390);
+		getBodyPanel().add(webPanel);
+		webPanel.setLayout(new BorderLayout(0, 0));
+		webPanel.add(browser,BorderLayout.CENTER);
+		browser.setMenuBarVisible(false);
+		browser.setBarsVisible(false);
+		browser.setVisible(false);
+		browser.getNativeComponent().setEnabled(false);
+		
+		//browser.removeWebBrowserListener(browser.getMouseListeners());
+		//browser.setVisible(false);
+		//browser.setJavascriptEnabled(false);
 		
 		JLabel cercaSullaMappaIcon = new JLabel(new ImageIcon(VisualizzaRistoranteGUI.class.getResource("/GUI/icons/mappa.png")));
 		cercaSullaMappaIcon.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
+				browser.setVisible(true);
 				try {	
 						switch(luogo) {
 						case "Napoli":{
-							Desktop desktop = Desktop.getDesktop();
-							desktop.browse(new URI("https://www.google.it/maps/@40.853586,14.1729668,12z"));
+							browser.navigate("https://www.google.it/maps/place/Via+Diocleziano,+67,+80124+Napoli+NA");
 							break;
 						}
 						case "Pisa":{							
-							Desktop desktop = Desktop.getDesktop();
-							desktop.browse(new URI("https://www.google.it/maps/@40.853586,14.1729668,12z"));
+							browser.navigate("https://www.google.com/maps/place/Via+Giuseppe+Garibaldi,+168,+56124+Pisa+PI");
 							break;						
 						}
 						case "Verona":{							
@@ -120,9 +148,10 @@ public class VisualizzaRistoranteGUI extends SmallFrame {
 				}
 			}
 		});
-		cercaSullaMappaIcon.setBounds(387, 201, 40, 40);
+		cercaSullaMappaIcon.setBounds(637, 44, 40, 40);
 		cercaSullaMappaIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		getBodyPanel().add(cercaSullaMappaIcon);
+		
 		
 //		Mettere questo come azione nel Controller:
 //		Desktop desktop = Desktop.getDesktop();
@@ -133,6 +162,4 @@ public class VisualizzaRistoranteGUI extends SmallFrame {
 //		import java.net.URI;
 		
 	}
-	
-	
 }

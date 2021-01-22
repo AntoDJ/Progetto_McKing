@@ -386,14 +386,14 @@ public class Controller {
 		creaOperazioneRistoranteGUI();
 	}
 	
-	public void apriSelezioneRider(Ordine ordine) {
+	public void apriSelezioneRider(Ordine ordine, OrdineDaAssegnarePanel panel) {
 		ArrayList<Rider> rider = null;
 		try {
 			rider = riderDao.getRider(adminAttivo);
 		} catch (SQLException e1) {
 			System.out.println("Nessun Rider Disponibile");
 		}
-		scegliRiderGui = new ScegliRiderGUI(this, rider, ordine );
+		scegliRiderGui = new ScegliRiderGUI(this, rider, ordine, panel);
 		scegliRiderGui.setVisible(true);
 		
 	}

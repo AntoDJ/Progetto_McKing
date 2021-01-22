@@ -21,7 +21,8 @@ import java.awt.event.ActionEvent;
 public class OrdineDaAssegnarePanel extends JPanel {
 	private Controller controller;
 	private Ordine ordine;
-	
+	public OrdineDaAssegnarePanel panel;
+	public JButton confermaButton;
 	
 	/**
 	 * Create the panel.
@@ -29,6 +30,7 @@ public class OrdineDaAssegnarePanel extends JPanel {
 	public OrdineDaAssegnarePanel(Ordine o,  Controller controller) {
 		this.ordine = o;
 		this.controller = controller;
+		panel = this;
 		setBorder(new LineBorder(new Color(255, 204, 51), 10, true));
 		setBackground(new Color(255, 255, 204));			
 		setMaximumSize(new java.awt.Dimension(840, 120));
@@ -78,11 +80,11 @@ public class OrdineDaAssegnarePanel extends JPanel {
 		prezzoTotaleValoreLabel.setBounds(336, 21, 92, 21);
 		add(prezzoTotaleValoreLabel);
 		
-		JButton confermaButton = new JButton("Assegna");
+		confermaButton = new JButton("Assegna");
 		confermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controller.apriSelezioneRider(o);	
-				confermaButton.setVisible(false);
+				controller.apriSelezioneRider(o, panel);
+				
 			}
 		});
 		confermaButton.setFocusPainted(false);
@@ -98,6 +100,4 @@ public class OrdineDaAssegnarePanel extends JPanel {
 		return ordine;
 	}
 
-
 	}
-		

@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import Utility.MenuButton;
+import Utility.OrdineDaAssegnarePanel;
 import Utility.SmallFrame;
 import javax.swing.JTextField;
 
@@ -42,7 +43,7 @@ public class ScegliRiderGUI extends SmallFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ScegliRiderGUI(Controller controller, ArrayList rider, Ordine ordine) {
+	public ScegliRiderGUI(Controller controller, ArrayList rider, Ordine ordine, OrdineDaAssegnarePanel panel) {
 		getBodyPanel().setBounds(0, 44, 450, 136);
 		this.controller = controller;
 		setBounds(100, 100, 450, 180);
@@ -63,6 +64,7 @@ public class ScegliRiderGUI extends SmallFrame {
 				Rider r = (Rider) riderComboBox.getSelectedItem();
 				ordine.setRider(r);
 				controller.riderScelto(ordine);
+				panel.confermaButton.setVisible(false);				
 			}
 		});
 		confermaButton.setBounds(152, 105, 108, 21);

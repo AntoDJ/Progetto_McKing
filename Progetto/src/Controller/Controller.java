@@ -50,7 +50,6 @@ import Entità.Utente;
 import ExceptionsSQL.AccountNonDisponibileException;
 import General.AccessoGUI;
 import General.LoginFormGUI;
-import General.VisualizzaRistoranteGUI;
 import Utente.CatalogoGUI;
 import Utente.DettagliOrdineGUI;
 import Utente.DettagliOrdineProdottoGUI;
@@ -79,7 +78,6 @@ public class Controller {
 	private ArrayList<Prodotto> carrello;
 	private RistorantiDAO ristoranteDao;
 // GUI
-	private VisualizzaRistoranteGUI visualizzaRistoranteGui;
 	private AccessoGUI accessoGui;
 	private LoginFormGUI loginFormGui;
 	private CatalogoGUI catalogoGui;
@@ -388,14 +386,14 @@ public class Controller {
 		creaOperazioneRistoranteGUI();
 	}
 	
-	public void apriSelezioneRider(Ordine ordine) {
+	public void apriSelezioneRider(Ordine ordine, OrdineDaAssegnarePanel panel) {
 		ArrayList<Rider> rider = null;
 		try {
 			rider = riderDao.getRider(adminAttivo);
 		} catch (SQLException e1) {
 			System.out.println("Nessun Rider Disponibile");
 		}
-		scegliRiderGui = new ScegliRiderGUI(this, rider, ordine );
+		scegliRiderGui = new ScegliRiderGUI(this, rider, ordine, panel);
 		scegliRiderGui.setVisible(true);
 		
 	}
@@ -528,6 +526,3 @@ public class Controller {
 	}
 	
 }
-	
-	
-

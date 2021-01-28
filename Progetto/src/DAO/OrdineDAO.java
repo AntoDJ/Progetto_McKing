@@ -180,7 +180,7 @@ public class OrdineDAO {
 				indicePrezzo = indiceTipoMezzo + 1;
 			}
 			
-			sql += "ORDER BY \"DataOrdine\" ASC; ";			
+			sql += "ORDER BY \"DataOrdine\" DESC; ";			
 			PreparedStatement ps = connection.prepareStatement(sql);
 			
 			

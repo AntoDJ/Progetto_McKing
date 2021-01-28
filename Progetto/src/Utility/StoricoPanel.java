@@ -61,10 +61,10 @@ public class StoricoPanel extends JPanel {
 		indirizzoUtenteValoreLabel.setBounds(162, 42, 145, 28);
 		add(indirizzoUtenteValoreLabel);
 		
-		JLabel cartaDiCreditoUtenteValoreLabel = new JLabel(o.getUtente().getCartaDiCredito());
-		cartaDiCreditoUtenteValoreLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
-		cartaDiCreditoUtenteValoreLabel.setBounds(140, 75, 145, 28);
-		add(cartaDiCreditoUtenteValoreLabel);
+		JLabel prezzoTotaleValoreLabel = new JLabel(String.valueOf(o.getPrezzoTotale()));
+		prezzoTotaleValoreLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
+		prezzoTotaleValoreLabel.setBounds(140, 75, 145, 28);
+		add(prezzoTotaleValoreLabel);
 		
 		JLabel nomeRiderValoreLabel = new JLabel(o.getRider().getNome() + " " +o.getRider().getCognome());
 		nomeRiderValoreLabel.setFont(new Font("Bell MT", Font.BOLD, 16));

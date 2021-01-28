@@ -88,6 +88,7 @@ public class Ordine {
 	public void setUtente(Utente utente) {
 		this.utente = utente;
 	}
+	
 
 
 	@Override

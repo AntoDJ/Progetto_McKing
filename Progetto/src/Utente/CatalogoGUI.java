@@ -93,17 +93,41 @@ public class CatalogoGUI extends MediumFrame {
 		patatineLabel.setBounds(0, 70, 127, 72);
 		prodottiPanel.add(patatineLabel);
 		
+		JLabel patatineImage = new JLabel("");
+		patatineImage.setIcon(new ImageIcon(CatalogoGUI.class.getResource("/GUI/icons/patatine.jpg")));
+		patatineImage.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		patatineImage.setHorizontalAlignment(SwingConstants.CENTER);
+		patatineImage.setBounds(0, 70, 127, 72);
+		patatineImage.setVisible(false);
+		prodottiPanel.add(patatineImage);
+		
 		JLabel bevandeLabel = new JLabel("Bevande");
 		bevandeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		bevandeLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
 		bevandeLabel.setBounds(0, 147, 127, 72);
 		prodottiPanel.add(bevandeLabel);
 		
+		JLabel bevandeImage = new JLabel("");
+		bevandeImage.setIcon(new ImageIcon(CatalogoGUI.class.getResource("/GUI/icons/bevande.jpg")));
+		bevandeImage.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		bevandeImage.setHorizontalAlignment(SwingConstants.CENTER);
+		bevandeImage.setBounds(0, 147, 127, 72);
+		bevandeImage.setVisible(false);
+		prodottiPanel.add(bevandeImage);
+		
 		JLabel dessertsLabel = new JLabel("Desserts");
 		dessertsLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		dessertsLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
 		dessertsLabel.setBounds(0, 219, 127, 72);
 		prodottiPanel.add(dessertsLabel);
+		
+		JLabel dessertsImage = new JLabel("");
+		dessertsImage.setIcon(new ImageIcon(CatalogoGUI.class.getResource("/GUI/icons/desserts.jpg")));
+		dessertsImage.setFont(new Font("Bell MT", Font.PLAIN, 18));
+		dessertsImage.setHorizontalAlignment(SwingConstants.CENTER);
+		dessertsImage.setBounds(0, 219, 127, 72);
+		dessertsImage.setVisible(false);
+		prodottiPanel.add(dessertsImage);
 		
 		JLabel altroLabel = new JLabel("Altro");
 		altroLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -141,12 +165,12 @@ public class CatalogoGUI extends MediumFrame {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				patatineLabel.setVisible(true);
-				//patatineImage.setVisible(true);
+				patatineImage.setVisible(true);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				patatineLabel.setVisible(true);
-				//patatineImage.setVisible(false);
+				patatineImage.setVisible(false);
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -162,12 +186,12 @@ public class CatalogoGUI extends MediumFrame {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				bevandeLabel.setVisible(true);
-				//bevandeImage.setVisible(true);
+				bevandeImage.setVisible(true);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				patatineLabel.setVisible(true);
-				//bevandeImage.setVisible(false);
+				bevandeImage.setVisible(false);
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -183,12 +207,12 @@ public class CatalogoGUI extends MediumFrame {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				dessertsLabel.setVisible(true);
-				//dessertsImage.setVisible(true);
+				dessertsImage.setVisible(true);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				dessertsLabel.setVisible(true);
-				//dessertsImage.setVisible(false);
+				dessertsImage.setVisible(false);
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {

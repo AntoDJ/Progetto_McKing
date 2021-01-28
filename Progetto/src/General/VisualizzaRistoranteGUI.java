@@ -43,67 +43,62 @@ public class VisualizzaRistoranteGUI extends BigFrame {
 	private Controller controller;
 
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					NativeInterface.open();
-					//for (NativeInterfaceListener nil : NativeInterface.getNativeInterfaceListeners()) nil.
-			        //UIUtils.setPreferredLookAndFeel();
-					VisualizzaRistoranteGUI frame = new VisualizzaRistoranteGUI();
-
-					frame.setVisible(true);	
-				} catch (Exception e) {
-					e.printStackTrace();
-				}	//NativeInterface.runEventPump();
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					NativeInterface.open();
+//					//for (NativeInterfaceListener nil : NativeInterface.getNativeInterfaceListeners()) nil.
+//			        //UIUtils.setPreferredLookAndFeel();
+//					VisualizzaRistoranteGUI frame = new VisualizzaRistoranteGUI();
+//
+//					frame.setVisible(true);	
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}	//NativeInterface.runEventPump();
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-
-	JComboBox cittaComboBox;
-	String luogo;
 	
 	
-	
-	public VisualizzaRistoranteGUI() {
-		//this.controller = controller;
+	public VisualizzaRistoranteGUI(Controller controller) {
+		getBackButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.tornaAdAccessoGUI();
+			}
+		});
+		this.controller = controller;
 		getBodyPanel().setLayout(null);
 		
+		NativeInterface.open();
 		JLabel sceltaRistoranteLabel = new JLabel("Di quale ristorante vuoi avere informazioni?");
 		sceltaRistoranteLabel.setFont(new Font("Bell MT", Font.PLAIN, 18));
 		sceltaRistoranteLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		sceltaRistoranteLabel.setBounds(62, 50, 364, 34);
+		sceltaRistoranteLabel.setBounds(62, 53, 364, 34);
 		getBodyPanel().add(sceltaRistoranteLabel);
 		
 		//TODO riempire combobox
 		
 		
-		String [] citta= {"    - - - Seleziona - - -","Napoli","Pisa","Verona"};
-		cittaComboBox = new JComboBox(citta);
-		cittaComboBox.setFocusable(false);
-		cittaComboBox.setFocusTraversalKeysEnabled(false);
-		cittaComboBox.setBackground(Color.white);
-		cittaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 14));
-		cittaComboBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				luogo=(String)cittaComboBox.getSelectedItem();
-				
-			}
-		});
-		cittaComboBox.setBackground(Color.white);
-		cittaComboBox.setFont(new Font("Bell MT", Font.PLAIN, 14));
-		cittaComboBox.setBounds(436, 58, 168, 21);
-		getBodyPanel().add(cittaComboBox);
+		JComboBox selezionaRistoranteComboBox = new JComboBox();
+		controller.riempiComboBoxRistorante(selezionaRistoranteComboBox);
+		selezionaRistoranteComboBox.setFocusable(false);
+		selezionaRistoranteComboBox.setFocusTraversalKeysEnabled(false);
+		selezionaRistoranteComboBox.setBackground(Color.white);
+		selezionaRistoranteComboBox.setFont(new Font("Bell MT", Font.PLAIN, 14));
+		selezionaRistoranteComboBox.setBounds(436, 58, 334, 26);
+		selezionaRistoranteComboBox.setSelectedIndex(0);
+		getBodyPanel().add(selezionaRistoranteComboBox);
 		
 		final JWebBrowser browser = new JWebBrowser();
 		browser.navigate("https://www.google.it/maps/place/Via+Diocleziano,+67,+80124+Napoli+NA");
 		JPanel webPanel = new JPanel();
 		webPanel.setBounds(62, 126, 776, 390);
+		webPanel.setBackground(new Color(255, 255, 179));
 		getBodyPanel().add(webPanel);
 		webPanel.setLayout(new BorderLayout(0, 0));
 		webPanel.add(browser,BorderLayout.CENTER);
@@ -121,34 +116,10 @@ public class VisualizzaRistoranteGUI extends BigFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				browser.setVisible(true);
-				try {	
-						switch(luogo) {
-						case "Napoli":{
-							browser.navigate("https://www.google.it/maps/place/Via+Diocleziano,+67,+80124+Napoli+NA");
-							break;
-						}
-						case "Pisa":{							
-							browser.navigate("https://www.google.com/maps/place/Via+Giuseppe+Garibaldi,+168,+56124+Pisa+PI");
-							break;						
-						}
-						case "Verona":{							
-							Desktop desktop = Desktop.getDesktop();
-							desktop.browse(new URI("https://www.google.it/maps/@40.853586,14.1729668,12z"));
-							break;						
-						}
-						
-						}
-					
-				} catch (IOException e1) {
-					
-					e1.printStackTrace();
-				} catch (URISyntaxException e1) {
-					
-					e1.printStackTrace();
-				}
+				browser.navigate("https://www.google.it/maps/place/" + selezionaRistoranteComboBox.getSelectedItem().toString());
 			}
 		});
-		cercaSullaMappaIcon.setBounds(637, 44, 40, 40);
+		cercaSullaMappaIcon.setBounds(798, 53, 40, 40);
 		cercaSullaMappaIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		getBodyPanel().add(cercaSullaMappaIcon);
 		

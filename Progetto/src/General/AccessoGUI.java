@@ -69,6 +69,11 @@ public class AccessoGUI extends SmallFrame {
 		getBodyPanel().add(adminButton);
 		
 		MenuButton visualizzaRistorantiButton = new MenuButton("Visualizza Ristoranti");
+		visualizzaRistorantiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.visualizzaRistorantiPremuto();
+			}
+		});
 		visualizzaRistorantiButton.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		visualizzaRistorantiButton.setBounds(10, 232, 145, 21);
 		getBodyPanel().add(visualizzaRistorantiButton);

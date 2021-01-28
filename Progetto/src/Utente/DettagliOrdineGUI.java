@@ -188,7 +188,7 @@ public class DettagliOrdineGUI extends MediumFrame {
 						} catch(SQLException err){
 							JDialog errorDialog = new JDialog();
 							errorDialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-							JOptionPane.showMessageDialog(errorDialog, "Numero inserito non valido");
+							JOptionPane.showMessageDialog(getBodyPanel(), "Numero inserito non valido");
 							numeroDiTelefonoTextField.setText(utenteAttivo.getNumeroDiTelefono());
 						}
 					}

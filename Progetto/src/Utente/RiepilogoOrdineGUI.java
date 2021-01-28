@@ -94,7 +94,7 @@ public class RiepilogoOrdineGUI extends BigFrame {
 		confermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!controller.getCarrello().isEmpty()) controller.inserisciDatiPagamento(Double.valueOf(valorePrezzoTotaleLabel.getText().substring(0,valorePrezzoTotaleLabel.getText().length()-1)));
-				else JOptionPane.showMessageDialog(confermaButton, "Il carrello è vuoto");
+				else JOptionPane.showMessageDialog(getBodyPanel(), "Il carrello è vuoto");
 			}
 		});
 		confermaButton.setFont(new Font("Bell MT", Font.PLAIN, 14));

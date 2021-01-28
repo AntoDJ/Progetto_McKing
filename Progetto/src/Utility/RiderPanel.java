@@ -20,19 +20,14 @@ public class RiderPanel extends JPanel {
 		setBounds(10, 10, 655, 115);
 		setLayout(null);
 		
-		JLabel fotoRiderLabel = new JLabel("Foto");
-		fotoRiderLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		fotoRiderLabel.setBounds(10, 10, 111, 95);
-		add(fotoRiderLabel);
-		
 		JLabel nomeLabel = new JLabel("Nome:");
 		nomeLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
-		nomeLabel.setBounds(170, 10, 77, 28);
+		nomeLabel.setBounds(49, 10, 77, 28);
 		add(nomeLabel);
 		
 		JLabel cognomeLabel = new JLabel("Cognome:");
 		cognomeLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
-		cognomeLabel.setBounds(170, 61, 77, 28);
+		cognomeLabel.setBounds(49, 61, 77, 28);
 		add(cognomeLabel);
 		
 		JLabel numeroDiTelefonoLabel = new JLabel("Numero di telefono:");
@@ -47,12 +42,12 @@ public class RiderPanel extends JPanel {
 		
 		JLabel valoreNomeLabel = new JLabel(rider.getNome());
 		valoreNomeLabel.setFont(new Font("Bell MT", Font.ITALIC, 16));
-		valoreNomeLabel.setBounds(228, 10, 111, 28);
+		valoreNomeLabel.setBounds(107, 10, 187, 28);
 		add(valoreNomeLabel);
 		
 		JLabel valoreCognomeLabel = new JLabel(rider.getCognome());
 		valoreCognomeLabel.setFont(new Font("Bell MT", Font.ITALIC, 16));
-		valoreCognomeLabel.setBounds(245, 61, 89, 28);
+		valoreCognomeLabel.setBounds(131, 61, 163, 28);
 		add(valoreCognomeLabel);
 		
 		JLabel valoreNumeroDiTelefonoLabel = new JLabel(rider.getNumeroDiTelefono());

@@ -40,6 +40,7 @@ import Admin.OperazioneRistoranteGUI;
 import Admin.ScegliRiderGUI;
 import Admin.VisualizzaStoricoGUI;
 import AdminCatena.Aggiungi_GestioneCatalogoGUI;
+import AdminCatena.Aggiungi_GestioneRistoranteGUI;
 import AdminCatena.OperazioniCatenaGUI;
 import Entità.Admin;
 import Entità.Ordine;
@@ -50,6 +51,7 @@ import Entità.Utente;
 import ExceptionsSQL.AccountNonDisponibileException;
 import General.AccessoGUI;
 import General.LoginFormGUI;
+import General.VisualizzaRistoranteGUI;
 import Utente.CatalogoGUI;
 import Utente.DettagliOrdineGUI;
 import Utente.DettagliOrdineProdottoGUI;
@@ -58,7 +60,6 @@ import Utente.RiepilogoOrdineGUI;
 import Utility.RiderPanel;
 import Utility.StoricoPanel;
 import Utility.RiepilogoOrdinePanel;
-import Utility.Caricamento;
 import Utility.ModernScrollPane;
 import Utility.OrdineAssegnatoPanel;
 import Utility.OrdineDaAssegnarePanel;
@@ -80,6 +81,7 @@ public class Controller {
 // GUI
 	private AccessoGUI accessoGui;
 	private LoginFormGUI loginFormGui;
+	private RegistrazioneUtenteGUI registrazioneUtenteGui;
 	private CatalogoGUI catalogoGui;
 	private ProfiloGUI profiloGui;
 	private DettagliOrdineProdottoGUI dettagliOrdineProdottoGui;
@@ -92,12 +94,16 @@ public class Controller {
 	private RiepilogoOrdineGUI riepilogoOrdineGui;
 	private DettagliOrdineGUI dettagliOrdineGui;
 	private ScegliRiderGUI scegliRiderGui;
+	private VisualizzaRistoranteGUI visualizzaRistoranteGui;
+	
+	private Aggiungi_GestioneRistoranteGUI aggiungi_GestioneRistoranteGui;
 	
 
 	
 	
 	public Controller(){
 		try {
+			ristoranteDao = new RistorantiDAO();
 			accessoGui = new AccessoGUI(this);
 			accessoGui.setVisible(true);
 		    utenteDao = new UtenteDAO();
@@ -105,7 +111,7 @@ public class Controller {
 		    prodottoDao = new ProdottoDAO();
 		    riderDao = new RiderDAO();
 		    ordineDao = new OrdineDAO();
-		    ristoranteDao = new RistorantiDAO();
+		    
 		}catch (Exception e) {
 			e.printStackTrace();
 		}	
@@ -114,7 +120,7 @@ public class Controller {
 	public void sceltaTipoAccesso(String tipoAccesso) {		
 		loginFormGui = new LoginFormGUI(this);
 		this.tipoAccesso = tipoAccesso;	
-		accessoGui.dispose();		
+		accessoGui.setVisible(false);		
 		loginFormGui.setVisible(true);	
 	}
 	
@@ -136,8 +142,10 @@ public class Controller {
 			loginFormGui.dispose();
 			accessoGui.dispose();
 			if(adminAttivo.isAdminCatena()) {
-				operazioniCatenaGui = new OperazioniCatenaGUI(this);
-				operazioniCatenaGui.setVisible(true);						
+//				operazioniCatenaGui = new OperazioniCatenaGUI(this);
+//				operazioniCatenaGui.setVisible(true);
+				aggiungi_GestioneRistoranteGui = new Aggiungi_GestioneRistoranteGUI(this);
+				aggiungi_GestioneRistoranteGui.setVisible(true);
 			}
 			else { 
 				creaOperazioneRistoranteGUI();
@@ -223,6 +231,7 @@ public class Controller {
 		carrello = null;
 		prodotti = null;
 		accessoGui = new AccessoGUI(this);
+		accessoGui.setVisible(true);
 	}
 
 	public void tornaAlCatalogoDaProfiloGUI() {
@@ -524,8 +533,28 @@ public class Controller {
 			return null;
 		else return valore;
 	}
+
+	public void visualizzaRistorantiPremuto() {
+		accessoGui.setVisible(false);
+		visualizzaRistoranteGui = new VisualizzaRistoranteGUI(this);
+		visualizzaRistoranteGui.setVisible(true);
+		
+	}
+
+	public void tornaAdAccessoGUI() {
+		visualizzaRistoranteGui.dispose();
+		accessoGui.setVisible(true);
+		
+	}
+
+	public void tornaDaLoginForm() {
+		loginFormGui.dispose();
+		accessoGui.setVisible(true);
+	}
+
+	public void apriRegistrazioneUtente() {
+		accessoGui.setVisible(false);
+		registrazioneUtenteGui = new RegistrazioneUtenteGUI(this);
+	}
 	
 }
-	
-	
-

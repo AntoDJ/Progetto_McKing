@@ -56,8 +56,8 @@ public class Cancella_GestioneRiderGUI extends SmallFrame {
 		setBounds(550, 280, 450, 230);
 		getBodyPanel().setLayout(null);
 		
-		JLabel riderDaEiminareLabel = new JLabel("Scegli il rider da eliminare:");
-		riderDaEiminareLabel.setFont(new Font("Bell MT", Font.PLAIN, 16));
+		JLabel riderDaEiminareLabel = new JLabel("Rider da eliminare:");
+		riderDaEiminareLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
 		riderDaEiminareLabel.setBounds(10, 44, 181, 26);
 		getBodyPanel().add(riderDaEiminareLabel);
 		

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 
 import DBConnection.DBConnection;
@@ -108,6 +109,26 @@ public class UtenteDAO {
 		System.out.println(updateEffettuato == 1 ? "Update eseguito" : "Update non eseguito");
 		ps.close();
 		connection.close();
+	}
+
+
+	public void inserisciNuovoUtente(Utente nuovoUtente) throws SQLException {
+			connection = dbconnection.getConnection();
+			PreparedStatement ps = connection.prepareStatement("INSERT INTO public.\"Profilo\"(\r\n"
+					+ "	\"Cognome\", \"Nome\", \"Email\", \"Password\", \"Indirizzo\", \"CartaDiCredito\", \"NumeroDiTelefono\", \"Attivo\")\r\n"
+					+ "	VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+			ps.setString(1, nuovoUtente.getCognome());
+			ps.setString(2, nuovoUtente.getNome());
+			ps.setString(3, nuovoUtente.getEmail());
+			ps.setString(4, nuovoUtente.getPassword());
+			if(nuovoUtente.getIndirizzo().isEmpty()) ps.setNull(5, Types.VARCHAR); ps.setString(5, nuovoUtente.getIndirizzo());
+			if(nuovoUtente.getCartaDiCredito().isEmpty()) ps.setNull(6, Types.VARCHAR); else ps.setString(6, nuovoUtente.getCartaDiCredito());
+			if(nuovoUtente.getNumeroDiTelefono().isEmpty()) ps.setNull(7, Types.VARCHAR); else ps.setString(7, nuovoUtente.getNumeroDiTelefono());
+			ps.setBoolean(8, nuovoUtente.isAttivo());
+			int updateEffettuato = ps.executeUpdate();
+			System.out.println(updateEffettuato == 1 ? "Update eseguito" : "Update non eseguito");
+			ps.close();
+			connection.close();
 	}
 
 }

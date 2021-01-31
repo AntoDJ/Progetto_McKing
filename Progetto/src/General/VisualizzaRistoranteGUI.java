@@ -68,7 +68,7 @@ public class VisualizzaRistoranteGUI extends BigFrame {
 	public VisualizzaRistoranteGUI(Controller controller) {
 		getBackButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controller.tornaAdAccessoGUI();
+				controller.tornaAdAccessoGUIDaVisualizzaRistorante();
 			}
 		});
 		this.controller = controller;

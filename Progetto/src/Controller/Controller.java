@@ -50,6 +50,7 @@ import Entità.Utente;
 import ExceptionsSQL.AccountNonDisponibileException;
 import General.AccessoGUI;
 import General.LoginFormGUI;
+import General.RegistrazioneUtenteGUI;
 import General.VisualizzaRistoranteGUI;
 import Utente.CatalogoGUI;
 import Utente.DettagliOrdineGUI;
@@ -536,7 +537,7 @@ public class Controller {
 		
 	}
 
-	public void tornaAdAccessoGUI() {
+	public void tornaAdAccessoGUIDaVisualizzaRistorante() {
 		visualizzaRistoranteGui.dispose();
 		accessoGui.setVisible(true);
 		
@@ -548,8 +549,20 @@ public class Controller {
 	}
 
 	public void apriRegistrazioneUtente() {
-		accessoGui.setVisible(false);
+		loginFormGui.setVisible(false);
 		registrazioneUtenteGui = new RegistrazioneUtenteGUI(this);
+		registrazioneUtenteGui.setVisible(true);
 	}
-	
+
+	public void tornaAdAccessoGUIDaRegistrazioneUtente() {
+		registrazioneUtenteGui.dispose();
+		accessoGui.setVisible(true);
+	}
+
+	public void confermaNuovoUtente(Utente nuovoUtente) throws SQLException{
+		utenteDao.inserisciNuovoUtente(nuovoUtente);
+		registrazioneUtenteGui.dispose();
+		loginFormGui.getEmailTextField().setText(nuovoUtente.getEmail());
+		loginFormGui.setVisible(true);
+	}
 }

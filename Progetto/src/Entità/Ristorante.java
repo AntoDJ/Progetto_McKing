@@ -11,6 +11,7 @@ public class Ristorante {
 	private Time orarioChiusura;
 	private double distanzaMassima;
 	private boolean attivo;
+	private int idAdmin;
 	
 	
 	public Ristorante(String citta, String indirizzo, String numeroDiTelefono, Time orarioApertura, Time orarioChiusura, double distanzaMassima) {
@@ -32,7 +33,16 @@ public class Ristorante {
 		this.orarioChiusura = orarioChiusura;
 		this.distanzaMassima = distanzaMassima;
 	}
-	
+	public Ristorante(String citta, String indirizzo, String numeroDiTelefono, Time orarioApertura, Time orarioChiusura,
+			int idAdmin) {
+		super();
+		this.citta = citta;
+		this.indirizzo = indirizzo;
+		this.numeroDiTelefono = numeroDiTelefono;
+		this.orarioApertura = orarioApertura;
+		this.orarioChiusura = orarioChiusura;
+		this.idAdmin = idAdmin;
+	}
 	@Override
 	public String toString() {
 		return  citta + ", " + indirizzo;
@@ -85,6 +95,13 @@ public class Ristorante {
 	public void setAttivo(boolean attivo) {
 		this.attivo = attivo;
 	}
+	public int getIdAdmin() {
+		return idAdmin;
+	}
+	public void setIdAdmin(int idAdmin) {
+		this.idAdmin = idAdmin;
+	}
+	
 	
 	
 	

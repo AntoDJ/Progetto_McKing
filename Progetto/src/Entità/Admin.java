@@ -10,12 +10,13 @@ public class Admin {
 	private boolean attivo;	
 	private int idRistorante;
 
-	public Admin(boolean adminCatena, String cognome, String nome, String email, boolean attivo, int idRistorante) {
+	public Admin(boolean adminCatena, String cognome, String nome, String email, String password, boolean attivo, int idRistorante) {
 		super();
 		this.adminCatena = adminCatena;
 		this.cognome = cognome;
 		this.nome = nome;
 		this.email = email;
+		this.password = password;
 		this.attivo = attivo;
 		this.idRistorante = idRistorante;
 	}

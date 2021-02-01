@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.ComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -556,5 +557,61 @@ public class Controller {
 		accessoGui.setVisible(false);
 		registrazioneUtenteGui = new RegistrazioneUtenteGUI(this);
 	}
+	
+	public AdminDAO getAdminDao() {
+		return adminDao;
+	}
+	
+	public void creaAdminRistorante (Admin admin) {
+		int ritorno;	
+		int id;
+		ritorno = adminDao.creaAdminCatenaDao(admin);
+		if(ritorno == 1) {
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("");
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("Admin inserito correttamente");
+			aggiungi_GestioneRistoranteGui.creaAdminButton.setVisible(false);
+
+		}
+		else {			
+				aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
+				aggiungi_GestioneRistoranteGui.risultatoLabel.setText("");
+				aggiungi_GestioneRistoranteGui.risultatoLabel.setText("Impossibile inserire Admin");			
+		}
+	}
+	
+	public void creaRistorante(Ristorante ristorante) {
+		int ritorno = 0;
+		
+		ritorno = ristoranteDao.inserisciRistorante(ristorante);
+		if(ritorno == 1) {
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("");
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setText(aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<html><br></html>Ristorante inserito correttamente");						
+		}
+		else {			
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setText(aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<html><br></html>Impossibile inserire Ristorante");			
+	}	
+		
+	}
+	
+	public int getIdRistornate(Ristorante ristorante) {
+		int ritorno = 0;
+		ritorno = ristoranteDao.getIdRistornateDao(ristorante);
+		return ritorno;
+	}
+	
+	public void modificaIdRistorante(Admin admin, int id) {
+		int ritorno = 0;
+		ritorno = adminDao.modificaIdRistoranteDao(admin, id);
+		if (ritorno == 1) {
+			aggiungi_GestioneRistoranteGui.creaAdminButton.setVisible(false);
+			System.out.println("OK");
+		}
+		else System.out.println("Errore");
+	}
+	
+	
 	
 }

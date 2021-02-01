@@ -6,7 +6,10 @@ import javax.swing.JFrame;
 
 import Controller.Controller;
 import Entità.Admin;
+import Entità.Ristorante;
 import Utility.BigFrame;
+import Utility.MenuButton;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -14,6 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.sql.Time;
 import java.awt.event.ActionEvent;
 
 public class Aggiungi_GestioneRistoranteGUI extends BigFrame {
@@ -22,14 +26,14 @@ public class Aggiungi_GestioneRistoranteGUI extends BigFrame {
 	private JTextField cognomeTextField;
 	private JTextField emailTextField;
 	private JTextField passwordTextField;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	/**
-	 * Launch the application.
-	 */
+	private JTextField cittaTextField;
+	private JTextField indirizzoTextField;
+	private JTextField numeroDiTelefonoTextField;
+	private JTextField orarioAperturaTextField;
+	private JTextField orarioChiusuraTextField;
+	public MenuButton creaAdminButton;
+	public JLabel risultatoLabel;
+
 //	public static void main(String[] args) {
 //		EventQueue.invokeLater(new Runnable() {
 //			public void run() {
@@ -136,78 +140,101 @@ public class Aggiungi_GestioneRistoranteGUI extends BigFrame {
 		lblOrarioChiusura.setBounds(442, 410, 133, 34);
 		getBodyPanel().add(lblOrarioChiusura);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(585, 87, 294, 34);
-		getBodyPanel().add(textField_2);
+		cittaTextField = new JTextField();
+		cittaTextField.setColumns(10);
+		cittaTextField.setBounds(585, 87, 294, 34);
+		getBodyPanel().add(cittaTextField);
 		
-		textField_3 = new JTextField();
-		textField_3.setToolTipText("es. Via Roma, 7");
-		textField_3.setColumns(10);
-		textField_3.setBounds(585, 160, 294, 34);
-		getBodyPanel().add(textField_3);
+		indirizzoTextField = new JTextField();
+		indirizzoTextField.setToolTipText("es. Via Roma, 7");
+		indirizzoTextField.setColumns(10);
+		indirizzoTextField.setBounds(585, 160, 294, 34);
+		getBodyPanel().add(indirizzoTextField);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(585, 243, 294, 34);
-		getBodyPanel().add(textField_4);
+		numeroDiTelefonoTextField = new JTextField();
+		numeroDiTelefonoTextField.setColumns(10);
+		numeroDiTelefonoTextField.setBounds(585, 243, 294, 34);
+		getBodyPanel().add(numeroDiTelefonoTextField);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(585, 324, 294, 34);
-		getBodyPanel().add(textField_5);
+		orarioAperturaTextField = new JTextField();
+		orarioAperturaTextField.setToolTipText("formato: hh:mm:ss");
+		orarioAperturaTextField.setColumns(10);
+		orarioAperturaTextField.setBounds(585, 324, 294, 34);
+		getBodyPanel().add(orarioAperturaTextField);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(585, 410, 294, 34);
-		getBodyPanel().add(textField_6);
+		orarioChiusuraTextField = new JTextField();
+		orarioChiusuraTextField.setToolTipText("formato: hh:mm:ss");
+		orarioChiusuraTextField.setColumns(10);
+		orarioChiusuraTextField.setBounds(585, 410, 294, 34);
+		getBodyPanel().add(orarioChiusuraTextField);
 		
-		JButton creaAdminButton = new JButton("Crea Admin ");
+		creaAdminButton = new MenuButton("Crea");
 		creaAdminButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nome;
 				String cognome;
 				String email;
 				String password;
-				Admin admin;
+				String citta;
+				String indirizzo;
+				String numeroDiTelefono;
+				String orarioApertura;
+				String orarioChiusura;
+				int idAdmin;
 				
+				Admin admin = null;
+				Ristorante ristorante = null;
+				
+				//Admin
 				nome = nomeTextField.getText();
 				cognome = cognomeTextField.getText();
 				email = emailTextField.getText();
 				password = passwordTextField.getText();
-				admin = new Admin(false, cognome, nome, email, true, 0);
-				System.out.println(admin);
+				// Ristorante
+				int idRistorante = 0;
+				citta = cittaTextField.getText();
+				indirizzo = indirizzoTextField.getText();
+				numeroDiTelefono = numeroDiTelefonoTextField.getText();
+				orarioApertura = orarioAperturaTextField.getText();
+				orarioChiusura = orarioChiusuraTextField.getText();
 				
-				nomeTextField.setText(null);
-				cognomeTextField.setText(null);
-				emailTextField.setText(null);
-				passwordTextField.setText(null);				
-				
-				//CHIAMARE METODO CONTROLLER
-
-				
-				
-				
-				
+				if(nome.equals("") && cognome.equals("") && email.equals("") && password.equals("") && citta.equals("") && indirizzo.equals("") && numeroDiTelefono.equals("") && orarioApertura.equals("") && orarioChiusura.equals("")) 
+					risultatoLabel.setText("''Bisogna inserire prima tutti i campi''");				
+				else {
+					admin = new Admin(false, cognome, nome, email,password, true, 0);
+					System.out.println(admin);
+					controller.creaAdminRistorante(admin);
+					idAdmin = controller.getAdminDao().getIdAdmin(admin);	
+					System.out.println(idAdmin);
+					
+					ristorante = new Ristorante(citta, indirizzo, numeroDiTelefono, Time.valueOf(orarioApertura), Time.valueOf(orarioChiusura), idAdmin);
+					System.out.println(ristorante);
+					controller.creaRistorante(ristorante);
+					
+					idRistorante = controller.getIdRistornate(ristorante);
+					controller.modificaIdRistorante(admin, idRistorante);
+				}
 				
 			}
 		});
-		creaAdminButton.setBackground(Color.WHITE);
-		creaAdminButton.setFont(new Font("Bell MT", Font.BOLD, 14));
+		creaAdminButton.setFont(new Font("Bell MT", Font.BOLD, 16));
 		creaAdminButton.setFocusPainted(false);
 		creaAdminButton.setFocusTraversalKeysEnabled(false);
 		creaAdminButton.setFocusable(false);
-		creaAdminButton.setBounds(150, 498, 202, 22);
+		creaAdminButton.setBounds(676, 510, 202, 22);
 		getBodyPanel().add(creaAdminButton);
 		
-		JButton creaRistoranteButton = new JButton("Crea ristorante");
-		creaRistoranteButton.setBackground(Color.WHITE);
-		creaRistoranteButton.setFont(new Font("Bell MT", Font.BOLD, 14));
-		creaRistoranteButton.setFocusPainted(false);
-		creaRistoranteButton.setFocusTraversalKeysEnabled(false);
-		creaRistoranteButton.setFocusable(false);
-		creaRistoranteButton.setBounds(631, 498, 202, 22);
-		getBodyPanel().add(creaRistoranteButton);
+		risultatoLabel = new JLabel("");
+		risultatoLabel.setBackground(new Color(255, 255, 153));
+		risultatoLabel.setFont(new Font("Bell MT", Font.PLAIN, 14));
+		risultatoLabel.setBounds(316, 472, 290, 44);		
+		getBodyPanel().add(risultatoLabel);
+		
+		JLabel lblNewLabel = new JLabel("N.B. E' necessario riempire tutti i campi");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Bell MT", Font.BOLD, 12));
+		lblNewLabel.setBounds(-26, 509, 321, 26);
+		getBodyPanel().add(lblNewLabel);
 		
 	}
 }

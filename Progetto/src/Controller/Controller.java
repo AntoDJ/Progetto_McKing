@@ -53,6 +53,7 @@ import ExceptionsSQL.AccountNonDisponibileException;
 import General.AccessoGUI;
 import General.LoginFormGUI;
 import General.VisualizzaRistoranteGUI;
+import General.RegistrazioneUtenteGUI;
 import Utente.CatalogoGUI;
 import Utente.DettagliOrdineGUI;
 import Utente.DettagliOrdineProdottoGUI;
@@ -96,7 +97,6 @@ public class Controller {
 	private DettagliOrdineGUI dettagliOrdineGui;
 	private ScegliRiderGUI scegliRiderGui;
 	private VisualizzaRistoranteGUI visualizzaRistoranteGui;
-	
 	private Aggiungi_GestioneRistoranteGUI aggiungi_GestioneRistoranteGui;
 	
 
@@ -143,6 +143,8 @@ public class Controller {
 			loginFormGui.dispose();
 			accessoGui.dispose();
 			if(adminAttivo.isAdminCatena()) {
+				operazioniCatenaGui = new OperazioniCatenaGUI(this);
+				operazioniCatenaGui.setVisible(true);	
 //				operazioniCatenaGui = new OperazioniCatenaGUI(this);
 //				operazioniCatenaGui.setVisible(true);
 				aggiungi_GestioneRistoranteGui = new Aggiungi_GestioneRistoranteGUI(this);
@@ -542,7 +544,7 @@ public class Controller {
 		
 	}
 
-	public void tornaAdAccessoGUI() {
+	public void tornaAdAccessoGUIDaVisualizzaRistorante() {
 		visualizzaRistoranteGui.dispose();
 		accessoGui.setVisible(true);
 		
@@ -554,8 +556,9 @@ public class Controller {
 	}
 
 	public void apriRegistrazioneUtente() {
-		accessoGui.setVisible(false);
+		loginFormGui.setVisible(false);
 		registrazioneUtenteGui = new RegistrazioneUtenteGUI(this);
+		registrazioneUtenteGui.setVisible(true);
 	}
 	
 	public AdminDAO getAdminDao() {
@@ -566,16 +569,15 @@ public class Controller {
 		int ritorno;	
 		int id;
 		ritorno = adminDao.creaAdminCatenaDao(admin);
+		aggiungi_GestioneRistoranteGui.risultatoLabel.setText("");
 		if(ritorno == 1) {
 			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("");
 			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("Admin inserito correttamente");
 			aggiungi_GestioneRistoranteGui.creaAdminButton.setVisible(false);
 
 		}
 		else {			
 				aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
-				aggiungi_GestioneRistoranteGui.risultatoLabel.setText("");
 				aggiungi_GestioneRistoranteGui.risultatoLabel.setText("Impossibile inserire Admin");			
 		}
 	}
@@ -586,12 +588,11 @@ public class Controller {
 		ritorno = ristoranteDao.inserisciRistorante(ristorante);
 		if(ritorno == 1) {
 			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("");
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setText(aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<html><br></html>Ristorante inserito correttamente");						
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("<html>" + aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<br>Ristorante inserito correttamente </html>");						
 		}
 		else {			
 			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setText(aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<html><br></html>Impossibile inserire Ristorante");			
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("<html>" + aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<br>Impossibile inserire Ristorante </html>");			
 	}	
 		
 	}
@@ -610,6 +611,18 @@ public class Controller {
 			System.out.println("OK");
 		}
 		else System.out.println("Errore");
+	}
+	
+	public void tornaAdAccessoGUIDaRegistrazioneUtente() {
+		registrazioneUtenteGui.dispose();
+		accessoGui.setVisible(true);
+	}
+
+	public void confermaNuovoUtente(Utente nuovoUtente) throws SQLException{
+		utenteDao.inserisciNuovoUtente(nuovoUtente);
+		registrazioneUtenteGui.dispose();
+		loginFormGui.getEmailTextField().setText(nuovoUtente.getEmail());
+		loginFormGui.setVisible(true);
 	}
 	
 	

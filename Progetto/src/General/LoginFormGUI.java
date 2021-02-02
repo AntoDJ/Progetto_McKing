@@ -12,10 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import Controller.Controller;
+import Controller.RegistrazioneUtenteGUI;
 import ExceptionsSQL.AccountNonDisponibileException;
 
 import java.awt.Font;
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -26,9 +28,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class LoginFormGUI extends SmallFrame {
 	private JTextField emailTextField;
+
 	private JPasswordField passwordTextField;
 	private Controller controller;
 
@@ -50,7 +57,12 @@ public class LoginFormGUI extends SmallFrame {
 
 	/**
 	 * Create the frame.
-	 */
+	 */	
+	
+	public JTextField getEmailTextField() {
+		return emailTextField;
+	}
+
 	public LoginFormGUI(Controller controller) {
 		this.controller= controller;
 		getBackButton().addActionListener(new ActionListener() {
@@ -76,15 +88,63 @@ public class LoginFormGUI extends SmallFrame {
 		getBodyPanel().add(emailTextField);
 		emailTextField.setColumns(10);
 		
-		passwordTextField = new JPasswordField();		
-		passwordTextField.setBounds(131, 122, 285, 23);
-		getBodyPanel().add(passwordTextField);
+		JPanel panel = new JPanel();
+		panel.setBorder(UIManager.getBorder("TextField.border"));
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(131, 122, 285, 23);
+		getBodyPanel().add(panel);
+		panel.setLayout(null);
 		
 		JLabel credenzialiSbagliateLabel = new JLabel("*Le credenziali inserite non sono corrette");
 		credenzialiSbagliateLabel.setBounds(131, 156, 249, 14);
 		credenzialiSbagliateLabel.setForeground(Color.red);
 		credenzialiSbagliateLabel.setVisible(false);
 		getBodyPanel().add(credenzialiSbagliateLabel);
+		
+		passwordTextField = new JPasswordField();
+		passwordTextField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+					try {
+						controller.verificaAccesso(emailTextField.getText(), new String(passwordTextField.getPassword()));
+					} catch (AccountNonDisponibileException e1) {
+						credenzialiSbagliateLabel.setVisible(true);
+						final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+						executorService.schedule(new Runnable() {
+							public void run() {credenzialiSbagliateLabel.setVisible(false);}
+						}, 3, TimeUnit.SECONDS);
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+		passwordTextField.setBorder(null);
+		passwordTextField.setBounds(1, 1, 259, 20);
+		panel.add(passwordTextField);
+		
+		JLabel mostraLabel = new JLabel("");
+		mostraLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if(passwordTextField.getEchoChar() == 0) {
+					mostraLabel.setToolTipText("Nascondi");
+					mostraLabel.setIcon(new ImageIcon(RegistrazioneUtenteGUI.class.getResource("/GUI/icons/nonMostrare.png")));
+					passwordTextField.setEchoChar('\u2022');
+				}
+				else {
+					mostraLabel.setToolTipText("Mostra");
+					mostraLabel.setIcon(new ImageIcon(RegistrazioneUtenteGUI.class.getResource("/GUI/icons/mostrare.png")));
+					passwordTextField.setEchoChar((char)0);
+				}
+			}
+		});
+		mostraLabel.setIcon(new ImageIcon(RegistrazioneUtenteGUI.class.getResource("/GUI/icons/mostrare.png")));
+		mostraLabel.setBounds(261, 1, 24, 22);
+		panel.add(mostraLabel);
 		
 		MenuButton accediButton = new MenuButton("Accedi");
 		accediButton.setFont(new Font("Bell MT", Font.BOLD, 16));
@@ -103,7 +163,6 @@ public class LoginFormGUI extends SmallFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
 			}
 		});
 		accediButton.setBounds(318, 212, 98, 23);

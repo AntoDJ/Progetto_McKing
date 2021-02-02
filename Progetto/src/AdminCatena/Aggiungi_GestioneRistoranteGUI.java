@@ -51,6 +51,7 @@ public class Aggiungi_GestioneRistoranteGUI extends BigFrame {
 	 * Create the frame.
 	 */
 	public Aggiungi_GestioneRistoranteGUI(Controller controller) {
+		getBodyPanel().setLocation(0, 44);
 		this.controller = controller;
 		getBodyPanel().setLayout(null);
 		
@@ -198,17 +199,14 @@ public class Aggiungi_GestioneRistoranteGUI extends BigFrame {
 				orarioApertura = orarioAperturaTextField.getText();
 				orarioChiusura = orarioChiusuraTextField.getText();
 				
-				if(nome.equals("") && cognome.equals("") && email.equals("") && password.equals("") && citta.equals("") && indirizzo.equals("") && numeroDiTelefono.equals("") && orarioApertura.equals("") && orarioChiusura.equals("")) 
+				if(nome.equals("") || cognome.equals("") || email.equals("") || password.equals("") || citta.equals("") || indirizzo.equals("") || numeroDiTelefono.equals("") || orarioApertura.equals("") || orarioChiusura.equals("")) 
 					risultatoLabel.setText("''Bisogna inserire prima tutti i campi''");				
 				else {
-					admin = new Admin(false, cognome, nome, email,password, true, 0);
-					System.out.println(admin);
+					admin = new Admin(false, cognome, nome, email,password, true, 0);					
 					controller.creaAdminRistorante(admin);
 					idAdmin = controller.getAdminDao().getIdAdmin(admin);	
-					System.out.println(idAdmin);
-					
+										
 					ristorante = new Ristorante(citta, indirizzo, numeroDiTelefono, Time.valueOf(orarioApertura), Time.valueOf(orarioChiusura), idAdmin);
-					System.out.println(ristorante);
 					controller.creaRistorante(ristorante);
 					
 					idRistorante = controller.getIdRistornate(ristorante);
@@ -231,9 +229,10 @@ public class Aggiungi_GestioneRistoranteGUI extends BigFrame {
 		getBodyPanel().add(risultatoLabel);
 		
 		JLabel lblNewLabel = new JLabel("N.B. E' necessario riempire tutti i campi");
+		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Bell MT", Font.BOLD, 12));
-		lblNewLabel.setBounds(-26, 509, 321, 26);
+		lblNewLabel.setFont(new Font("Bell MT", Font.BOLD, 14));
+		lblNewLabel.setBounds(-15, 509, 321, 26);
 		getBodyPanel().add(lblNewLabel);
 		
 	}

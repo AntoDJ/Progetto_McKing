@@ -1,10 +1,9 @@
-/Admin/
 /AdminCatena/
 /Controller/
-/DAO/
-/DBConnection/
-/Entità/
-/ExceptionsSQL/
 /General/
+/DAO/
+/Entità/
+/Admin/
+/GUI/
 /Utente/
 /Utility/

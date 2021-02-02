@@ -37,9 +37,17 @@ public class Utente {
 		this.numeroDiTelefono = numeroDiTelefono;
 		this.attivo = attivo;
 	}
-	
-	
-	
+	public Utente(String nome, String cognome, String email, String password, String indirizzo, String numeroDiTelefono, String cartaDiCredito) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.email = email;
+		this.password = password;
+		this.indirizzo = indirizzo;
+		this.numeroDiTelefono = numeroDiTelefono;
+		this.cartaDiCredito = cartaDiCredito;
+		this.attivo = true;
+	}
 	public String getCognome() {
 		return cognome;
 	}

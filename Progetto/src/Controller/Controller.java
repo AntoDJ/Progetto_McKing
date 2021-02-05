@@ -52,13 +52,10 @@ import Entità.Utente;
 import ExceptionsSQL.AccountNonDisponibileException;
 import General.AccessoGUI;
 import General.LoginFormGUI;
-<<<<<<< HEAD
 import General.VisualizzaRistoranteGUI;
 import General.RegistrazioneUtenteGUI;
-=======
 import General.RegistrazioneUtenteGUI;
 import General.VisualizzaRistoranteGUI;
->>>>>>> refs/remotes/origin/master
 import Utente.CatalogoGUI;
 import Utente.DettagliOrdineGUI;
 import Utente.DettagliOrdineProdottoGUI;
@@ -102,10 +99,8 @@ public class Controller {
 	private DettagliOrdineGUI dettagliOrdineGui;
 	private ScegliRiderGUI scegliRiderGui;
 	private VisualizzaRistoranteGUI visualizzaRistoranteGui;
-<<<<<<< HEAD
 	private Aggiungi_GestioneRistoranteGUI aggiungi_GestioneRistoranteGui;
-=======
->>>>>>> refs/remotes/origin/master
+
 	
 
 	
@@ -566,7 +561,7 @@ public class Controller {
 		registrazioneUtenteGui = new RegistrazioneUtenteGUI(this);
 		registrazioneUtenteGui.setVisible(true);
 	}
-<<<<<<< HEAD
+
 	
 	public AdminDAO getAdminDao() {
 		return adminDao;
@@ -575,25 +570,31 @@ public class Controller {
 	public void creaAdminRistorante (Admin admin) {
 		int id;
 		try {
+			if( aggiungi_GestioneRistoranteGui.risultatoAdminLabel.getText().equals("") || aggiungi_GestioneRistoranteGui.risultatoAdminLabel.getText().equals("Impossibile inserire Admin") ) {
 			adminDao.creaAdminCatenaDao(admin);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("Admin inserito correttamente");
+			aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setText("Admin inserito correttamente");
+			}else {
+				aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setText("Admin già inserito");
+			}
 		} catch (SQLException e) {
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("Impossibile inserire Admin");		
+			aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setText("Impossibile inserire Admin");		
 		}		
 	}
 	
-	public void creaRistorante(Ristorante ristorante) {
-		
+	public void creaRistorante(Ristorante ristorante) {		
 		try {
+			if(aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.getText().equals("") || aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.getText().equals("Impossibile inserire Ristorante")) {
 			ristoranteDao.inserisciRistorante(ristorante);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("<html>" + aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<br>Ristorante inserito correttamente </html>");
-			aggiungi_GestioneRistoranteGui.creaAdminButton.setVisible(false);
+			aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.setText("Ristorante inserito correttamente ");
+			JOptionPane.showMessageDialog(aggiungi_GestioneRistoranteGui.getBodyPanel(), "Modifiche effettuate");
+			//creare funzione per tornare indietro e richiamarla qua 
+			}
 			} catch (SQLException e) {
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("<html>" + aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<br>Impossibile inserire Ristorante </html>");			
+			aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.setText("Impossibile inserire Ristorante");			
 		}		
 	}
 	
@@ -628,20 +629,5 @@ public class Controller {
 		loginFormGui.setVisible(true);
 	}
 	
-	
-	
-=======
 
-	public void tornaAdAccessoGUIDaRegistrazioneUtente() {
-		registrazioneUtenteGui.dispose();
-		accessoGui.setVisible(true);
-	}
-
-	public void confermaNuovoUtente(Utente nuovoUtente) throws SQLException{
-		utenteDao.inserisciNuovoUtente(nuovoUtente);
-		registrazioneUtenteGui.dispose();
-		loginFormGui.getEmailTextField().setText(nuovoUtente.getEmail());
-		loginFormGui.setVisible(true);
-	}
->>>>>>> refs/remotes/origin/master
 }

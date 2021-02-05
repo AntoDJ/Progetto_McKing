@@ -32,7 +32,8 @@ public class Aggiungi_GestioneRistoranteGUI extends BigFrame {
 	private JTextField orarioAperturaTextField;
 	private JTextField orarioChiusuraTextField;
 	public MenuButton creaAdminButton;
-	public JLabel risultatoLabel;
+	public JLabel risultatoAdminLabel;
+	public JLabel risultatoRistoranteLabel;
 
 //	public static void main(String[] args) {
 //		EventQueue.invokeLater(new Runnable() {
@@ -200,7 +201,7 @@ public class Aggiungi_GestioneRistoranteGUI extends BigFrame {
 				orarioChiusura = orarioChiusuraTextField.getText();
 				
 				if(nome.equals("") || cognome.equals("") || email.equals("") || password.equals("") || citta.equals("") || indirizzo.equals("") || numeroDiTelefono.equals("") || orarioApertura.equals("") || orarioChiusura.equals("")) 
-					risultatoLabel.setText("''Bisogna inserire prima tutti i campi''");				
+					risultatoAdminLabel.setText("''Bisogna inserire prima tutti i campi''");				
 				else {
 					admin = new Admin(false, cognome, nome, email,password, true, 0);					
 					controller.creaAdminRistorante(admin);
@@ -222,17 +223,23 @@ public class Aggiungi_GestioneRistoranteGUI extends BigFrame {
 		creaAdminButton.setBounds(676, 510, 202, 22);
 		getBodyPanel().add(creaAdminButton);
 		
-		risultatoLabel = new JLabel("");
-		risultatoLabel.setBackground(new Color(255, 255, 153));
-		risultatoLabel.setFont(new Font("Bell MT", Font.PLAIN, 14));
-		risultatoLabel.setBounds(316, 472, 290, 44);		
-		getBodyPanel().add(risultatoLabel);
+		risultatoAdminLabel = new JLabel("");
+		risultatoAdminLabel.setBackground(new Color(255, 255, 153));
+		risultatoAdminLabel.setFont(new Font("Bell MT", Font.PLAIN, 14));
+		risultatoAdminLabel.setBounds(316, 472, 290, 22);		
+		getBodyPanel().add(risultatoAdminLabel);
 		
 		JLabel lblNewLabel = new JLabel("N.B. E' necessario riempire tutti i campi");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Bell MT", Font.BOLD, 12));
 		lblNewLabel.setBounds(-26, 509, 321, 26);
 		getBodyPanel().add(lblNewLabel);
+		
+		risultatoRistoranteLabel = new JLabel("");
+		risultatoRistoranteLabel.setFont(new Font("Bell MT", Font.PLAIN, 14));
+		risultatoRistoranteLabel.setBackground(new Color(255, 255, 153));
+		risultatoRistoranteLabel.setBounds(316, 495, 290, 22);
+		getBodyPanel().add(risultatoRistoranteLabel);
 		
 	}
 }

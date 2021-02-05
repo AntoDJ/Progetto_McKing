@@ -52,8 +52,13 @@ import Entità.Utente;
 import ExceptionsSQL.AccountNonDisponibileException;
 import General.AccessoGUI;
 import General.LoginFormGUI;
+<<<<<<< HEAD
 import General.VisualizzaRistoranteGUI;
 import General.RegistrazioneUtenteGUI;
+=======
+import General.RegistrazioneUtenteGUI;
+import General.VisualizzaRistoranteGUI;
+>>>>>>> refs/remotes/origin/master
 import Utente.CatalogoGUI;
 import Utente.DettagliOrdineGUI;
 import Utente.DettagliOrdineProdottoGUI;
@@ -97,7 +102,10 @@ public class Controller {
 	private DettagliOrdineGUI dettagliOrdineGui;
 	private ScegliRiderGUI scegliRiderGui;
 	private VisualizzaRistoranteGUI visualizzaRistoranteGui;
+<<<<<<< HEAD
 	private Aggiungi_GestioneRistoranteGUI aggiungi_GestioneRistoranteGui;
+=======
+>>>>>>> refs/remotes/origin/master
 	
 
 	
@@ -558,6 +566,7 @@ public class Controller {
 		registrazioneUtenteGui = new RegistrazioneUtenteGUI(this);
 		registrazioneUtenteGui.setVisible(true);
 	}
+<<<<<<< HEAD
 	
 	public AdminDAO getAdminDao() {
 		return adminDao;
@@ -621,4 +630,18 @@ public class Controller {
 	
 	
 	
+=======
+
+	public void tornaAdAccessoGUIDaRegistrazioneUtente() {
+		registrazioneUtenteGui.dispose();
+		accessoGui.setVisible(true);
+	}
+
+	public void confermaNuovoUtente(Utente nuovoUtente) throws SQLException{
+		utenteDao.inserisciNuovoUtente(nuovoUtente);
+		registrazioneUtenteGui.dispose();
+		loginFormGui.getEmailTextField().setText(nuovoUtente.getEmail());
+		loginFormGui.setVisible(true);
+	}
+>>>>>>> refs/remotes/origin/master
 }

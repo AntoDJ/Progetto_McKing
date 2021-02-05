@@ -229,10 +229,9 @@ public class Aggiungi_GestioneRistoranteGUI extends BigFrame {
 		getBodyPanel().add(risultatoLabel);
 		
 		JLabel lblNewLabel = new JLabel("N.B. E' necessario riempire tutti i campi");
-		lblNewLabel.setForeground(Color.RED);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Bell MT", Font.BOLD, 14));
-		lblNewLabel.setBounds(-15, 509, 321, 26);
+		lblNewLabel.setFont(new Font("Bell MT", Font.BOLD, 12));
+		lblNewLabel.setBounds(-26, 509, 321, 26);
 		getBodyPanel().add(lblNewLabel);
 		
 	}

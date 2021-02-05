@@ -46,9 +46,7 @@ public class AdminDAO {
 	}
 	
 	
-	public int creaAdminCatenaDao(Admin admin){ 
-		int rs = 0;
-		try { 
+	public void creaAdminCatenaDao(Admin admin)throws SQLException{ 
 			connection = dbconnection.getConnection();
 			PreparedStatement ps= connection.prepareStatement("INSERT INTO \"Admin\"(\"AdminCatena\", \"Cognome\", \"Nome\", \"Email\", \"Password\", \"Attivo\", \"IdRistorante\") VALUES ( ?, ?, ?, ?, ?, ?, ?);");
 			ps.setBoolean(1, admin.isAdminCatena());
@@ -58,13 +56,9 @@ public class AdminDAO {
 			ps.setString(5, admin.getPassword());
 			ps.setBoolean(6, admin.isAttivo());
 			ps.setInt(7, 0);
-			rs = ps.executeUpdate();			
+			ps.executeUpdate();			
 			ps.close();
 			connection.close();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-		return rs;
 	}
 	
 	public int getIdAdmin(Admin admin) {
@@ -84,21 +78,16 @@ public class AdminDAO {
 		return id;
 	}
 	
-	public int modificaIdRistoranteDao(Admin admin, int id) {
-		int rs = 0;
+	public void modificaIdRistoranteDao(Admin admin, int id) throws SQLException {
 		
-		try { 
 			connection = dbconnection.getConnection();
 			PreparedStatement ps= connection.prepareStatement("UPDATE \"Admin\" SET \"IdRistorante\" = ? WHERE \"Email\" = ? ;");
 			ps.setInt(1, id);
 			ps.setString(2, admin.getEmail());
-			rs = ps.executeUpdate();			
+			ps.executeUpdate();			
 			ps.close();
 			connection.close();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-		return rs;
+	
 	}
 	
 }

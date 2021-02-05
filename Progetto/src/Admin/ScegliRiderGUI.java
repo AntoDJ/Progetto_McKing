@@ -46,7 +46,6 @@ public class ScegliRiderGUI extends SmallFrame {
 	 */
 	public ScegliRiderGUI(Controller controller, ArrayList rider, Ordine ordine, OrdineDaAssegnarePanel panel) {
 		getBodyPanel().setBackground(new Color(255, 255, 102));
-		getBodyPanel().setBorder(new EmptyBorder(0, 2, 2, 2));
 		getBodyPanel().setBounds(0, 44, 450, 136);
 		this.controller = controller;
 		setBounds(100, 100, 450, 180);

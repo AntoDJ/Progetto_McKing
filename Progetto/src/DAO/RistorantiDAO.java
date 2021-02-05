@@ -67,10 +67,8 @@ public class RistorantiDAO {
 		return ristoranti;	
 	}
 	
-	public int inserisciRistorante(Ristorante ristorante) {
-		int rs = 0;
+	public void inserisciRistorante(Ristorante ristorante) throws SQLException{
 		
-		try {
 			connection = dbconnection.getConnection();	
 			PreparedStatement ps = connection.prepareStatement("INSERT INTO \"Ristorante\"(\"Città\", \"Indirizzo\", \"NumeroDiTelefono\", \"OrarioApertura\", \"OrarioChiusura\", \"DistanzaMassima\", \"Attivo\", \"IdAdmin\") VALUES ( ?, ?, ?, ?, ?, ?, ?, ?); ");
 			ps.setString(1, ristorante.getCitta());
@@ -81,15 +79,10 @@ public class RistorantiDAO {
 			ps.setDouble(6, 0.0);
 			ps.setBoolean(7, true);
 			ps.setInt(8, ristorante.getIdAdmin());
-			rs = ps.executeUpdate();
+			ps.executeUpdate();
 			ps.close();
 			connection.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-			return rs;
 	}
 	
 	

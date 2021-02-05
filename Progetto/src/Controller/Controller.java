@@ -142,9 +142,7 @@ public class Controller {
 			adminAttivo= adminDao.verificaAccesso(email, password);
 			loginFormGui.dispose();
 			accessoGui.dispose();
-			if(adminAttivo.isAdminCatena()) {
-				operazioniCatenaGui = new OperazioniCatenaGUI(this);
-				operazioniCatenaGui.setVisible(true);	
+			if(adminAttivo.isAdminCatena()) {	
 //				operazioniCatenaGui = new OperazioniCatenaGUI(this);
 //				operazioniCatenaGui.setVisible(true);
 				aggiungi_GestioneRistoranteGui = new Aggiungi_GestioneRistoranteGUI(this);
@@ -566,36 +564,30 @@ public class Controller {
 	}
 	
 	public void creaAdminRistorante (Admin admin) {
-		int ritorno;	
 		int id;
-		ritorno = adminDao.creaAdminCatenaDao(admin);
-		aggiungi_GestioneRistoranteGui.risultatoLabel.setText("");
-		if(ritorno == 1) {
+		try {
+			adminDao.creaAdminCatenaDao(admin);
 			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
 			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("Admin inserito correttamente");
-			aggiungi_GestioneRistoranteGui.creaAdminButton.setVisible(false);
-
-		}
-		else {			
-				aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
-				aggiungi_GestioneRistoranteGui.risultatoLabel.setText("Impossibile inserire Admin");			
-		}
+		} catch (SQLException e) {
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("Impossibile inserire Admin");		
+		}		
 	}
 	
 	public void creaRistorante(Ristorante ristorante) {
-		int ritorno = 0;
 		
-		ritorno = ristoranteDao.inserisciRistorante(ristorante);
-		if(ritorno == 1) {
+		try {
+			ristoranteDao.inserisciRistorante(ristorante);
 			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("<html>" + aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<br>Ristorante inserito correttamente </html>");						
-		}
-		else {			
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("<html>" + aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<br>Ristorante inserito correttamente </html>");
+			aggiungi_GestioneRistoranteGui.creaAdminButton.setVisible(false);
+			} catch (SQLException e) {
 			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
 			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("<html>" + aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<br>Impossibile inserire Ristorante </html>");			
-	}	
-		
+		}		
 	}
+	
 	
 	public int getIdRistornate(Ristorante ristorante) {
 		int ritorno = 0;
@@ -604,13 +596,15 @@ public class Controller {
 	}
 	
 	public void modificaIdRistorante(Admin admin, int id) {
-		int ritorno = 0;
-		ritorno = adminDao.modificaIdRistoranteDao(admin, id);
-		if (ritorno == 1) {
-			aggiungi_GestioneRistoranteGui.creaAdminButton.setVisible(false);
+		try {
+			adminDao.modificaIdRistoranteDao(admin, id);			
 			System.out.println("OK");
+		} catch (SQLException e) {
+			System.out.println("Errore");
+			
 		}
-		else System.out.println("Errore");
+
+		
 	}
 	
 	public void tornaAdAccessoGUIDaRegistrazioneUtente() {

@@ -551,9 +551,9 @@ public class Controller {
 		int id;
 		try {
 			if( aggiungi_GestioneRistoranteGui.risultatoAdminLabel.getText().equals("") || aggiungi_GestioneRistoranteGui.risultatoAdminLabel.getText().equals("Impossibile inserire Admin") ) {
-			adminDao.creaAdminCatenaDao(admin);
-			aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setVisible(true);
-			aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setText("Admin inserito correttamente");
+				adminDao.creaAdminCatenaDao(admin);
+				aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setVisible(true);
+				aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setText("Admin inserito correttamente");
 			}else {
 				aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setText("Admin già inserito");
 			}
@@ -566,13 +566,16 @@ public class Controller {
 	public void creaRistorante(Ristorante ristorante) {		
 		try {
 			if(aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.getText().equals("") || aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.getText().equals("Impossibile inserire Ristorante")) {
-			ristoranteDao.inserisciRistorante(ristorante);
-			aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.setVisible(true);
-			aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.setText("Ristorante inserito correttamente ");
-			JOptionPane.showMessageDialog(aggiungi_GestioneRistoranteGui.getBodyPanel(), "Modifiche effettuate");
-			//creare funzione per tornare indietro e richiamarla qua 
+				ristoranteDao.inserisciRistorante(ristorante);
+				aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.setVisible(true);
+				aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.setText("Ristorante inserito correttamente ");
+				JOptionPane.showMessageDialog(aggiungi_GestioneRistoranteGui.getBodyPanel(), "Modifiche effettuate");
+				aggiungi_GestioneRistoranteGui.dispose();
+				gestioneRistorantiGui.dispose();
+				gestioneRistorantiGui = new GestioneRistorantiGUI(this);
+				gestioneRistorantiGui.setVisible(true);
 			}
-			} catch (SQLException e) {
+		} catch (SQLException e) {
 			aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.setVisible(true);
 			aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.setText("Impossibile inserire Ristorante");			
 		}		

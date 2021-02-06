@@ -153,7 +153,7 @@ public class GestioneRistorantiGUI extends MediumFrame {
 				else attivoComboBox.setBackground(new Color(255, 51, 0));
 			}
 		});
-		attivoComboBox.setBounds(251, 218, 100, 22);
+		attivoComboBox.setBounds(251, 218, 124, 22);
 		getBodyPanel().add(attivoComboBox);
 		
 		MenuButton confermaModificheButton = new MenuButton("Conferma");
@@ -164,7 +164,7 @@ public class GestioneRistorantiGUI extends MediumFrame {
 			}
 		});
 		confermaModificheButton.setFont(new Font("Bell MT", Font.PLAIN, 14));
-		confermaModificheButton.setBounds(361, 218, 111, 22);
+		confermaModificheButton.setBounds(413, 218, 119, 22);
 		getBodyPanel().add(confermaModificheButton);
 		
 		JLabel operazioniLabel = new JLabel("Oppure:");
@@ -180,7 +180,7 @@ public class GestioneRistorantiGUI extends MediumFrame {
 			}
 		});
 		aggiungiRistoranteButton.setFont(new Font("Bell MT", Font.BOLD, 14));
-		aggiungiRistoranteButton.setBounds(251, 354, 221, 23);
+		aggiungiRistoranteButton.setBounds(251, 354, 281, 23);
 		getBodyPanel().add(aggiungiRistoranteButton);
 		
 		JComboBox selezionaRistoranteComboBox = new JComboBox();
@@ -198,7 +198,7 @@ public class GestioneRistorantiGUI extends MediumFrame {
 		selezionaRistoranteComboBox.setFocusTraversalKeysEnabled(false);
 		selezionaRistoranteComboBox.setBackground(Color.white);
 		selezionaRistoranteComboBox.setFont(new Font("Bell MT", Font.PLAIN, 14));
-		selezionaRistoranteComboBox.setBounds(251, 43, 221, 22);
+		selezionaRistoranteComboBox.setBounds(251, 43, 281, 22);
 		selezionaRistoranteComboBox.setSelectedIndex(0);
 		getBodyPanel().add(selezionaRistoranteComboBox);
 		

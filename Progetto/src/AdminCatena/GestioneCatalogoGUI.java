@@ -108,7 +108,7 @@ public class GestioneCatalogoGUI extends MediumFrame {
 		int size = 0;
 		for(int i = 0 ; i < 10; i++) {
 			if(i%2 == 0) size += 170;
-			panel.add(new ProdottoPanel("Panino #" + i));
+			//panel.add(new ProdottoPanel("Panino #" + i));
 		}
 		panel.setPreferredSize(new Dimension(500,size));
 		ModernScrollPane scrollPane = new ModernScrollPane(panel);

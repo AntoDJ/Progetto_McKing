@@ -43,6 +43,7 @@ import General.AccessoGUI;
 import General.LoginFormGUI;
 import General.VisualizzaRistoranteGUI;
 import General.RegistrazioneUtenteGUI;
+import General.RegistrazioneUtenteGUI;
 import Utente.CatalogoGUI;
 import Utente.DettagliOrdineGUI;
 import Utente.DettagliOrdineProdottoGUI;
@@ -549,25 +550,31 @@ public class Controller {
 	public void creaAdminRistorante (Admin admin) {
 		int id;
 		try {
+			if( aggiungi_GestioneRistoranteGui.risultatoAdminLabel.getText().equals("") || aggiungi_GestioneRistoranteGui.risultatoAdminLabel.getText().equals("Impossibile inserire Admin") ) {
 			adminDao.creaAdminCatenaDao(admin);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("Admin inserito correttamente");
+			aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setText("Admin inserito correttamente");
+			}else {
+				aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setText("Admin già inserito");
+			}
 		} catch (SQLException e) {
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("Impossibile inserire Admin");		
+			aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoAdminLabel.setText("Impossibile inserire Admin");		
 		}		
 	}
 	
-	public void creaRistorante(Ristorante ristorante) {
-		
+	public void creaRistorante(Ristorante ristorante) {		
 		try {
+			if(aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.getText().equals("") || aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.getText().equals("Impossibile inserire Ristorante")) {
 			ristoranteDao.inserisciRistorante(ristorante);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("<html>" + aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<br>Ristorante inserito correttamente </html>");
-			aggiungi_GestioneRistoranteGui.creaAdminButton.setVisible(false);
+			aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.setText("Ristorante inserito correttamente ");
+			JOptionPane.showMessageDialog(aggiungi_GestioneRistoranteGui.getBodyPanel(), "Modifiche effettuate");
+			//creare funzione per tornare indietro e richiamarla qua 
+			}
 			} catch (SQLException e) {
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
-			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("<html>" + aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<br>Impossibile inserire Ristorante </html>");			
+			aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoRistoranteLabel.setText("Impossibile inserire Ristorante");			
 		}		
 	}
 	
@@ -629,5 +636,4 @@ public class Controller {
 		ristoranteDao.modificaStatoAttività(id,b);
 		System.out.println("Stato attività ristorante modificato");
 	}
-	
 }

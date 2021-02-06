@@ -52,6 +52,11 @@ public class Aggiungi_GestioneRistoranteGUI extends BigFrame {
 	 * Create the frame.
 	 */
 	public Aggiungi_GestioneRistoranteGUI(Controller controller) {
+		getBackButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.tornaAGestioneRistoranteGUI();
+			}
+		});
 		getBodyPanel().setLocation(0, 44);
 		this.controller = controller;
 		getBodyPanel().setLayout(null);

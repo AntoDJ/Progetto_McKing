@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import Controller.Controller;
-import Controller.RegistrazioneUtenteGUI;
 import ExceptionsSQL.AccountNonDisponibileException;
 
 import java.awt.Font;

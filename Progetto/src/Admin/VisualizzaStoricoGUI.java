@@ -61,13 +61,12 @@ public class VisualizzaStoricoGUI extends BigFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VisualizzaStoricoGUI(Controller controller, Admin admin) {
+	public VisualizzaStoricoGUI(Controller controller, int idRistorante) {
 		getBackButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.indietroStorico();
 			}
 		});
-		this.admin = admin;
 		this.controller = controller;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getBodyPanel().setLayout(null);
@@ -154,7 +153,7 @@ public class VisualizzaStoricoGUI extends BigFrame {
 					prezzodouble = 0.0;
 				else 
 					prezzodouble = Double.parseDouble(prezzo);				
-				controller.ricercaPersonalizzata(admin.getIdRistorante(), anno, tipoMezzo, prezzodouble);
+				controller.ricercaPersonalizzata(idRistorante, anno, tipoMezzo, prezzodouble);
 			}
 		});
 		cercaLabel.setOpaque(true);

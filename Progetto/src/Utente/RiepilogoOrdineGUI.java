@@ -87,7 +87,7 @@ public class RiepilogoOrdineGUI extends BigFrame {
 		valorePrezzoTotaleLabel = new JLabel();
 		valorePrezzoTotaleLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		valorePrezzoTotaleLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
-		valorePrezzoTotaleLabel.setBounds(724, 10, 146, 31);
+		valorePrezzoTotaleLabel.setBounds(688, 10, 158, 31);
 		prezzoPanel.add(valorePrezzoTotaleLabel);
 		
 		MenuButton confermaButton = new MenuButton("Conferma");
@@ -116,6 +116,11 @@ public class RiepilogoOrdineGUI extends BigFrame {
 		scrollPane.setBorder(new LineBorder(new Color(255, 51, 0), 2, true));
 		
 		getBodyPanel().add(scrollPane);
+		
+		JLabel euroLabel = new JLabel("€");
+		euroLabel.setFont(new Font("Arial", Font.BOLD, 14));
+		euroLabel.setBounds(850,10,20,31);
+		prezzoPanel.add(euroLabel);
 	}
 
 	public void aggiornaScrollPane() {

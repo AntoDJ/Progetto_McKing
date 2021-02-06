@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import Controller.Controller;
+import Controller.RegistrazioneUtenteGUI;
 import ExceptionsSQL.AccountNonDisponibileException;
 
 import java.awt.Font;
@@ -62,7 +63,7 @@ public class LoginFormGUI extends SmallFrame {
 		return emailTextField;
 	}
 
-	public LoginFormGUI(Controller controller) {
+	public LoginFormGUI(Controller controller, String tipoAccesso) {
 		this.controller= controller;
 		getBackButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -167,25 +168,26 @@ public class LoginFormGUI extends SmallFrame {
 		accediButton.setBounds(318, 212, 98, 23);
 		getBodyPanel().add(accediButton);
 		
-		JLabel registrazioneLabel = new JLabel("<html><a href=\"\" style=\"pointer-events:none\">Registrati</a></html>");
-		registrazioneLabel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				controller.apriRegistrazioneUtente();
-			}
-		});
-		registrazioneLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
-		registrazioneLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		registrazioneLabel.setBounds(131, 212, 91, 23);
-		registrazioneLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		getBodyPanel().add(registrazioneLabel);
-		
-		JLabel oppureLabel = new JLabel("oppure");
-		oppureLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		oppureLabel.setFont(new Font("Dialog", Font.ITALIC, 14));
-		oppureLabel.setBounds(201, 213, 107, 23);
-		getBodyPanel().add(oppureLabel);
-		
+		if(tipoAccesso.equals("Utente")) {
+			JLabel registrazioneLabel = new JLabel("<html><a href=\"\" style=\"pointer-events:none\">Registrati</a></html>");
+			registrazioneLabel.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mousePressed(MouseEvent e) {
+					controller.apriRegistrazioneUtente();
+				}
+			});
+			registrazioneLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
+			registrazioneLabel.setHorizontalAlignment(SwingConstants.LEFT);
+			registrazioneLabel.setBounds(131, 212, 91, 23);
+			registrazioneLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			getBodyPanel().add(registrazioneLabel);
+
+			JLabel oppureLabel = new JLabel("oppure");
+			oppureLabel.setHorizontalAlignment(SwingConstants.CENTER);
+			oppureLabel.setFont(new Font("Dialog", Font.ITALIC, 14));
+			oppureLabel.setBounds(201, 213, 107, 23);
+			getBodyPanel().add(oppureLabel);
+		}
 
 
 	}

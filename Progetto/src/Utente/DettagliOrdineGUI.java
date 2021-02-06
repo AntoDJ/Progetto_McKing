@@ -109,7 +109,7 @@ public class DettagliOrdineGUI extends MediumFrame {
 		etichettePanel.add(prezzoTotaleLabel);
 		
 		JComboBox selezionaRistorantecomboBox = new JComboBox();
-		controller.riempiComboBoxRistorante(selezionaRistorantecomboBox);
+		controller.riempiComboBoxRistorante(selezionaRistorantecomboBox, true);
 		selezionaRistorantecomboBox.setFocusTraversalKeysEnabled(false);
 		selezionaRistorantecomboBox.setFocusable(false);
 		selezionaRistorantecomboBox.setBackground(Color.white);

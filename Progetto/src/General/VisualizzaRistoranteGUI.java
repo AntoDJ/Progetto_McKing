@@ -85,7 +85,7 @@ public class VisualizzaRistoranteGUI extends BigFrame {
 		
 		
 		JComboBox selezionaRistoranteComboBox = new JComboBox();
-		controller.riempiComboBoxRistorante(selezionaRistoranteComboBox);
+		controller.riempiComboBoxRistorante(selezionaRistoranteComboBox, true);
 		selezionaRistoranteComboBox.setFocusable(false);
 		selezionaRistoranteComboBox.setFocusTraversalKeysEnabled(false);
 		selezionaRistoranteComboBox.setBackground(Color.white);

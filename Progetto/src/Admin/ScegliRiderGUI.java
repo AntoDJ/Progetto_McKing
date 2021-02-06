@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.EmptyBorder;
 
 public class ScegliRiderGUI extends SmallFrame {
 	Controller controller;
@@ -44,6 +45,7 @@ public class ScegliRiderGUI extends SmallFrame {
 	 * Create the frame.
 	 */
 	public ScegliRiderGUI(Controller controller, ArrayList rider, Ordine ordine, OrdineDaAssegnarePanel panel) {
+		getBodyPanel().setBackground(new Color(255, 255, 102));
 		getBodyPanel().setBounds(0, 44, 450, 136);
 		this.controller = controller;
 		setBounds(100, 100, 450, 180);

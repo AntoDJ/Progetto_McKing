@@ -1,14 +1,8 @@
 package Controller;
 
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import DAO.AdminDAO;
 import DAO.OrdineDAO;
@@ -16,14 +10,11 @@ import DAO.ProdottoDAO;
 import DAO.RiderDAO;
 import DAO.RistorantiDAO;
 import DAO.UtenteDAO;
-import DBConnection.DBConnection;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 
 import javax.swing.Box;
-import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -34,12 +25,12 @@ import Admin.GestioneRiderGUI;
 
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 
 import Admin.OperazioneRistoranteGUI;
 import Admin.ScegliRiderGUI;
 import Admin.VisualizzaStoricoGUI;
-import AdminCatena.Aggiungi_GestioneCatalogoGUI;
+import AdminCatena.Aggiungi_GestioneRistoranteGUI;
+import AdminCatena.GestioneRistorantiGUI;
 import AdminCatena.OperazioniCatenaGUI;
 import Entità.Admin;
 import Entità.Ordine;
@@ -50,8 +41,8 @@ import Entità.Utente;
 import ExceptionsSQL.AccountNonDisponibileException;
 import General.AccessoGUI;
 import General.LoginFormGUI;
-import General.RegistrazioneUtenteGUI;
 import General.VisualizzaRistoranteGUI;
+import General.RegistrazioneUtenteGUI;
 import Utente.CatalogoGUI;
 import Utente.DettagliOrdineGUI;
 import Utente.DettagliOrdineProdottoGUI;
@@ -60,7 +51,6 @@ import Utente.RiepilogoOrdineGUI;
 import Utility.RiderPanel;
 import Utility.StoricoPanel;
 import Utility.RiepilogoOrdinePanel;
-import Utility.ModernScrollPane;
 import Utility.OrdineAssegnatoPanel;
 import Utility.OrdineDaAssegnarePanel;
 import Utility.ProdottoPanel;
@@ -86,7 +76,6 @@ public class Controller {
 	private ProfiloGUI profiloGui;
 	private DettagliOrdineProdottoGUI dettagliOrdineProdottoGui;
 	private OperazioneRistoranteGUI operazioneRistoranteGui;
-	private OperazioniCatenaGUI operazioniCatenaGui;
 	private GestioneRiderGUI gestioneRiderGui;
 	private VisualizzaStoricoGUI visualizzaStoricoGui;
 	private Cancella_GestioneRiderGUI cancella_gestioneRiderGui;
@@ -95,10 +84,9 @@ public class Controller {
 	private DettagliOrdineGUI dettagliOrdineGui;
 	private ScegliRiderGUI scegliRiderGui;
 	private VisualizzaRistoranteGUI visualizzaRistoranteGui;
-	
+	private Aggiungi_GestioneRistoranteGUI aggiungi_GestioneRistoranteGui;
+	private GestioneRistorantiGUI gestioneRistorantiGui;
 
-	
-	
 	public Controller(){
 		try {
 			ristoranteDao = new RistorantiDAO();
@@ -116,7 +104,7 @@ public class Controller {
 	}
 	
 	public void sceltaTipoAccesso(String tipoAccesso) {		
-		loginFormGui = new LoginFormGUI(this);
+		loginFormGui = new LoginFormGUI(this, tipoAccesso);
 		this.tipoAccesso = tipoAccesso;	
 		accessoGui.setVisible(false);		
 		loginFormGui.setVisible(true);	
@@ -139,9 +127,9 @@ public class Controller {
 			adminAttivo= adminDao.verificaAccesso(email, password);
 			loginFormGui.dispose();
 			accessoGui.dispose();
-			if(adminAttivo.isAdminCatena()) {
-				operazioniCatenaGui = new OperazioniCatenaGUI(this);
-				operazioniCatenaGui.setVisible(true);						
+			if(adminAttivo.isAdminCatena()) {	
+				gestioneRistorantiGui = new GestioneRistorantiGUI(this);
+				gestioneRistorantiGui.setVisible(true);
 			}
 			else { 
 				creaOperazioneRistoranteGUI();
@@ -212,7 +200,7 @@ public class Controller {
 		for(Prodotto p: carrello) {
 			prezzoTotale += (p.getPrezzo() * p.getQuantità());
 		}
-		riepilogoOrdineGui.getValorePrezzoTotaleLabel().setText(String.valueOf(prezzoTotale)+ "€");;
+		riepilogoOrdineGui.getValorePrezzoTotaleLabel().setText(String.valueOf(prezzoTotale));;
 	}
 
 	public void annullaNuovoProdotto() {
@@ -260,8 +248,8 @@ public class Controller {
 		
 	}
 
-	public void riempiComboBoxRistorante(JComboBox selezionaRistorantecomboBox) {
-		ArrayList<Ristorante> ristorantiDisponibili = ristoranteDao.getRistorantiConsegna();
+	public void riempiComboBoxRistorante(JComboBox selezionaRistorantecomboBox, boolean soloAttivi) {
+		ArrayList<Ristorante> ristorantiDisponibili = ristoranteDao.getRistoranti(soloAttivi);
 		for(Ristorante r: ristorantiDisponibili) selezionaRistorantecomboBox.addItem(r);
 		selezionaRistorantecomboBox.setSelectedIndex(0);
 	}
@@ -412,7 +400,7 @@ public class Controller {
 	public void popolaStoricoOrdini(int idRistorante, String anno, String tipoMezzo, double prezzo) {
 		ArrayList<Ordine> ordini = null;
 		int size = 0;
-		ordini = ordineDao.getStoricoRistorante(adminAttivo.getIdRistorante(), anno, tipoMezzo, prezzo);		
+		ordini = ordineDao.getStoricoRistorante(idRistorante, anno, tipoMezzo, prezzo);		
 		for (int i = 0; i< ordini.size(); i++) {
 			size += 115;
 			visualizzaStoricoGui.ordinePanel.add(new StoricoPanel(ordini.get(i)));
@@ -422,7 +410,7 @@ public class Controller {
 	}
 	
 	public void apriStorico(){
-		visualizzaStoricoGui = new VisualizzaStoricoGUI(this, adminAttivo);
+		visualizzaStoricoGui = new VisualizzaStoricoGUI(this, adminAttivo.getIdRistorante());
 		popolaStoricoOrdini(adminAttivo.getIdRistorante(), null, null, 0);
 		operazioneRistoranteGui.setVisible(false);
 		visualizzaStoricoGui.setVisible(true);
@@ -435,7 +423,7 @@ public class Controller {
 	}
 	
 	public void ricercaPersonalizzata(int idRistorante, String anno, String tipoMezzo, double prezzo){
-		visualizzaStoricoGui = new VisualizzaStoricoGUI(this, adminAttivo);	
+		visualizzaStoricoGui = new VisualizzaStoricoGUI(this, adminAttivo.getIdRistorante());	
 		popolaStoricoOrdini(adminAttivo.getIdRistorante(), anno, tipoMezzo, prezzo);		
 		chiudiVisibilitaComponentiVisualizzaStoricoGui();		
 		visualizzaStoricoGui.setVisible(true);
@@ -553,7 +541,55 @@ public class Controller {
 		registrazioneUtenteGui = new RegistrazioneUtenteGUI(this);
 		registrazioneUtenteGui.setVisible(true);
 	}
+	
+	public AdminDAO getAdminDao() {
+		return adminDao;
+	}
+	
+	public void creaAdminRistorante (Admin admin) {
+		int id;
+		try {
+			adminDao.creaAdminCatenaDao(admin);
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("Admin inserito correttamente");
+		} catch (SQLException e) {
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("Impossibile inserire Admin");		
+		}		
+	}
+	
+	public void creaRistorante(Ristorante ristorante) {
+		
+		try {
+			ristoranteDao.inserisciRistorante(ristorante);
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("<html>" + aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<br>Ristorante inserito correttamente </html>");
+			aggiungi_GestioneRistoranteGui.creaAdminButton.setVisible(false);
+			} catch (SQLException e) {
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setVisible(true);
+			aggiungi_GestioneRistoranteGui.risultatoLabel.setText("<html>" + aggiungi_GestioneRistoranteGui.risultatoLabel.getText() + "<br>Impossibile inserire Ristorante </html>");			
+		}		
+	}
+	
+	
+	public int getIdRistornate(Ristorante ristorante) {
+		int ritorno = 0;
+		ritorno = ristoranteDao.getIdRistoranteDao(ristorante);
+		return ritorno;
+	}
+	
+	public void modificaIdRistorante(Admin admin, int id) {
+		try {
+			adminDao.modificaIdRistoranteDao(admin, id);			
+			System.out.println("OK");
+		} catch (SQLException e) {
+			System.out.println("Errore");
+			
+		}
 
+		
+	}
+	
 	public void tornaAdAccessoGUIDaRegistrazioneUtente() {
 		registrazioneUtenteGui.dispose();
 		accessoGui.setVisible(true);
@@ -565,4 +601,33 @@ public class Controller {
 		loginFormGui.getEmailTextField().setText(nuovoUtente.getEmail());
 		loginFormGui.setVisible(true);
 	}
+
+	public void aggiungiNuovoRistorante() {
+		gestioneRistorantiGui.setVisible(false);
+		aggiungi_GestioneRistoranteGui = new Aggiungi_GestioneRistoranteGUI(this);
+		aggiungi_GestioneRistoranteGui.setVisible(true);
+	}
+
+	public void tornaAdAccessoGUIDaGestioneRistorantiGUI() {
+		gestioneRistorantiGui.dispose();
+		accessoGui.setVisible(true);
+	}
+
+	public String getAdminRistorante(int idRistorante) {
+		String admin = adminDao.getAdminFromId(idRistorante);
+		return admin;
+	}
+
+	public void apriStoricoRistoranteSelezionato(int id) {
+		visualizzaStoricoGui = new VisualizzaStoricoGUI(this, id);
+		visualizzaStoricoGui.getBackButton().setVisible(false);
+		popolaStoricoOrdini(id, null, null, 0);
+		visualizzaStoricoGui.setVisible(true);
+	}
+
+	public void modificaStatoRistorante(int id, boolean b) {
+		ristoranteDao.modificaStatoAttività(id,b);
+		System.out.println("Stato attività ristorante modificato");
+	}
+	
 }

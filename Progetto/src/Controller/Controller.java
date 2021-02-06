@@ -639,4 +639,10 @@ public class Controller {
 		ristoranteDao.modificaStatoAttività(id,b);
 		System.out.println("Stato attività ristorante modificato");
 	}
+
+	public void tornaAGestioneRistoranteGUI() {
+		aggiungi_GestioneRistoranteGui.dispose();
+		gestioneRistorantiGui.setVisible(true);
+		
+	}
 }
